@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "build-bundle": "vue-cli-service build --target lib --name myLib ./src/components/index.js"
   },
   "dependencies": {
     "vue": "^2.6.6"
@@ -16,7 +17,10 @@
     "@vue/cli-service": "^3.5.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-vue": "^5.0.0",
+    "prettier": "^1.16.4",
     "vue-template-compiler": "^2.5.21"
   },
   "eslintConfig": {
@@ -26,7 +30,8 @@
     },
     "extends": [
       "plugin:vue/essential",
-      "eslint:recommended"
+      "eslint:recommended",
+      "prettier/vue"
     ],
     "rules": {},
     "parserOptions": {

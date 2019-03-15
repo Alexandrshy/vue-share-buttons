@@ -1,24 +1,23 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="share-buttons">
+    <twitter-button class="button-social--twitter" btnText="Twitter" pageUrl hasIcon></twitter-button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TwitterButton from "./components/TwitterButton";
 
 export default {
-  name: 'app',
+  name: "app-share-buttons",
   components: {
-    HelloWorld
+    TwitterButton
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
