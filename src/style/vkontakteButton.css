@@ -1,0 +1,43 @@
+/* vk */
+.share-button--vk {
+  background-color: hsla(212, 28%, 52%, 1);
+}
+
+.share-button--vk:focus {
+  box-shadow: 0 0 0 3px hsla(212, 22%, 77%, 0.4);
+}
+
+.share-button--vk:hover {
+  background-color: hsla(212, 28%, 52%, 0.9);
+}
+
+.share-button--vk .share-button__icon path {
+  fill: #fff;
+}
+
+/* Circle */
+.share-button--vk.share-button--outline {
+  background-color: transparent;
+  border-color: hsla(212, 28%, 52%, 1);
+}
+
+.share-button--vk.share-button--outline:hover {
+  background-color: transparent;
+  border-color: hsla(212, 28%, 52%, 0.9);
+}
+
+.share-button--vk.share-button--outline .share-button__text {
+  color: hsla(212, 28%, 52%, 1);
+}
+
+.share-button--vk.share-button--outline:hover .share-button__text {
+  color: hsla(212, 28%, 52%, 0.9);
+}
+
+.share-button--vk.share-button--outline .share-button__icon path {
+  fill: hsla(212, 28%, 52%, 1);
+}
+
+.share-button--vk.share-button--outline:hover .share-button__icon path {
+  fill: hsla(212, 28%, 52%, 0.9);
+}

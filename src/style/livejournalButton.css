@@ -1,0 +1,45 @@
+/* livejournal */
+.share-button--livejournal {
+  background-color: hsla(195, 100%, 46%, 1);
+}
+
+.share-button--livejournal:focus {
+  box-shadow: 0 0 0 3px hsla(195, 94%, 71%, 0.4);
+}
+
+.share-button--livejournal:hover {
+  background-color: hsla(195, 100%, 46%, 0.9);
+}
+
+.share-button--livejournal .share-button__icon path {
+  fill: #fff;
+}
+
+/* Circle */
+.share-button--livejournal.share-button--outline {
+  background-color: transparent;
+  border-color: hsl(195, 100%, 46%, 1);
+}
+
+.share-button--livejournal.share-button--outline:hover {
+  background-color: transparent;
+  border-color: hsla(195, 100%, 46%, 0.9);
+}
+
+.share-button--livejournal.share-button--outline .share-button__text {
+  color: hsla(195, 100%, 46%, 1);
+}
+
+.share-button--livejournal.share-button--outline:hover .share-button__text {
+  color: hsla(195, 100%, 46%, 0.9);
+}
+
+.share-button--livejournal.share-button--outline .share-button__icon path {
+  fill: hsla(195, 100%, 46%, 1);
+}
+
+.share-button--livejournal.share-button--outline:hover
+  .share-button__icon
+  path {
+  fill: hsla(195, 100%, 46%, 0.9);
+}

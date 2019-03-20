@@ -1,6 +1,6 @@
 <template>
   <button
-    class="share-button share-button--twitter"
+    class="share-button share-button--livejournal"
     type="button"
     :class="className"
     :shareUrl="shareUrl"
@@ -14,15 +14,15 @@
     :isBlank="isBlank"
     @click="openShareWindow"
   >
-    <icon iconName="Twitter" class="share-button__icon" v-if="hasIcon === true">
+    <icon iconName="LiveJournal" class="share-button__icon" v-if="hasIcon === true">
       <path
-        d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"
+        d="M18.09 14.696c-1.512.664-2.726 1.885-3.381 3.399l4.27.883-.886-4.282h-.003zM2.475 8.317L0 5.85C1.125 3.237 3.216 1.14 5.823 0h.006l2.469 2.463c1.368-.591 2.876-.921 4.463-.921C18.967 1.542 24 6.569 24 12.771 24 18.973 18.967 24 12.761 24 6.551 24 1.52 18.976 1.52 12.771c0-1.591.355-3.081.952-4.451l9.143 9.114c1.125-2.613 3.218-4.71 5.823-5.85l-9.135-9.12h-.008c-2.606 1.14-4.695 3.24-5.823 5.85l.003.003z"
       />
     </icon>
     <span class="share-button__text" v-if="btnText">{{btnText}}</span>
   </button>
 </template>
- 
+
 <script>
 import Icon from "./icon/Icon.vue";
 import {
@@ -33,7 +33,7 @@ import {
 } from "../helpers";
 
 export default {
-  name: "TwitterShareButton",
+  name: "LiveJournalShareButton",
   components: { Icon },
   props: {
     className: { type: String },
@@ -41,7 +41,7 @@ export default {
     shareTitle: { type: String },
     shareText: { type: String, default: getDocumentTitle },
     sharePic: { type: String, default: "" },
-    btnText: { type: String, default: "Twitter" },
+    btnText: { type: String, default: "LiveJournal" },
     windowWidth: { type: Number },
     windowHeight: { type: Number },
     hasIcon: { type: Boolean, default: true },
@@ -49,11 +49,11 @@ export default {
   },
   methods: {
     openShareWindow: function() {
-      eventEmit(this, { name: "Twitter" });
+      eventEmit(this, { name: "LiveJournal" });
       const configWindow = createWindow();
-      const url = `https://twitter.com/share?url=${encodeURIComponent(
+      const url = `https://livejournal.com/update.bml?event=${encodeURIComponent(
         this.$props.shareUrl
-      )}&text=${encodeURIComponent(this.$props.shareText)}`;
+      )}&subject=${encodeURIComponent(this.$props.shareText)}`;
 
       return this.$props.isBlank
         ? window.open(url, "__blank")
@@ -65,5 +65,5 @@ export default {
 
 <style>
 @import "../style/index.css";
-@import "../style/twitterButton.css";
+@import "../style/livejournalButton.css";
 </style>

@@ -1,6 +1,6 @@
 <template>
   <button
-    class="share-button share-button--twitter"
+    class="share-button share-button--digg"
     type="button"
     :class="className"
     :shareUrl="shareUrl"
@@ -14,15 +14,15 @@
     :isBlank="isBlank"
     @click="openShareWindow"
   >
-    <icon iconName="Twitter" class="share-button__icon" v-if="hasIcon === true">
+    <icon iconName="Digg" class="share-button__icon" v-if="hasIcon === true">
       <path
-        d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"
+        d="M17.76 8.16v8.16h3.84v.96h-3.84v1.92H24V8.16h-6.24zm-7.2 0v8.16h3.84v.96h-3.84v1.92h6.24V8.16h-6.24zM3.84 4.8v3.36H0v8.16h6.24V4.8h-2.4zM9.6 8.16H7.2v8.16h2.4V8.16zm12 6.24h-1.44v-4.32h1.44v4.32zm-17.76 0H2.4v-4.32h1.44v4.32zm10.56 0h-1.44v-4.32h1.44v4.32zM9.6 4.8H7.2v2.4h2.4V4.8z"
       />
     </icon>
     <span class="share-button__text" v-if="btnText">{{btnText}}</span>
   </button>
 </template>
- 
+
 <script>
 import Icon from "./icon/Icon.vue";
 import {
@@ -33,7 +33,7 @@ import {
 } from "../helpers";
 
 export default {
-  name: "TwitterShareButton",
+  name: "DiggShareButton",
   components: { Icon },
   props: {
     className: { type: String },
@@ -41,7 +41,7 @@ export default {
     shareTitle: { type: String },
     shareText: { type: String, default: getDocumentTitle },
     sharePic: { type: String, default: "" },
-    btnText: { type: String, default: "Twitter" },
+    btnText: { type: String, default: "Digg" },
     windowWidth: { type: Number },
     windowHeight: { type: Number },
     hasIcon: { type: Boolean, default: true },
@@ -49,11 +49,11 @@ export default {
   },
   methods: {
     openShareWindow: function() {
-      eventEmit(this, { name: "Twitter" });
+      eventEmit(this, { name: "Digg" });
       const configWindow = createWindow();
-      const url = `https://twitter.com/share?url=${encodeURIComponent(
+      const url = `http://digg.com/submit?url=${encodeURIComponent(
         this.$props.shareUrl
-      )}&text=${encodeURIComponent(this.$props.shareText)}`;
+      )}`;
 
       return this.$props.isBlank
         ? window.open(url, "__blank")
@@ -65,5 +65,5 @@ export default {
 
 <style>
 @import "../style/index.css";
-@import "../style/twitterButton.css";
+@import "../style/diggButton.css";
 </style>

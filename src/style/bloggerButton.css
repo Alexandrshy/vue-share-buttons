@@ -1,0 +1,43 @@
+/* blogger */
+.share-button--blogger {
+  background-color: hsla(195, 100%, 46%, 1);
+}
+
+.share-button--blogger:focus {
+  box-shadow: 0 0 0 3px hsla(195, 94%, 71%, 0.4);
+}
+
+.share-button--blogger:hover {
+  background-color: hsla(195, 100%, 46%, 0.9);
+}
+
+.share-button--blogger .share-button__icon path {
+  fill: #fff;
+}
+
+/* Circle */
+.share-button--blogger.share-button--outline {
+  background-color: transparent;
+  border-color: hsl(195, 100%, 46%, 1);
+}
+
+.share-button--blogger.share-button--outline:hover {
+  background-color: transparent;
+  border-color: hsla(195, 100%, 46%, 0.9);
+}
+
+.share-button--blogger.share-button--outline .share-button__text {
+  color: hsla(195, 100%, 46%, 1);
+}
+
+.share-button--blogger.share-button--outline:hover .share-button__text {
+  color: hsla(195, 100%, 46%, 0.9);
+}
+
+.share-button--blogger.share-button--outline .share-button__icon path {
+  fill: hsla(195, 100%, 46%, 1);
+}
+
+.share-button--blogger.share-button--outline:hover .share-button__icon path {
+  fill: hsla(195, 100%, 46%, 0.9);
+}

@@ -1,0 +1,43 @@
+/* weibo */
+.share-button--weibo {
+  background-color: hsl(353, 83%, 49%);
+}
+
+.share-button--weibo:focus {
+  box-shadow: 0 0 0 3px hsla(353, 100%, 74%, 0.4);
+}
+
+.share-button--weibo:hover {
+  background-color: hsla(353, 83%, 49%, 0.9);
+}
+
+.share-button--weibo .share-button__icon path {
+  fill: #fff;
+}
+
+/* Circle */
+.share-button--weibo.share-button--outline {
+  background-color: transparent;
+  border-color: hsl(353, 83%, 49%, 1);
+}
+
+.share-button--weibo.share-button--outline:hover {
+  background-color: transparent;
+  border-color: hsla(353, 83%, 49%, 0.9);
+}
+
+.share-button--weibo.share-button--outline .share-button__text {
+  color: hsla(353, 83%, 49%, 1);
+}
+
+.share-button--weibo.share-button--outline:hover .share-button__text {
+  color: hsla(353, 83%, 49%, 0.9);
+}
+
+.share-button--weibo.share-button--outline .share-button__icon path {
+  fill: hsla(353, 83%, 49%, 1);
+}
+
+.share-button--weibo.share-button--outline:hover .share-button__icon path {
+  fill: hsla(353, 83%, 49%, 0.9);
+}
