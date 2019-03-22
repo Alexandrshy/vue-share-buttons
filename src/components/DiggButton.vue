@@ -5,7 +5,7 @@
     :class="className"
     :shareUrl="shareUrl"
     :shareTitle="shareTitle"
-    :shareText="shareText"
+    :shareDescription="shareDescription"
     :sharePic="sharePic"
     :btnText="btnText"
     :windowWidth="windowWidth"
@@ -38,8 +38,8 @@ export default {
   props: {
     className: { type: String },
     shareUrl: { type: String, default: getDocumentHref },
-    shareTitle: { type: String },
-    shareText: { type: String, default: getDocumentTitle },
+    shareTitle: { type: String, default: "" },
+    shareDescription: { type: String, default: getDocumentTitle },
     sharePic: { type: String, default: "" },
     btnText: { type: String, default: "Digg" },
     windowWidth: { type: Number },

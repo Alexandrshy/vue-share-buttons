@@ -1,4 +1,4 @@
-/* digg */
+/* Digg */
 .share-button--digg {
   background-color: hsla(0, 0%, 0%, 1);
 }
@@ -15,7 +15,6 @@
   fill: #fff;
 }
 
-/* Circle */
 .share-button--digg.share-button--outline {
   background-color: transparent;
   border-color: hsl(0, 0%, 0%, 1);

@@ -5,7 +5,7 @@
     :class="className"
     :shareUrl="shareUrl"
     :shareTitle="shareTitle"
-    :shareText="shareText"
+    :shareDescription="shareDescription"
     :sharePic="sharePic"
     :btnText="btnText"
     :windowWidth="windowWidth"
@@ -16,7 +16,7 @@
   >
     <icon iconName="Blogger" class="share-button__icon" v-if="hasIcon === true">
       <path
-        d="M18.09 14.696c-1.512.664-2.726 1.885-3.381 3.399l4.27.883-.886-4.282h-.003zM2.475 8.317L0 5.85C1.125 3.237 3.216 1.14 5.823 0h.006l2.469 2.463c1.368-.591 2.876-.921 4.463-.921C18.967 1.542 24 6.569 24 12.771 24 18.973 18.967 24 12.761 24 6.551 24 1.52 18.976 1.52 12.771c0-1.591.355-3.081.952-4.451l9.143 9.114c1.125-2.613 3.218-4.71 5.823-5.85l-9.135-9.12h-.008c-2.606 1.14-4.695 3.24-5.823 5.85l.003.003z"
+        d="M21.976 24H2.026C.9 24 0 23.1 0 21.976V2.026C0 .9.9 0 2.025 0H22.05C23.1 0 24 .9 24 2.025v19.95C24 23.1 23.1 24 21.976 24zM12 3.975H9c-2.775 0-5.025 2.25-5.025 5.025v6c0 2.774 2.25 5.024 5.025 5.024h6c2.774 0 5.024-2.25 5.024-5.024v-3.975c0-.6-.45-1.05-1.05-1.05H18c-.524 0-.976-.45-.976-.976 0-2.776-2.25-5.026-5.024-5.026zm3.074 12H9c-.525 0-.975-.45-.975-.975s.45-.976.975-.976h6.074c.526 0 .977.45.977.976s-.45.976-.975.976zm-2.55-7.95c.527 0 .976.45.976.975s-.45.975-.975.975h-3.6c-.525 0-.976-.45-.976-.975s.45-.975.975-.975h3.6z"
       />
     </icon>
     <span class="share-button__text" v-if="btnText">{{btnText}}</span>
@@ -38,8 +38,8 @@ export default {
   props: {
     className: { type: String },
     shareUrl: { type: String, default: getDocumentHref },
-    shareTitle: { type: String },
-    shareText: { type: String, default: getDocumentTitle },
+    shareTitle: { type: String, default: "" },
+    shareDescription: { type: String, default: getDocumentTitle },
     sharePic: { type: String, default: "" },
     btnText: { type: String, default: "Blogger" },
     windowWidth: { type: Number },
@@ -54,7 +54,7 @@ export default {
       const url = `https://www.blogger.com/blog-this.g?u=${
         this.$props.shareUrl
       }&n=${encodeURIComponent(this.$props.shareTitle)}&t=${encodeURIComponent(
-        this.$props.shareText
+        this.$props.shareDescription
       )}`;
 
       return this.$props.isBlank

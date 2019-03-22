@@ -1,4 +1,4 @@
-/* weibo */
+/* Weibo */
 .share-button--weibo {
   background-color: hsl(353, 83%, 49%);
 }
@@ -15,7 +15,6 @@
   fill: #fff;
 }
 
-/* Circle */
 .share-button--weibo.share-button--outline {
   background-color: transparent;
   border-color: hsl(353, 83%, 49%, 1);

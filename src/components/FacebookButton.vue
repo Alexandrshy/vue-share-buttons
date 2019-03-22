@@ -1,12 +1,11 @@
 <template>
   <button
-    class="share-button share-button--twitter"
+    class="share-button share-button--facebook"
     type="button"
     :class="className"
     :shareUrl="shareUrl"
-    :shareTitle="shareTitle"
     :shareDescription="shareDescription"
-    :sharePic="sharePic"
+    :shareTitle="shareTitle"
     :btnText="btnText"
     :windowWidth="windowWidth"
     :windowHeight="windowHeight"
@@ -14,9 +13,9 @@
     :isBlank="isBlank"
     @click="openShareWindow"
   >
-    <icon iconName="Twitter" class="share-button__icon" v-if="hasIcon === true">
+    <icon iconName="Facebook" class="share-button__icon" v-if="hasIcon === true">
       <path
-        d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"
+        d="M22.676 0H1.324C.593 0 0 .593 0 1.324v21.352C0 23.408.593 24 1.324 24h11.494v-9.294H9.689v-3.621h3.129V8.41c0-3.099 1.894-4.785 4.659-4.785 1.325 0 2.464.097 2.796.141v3.24h-1.921c-1.5 0-1.792.721-1.792 1.771v2.311h3.584l-.465 3.63H16.56V24h6.115c.733 0 1.325-.592 1.325-1.324V1.324C24 .593 23.408 0 22.676 0"
       />
     </icon>
     <span class="share-button__text" v-if="btnText">{{btnText}}</span>
@@ -33,7 +32,7 @@ import {
 } from "../helpers";
 
 export default {
-  name: "TwitterShareButton",
+  name: "FacebookShareButton",
   components: { Icon },
   props: {
     className: { type: String },
@@ -41,7 +40,7 @@ export default {
     shareTitle: { type: String, default: "" },
     shareDescription: { type: String, default: getDocumentTitle },
     sharePic: { type: String, default: "" },
-    btnText: { type: String, default: "Twitter" },
+    btnText: { type: String, default: "Facebook" },
     windowWidth: { type: Number },
     windowHeight: { type: Number },
     hasIcon: { type: Boolean, default: true },
@@ -49,11 +48,11 @@ export default {
   },
   methods: {
     openShareWindow: function() {
-      eventEmit(this, { name: "Twitter" });
+      eventEmit(this, { name: "Facebook" });
       const configWindow = createWindow();
-      const url = `https://twitter.com/share?url=${encodeURIComponent(
+      const url = `https://www.facebook.com/sharer/sharer.php?u=${
         this.$props.shareUrl
-      )}&text=${encodeURIComponent(this.$props.shareDescription)}`;
+      }`;
 
       return this.$props.isBlank
         ? window.open(url, "__blank")
@@ -65,5 +64,5 @@ export default {
 
 <style>
 @import "../style/index.css";
-@import "../style/twitterButton.css";
+@import "../style/facebookButton.css";
 </style>

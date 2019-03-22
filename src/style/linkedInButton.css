@@ -1,0 +1,42 @@
+/* LinkedIn */
+.share-button--linkedIn {
+  background-color: hsla(201, 100%, 35%, 1);
+}
+
+.share-button--linkedIn:focus {
+  box-shadow: 0 0 0 3px hsla(201, 94%, 60%, 0.4);
+}
+
+.share-button--linkedIn:hover {
+  background-color: hsla(201, 100%, 35%, 0.9);
+}
+
+.share-button--linkedIn .share-button__icon path {
+  fill: #fff;
+}
+
+.share-button--linkedIn.share-button--outline {
+  background-color: transparent;
+  border-color: hsl(201, 100%, 35%, 1);
+}
+
+.share-button--linkedIn.share-button--outline:hover {
+  background-color: transparent;
+  border-color: hsla(201, 100%, 35%, 0.9);
+}
+
+.share-button--linkedIn.share-button--outline .share-button__text {
+  color: hsla(201, 100%, 35%, 1);
+}
+
+.share-button--linkedIn.share-button--outline:hover .share-button__text {
+  color: hsla(201, 100%, 35%, 0.9);
+}
+
+.share-button--linkedIn.share-button--outline .share-button__icon path {
+  fill: hsla(201, 100%, 35%, 1);
+}
+
+.share-button--linkedIn.share-button--outline:hover .share-button__icon path {
+  fill: hsla(201, 100%, 35%, 0.9);
+}

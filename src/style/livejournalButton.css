@@ -1,4 +1,4 @@
-/* livejournal */
+/* Livejournal */
 .share-button--livejournal {
   background-color: hsla(195, 100%, 46%, 1);
 }
@@ -15,7 +15,6 @@
   fill: #fff;
 }
 
-/* Circle */
 .share-button--livejournal.share-button--outline {
   background-color: transparent;
   border-color: hsl(195, 100%, 46%, 1);

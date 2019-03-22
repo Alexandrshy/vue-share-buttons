@@ -5,7 +5,7 @@
     :class="className"
     :shareUrl="shareUrl"
     :shareTitle="shareTitle"
-    :shareText="shareText"
+    :shareDescription="shareDescription"
     :sharePic="sharePic"
     :btnText="btnText"
     :windowWidth="windowWidth"
@@ -38,8 +38,8 @@ export default {
   props: {
     className: { type: String },
     shareUrl: { type: String, default: getDocumentHref },
-    shareTitle: { type: String },
-    shareText: { type: String, default: getDocumentTitle },
+    shareTitle: { type: String, default: "" },
+    shareDescription: { type: String, default: getDocumentTitle },
     sharePic: { type: String, default: "" },
     btnText: { type: String, default: "LiveJournal" },
     windowWidth: { type: Number },
@@ -52,8 +52,8 @@ export default {
       eventEmit(this, { name: "LiveJournal" });
       const configWindow = createWindow();
       const url = `https://livejournal.com/update.bml?event=${encodeURIComponent(
-        this.$props.shareUrl
-      )}&subject=${encodeURIComponent(this.$props.shareText)}`;
+        this.$props.shareDescription
+      )}&subject=${encodeURIComponent(this.$props.shareUrl)}`;
 
       return this.$props.isBlank
         ? window.open(url, "__blank")

@@ -5,7 +5,7 @@
     :class="className"
     :shareUrl="shareUrl"
     :shareTitle="shareTitle"
-    :shareText="shareText"
+    :shareDescription="shareDescription"
     :sharePic="sharePic"
     :btnText="btnText"
     :windowWidth="windowWidth"
@@ -41,8 +41,8 @@ export default {
   props: {
     className: { type: String },
     shareUrl: { type: String, default: getDocumentHref },
-    shareTitle: { type: String },
-    shareText: { type: String, default: getDocumentTitle },
+    shareTitle: { type: String, default: "" },
+    shareDescription: { type: String, default: getDocumentTitle },
     sharePic: { type: String, default: "" },
     btnText: { type: String, default: "Renren" },
     windowWidth: { type: Number },
@@ -56,7 +56,7 @@ export default {
       const configWindow = createWindow();
       const url = `http://share.renren.com/share/buttonshare.do?link=${encodeURIComponent(
         this.$props.shareUrl
-      )}&title=${encodeURIComponent(this.$props.shareText)}`;
+      )}&title=${encodeURIComponent(this.$props.shareTitle)}`;
 
       return this.$props.isBlank
         ? window.open(url, "__blank")

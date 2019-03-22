@@ -4,7 +4,7 @@
     type="button"
     :class="className"
     :shareUrl="shareUrl"
-    :shareText="shareText"
+    :shareDescription="shareDescription"
     :shareTitle="shareTitle"
     :btnText="btnText"
     :windowWidth="windowWidth"
@@ -37,8 +37,8 @@ export default {
   props: {
     className: { type: String },
     shareUrl: { type: String, default: getDocumentHref },
-    shareTitle: { type: String },
-    shareText: { type: String, default: getDocumentTitle },
+    shareTitle: { type: String, default: "" },
+    shareDescription: { type: String, default: getDocumentTitle },
     sharePic: { type: String, default: "" },
     btnText: { type: String, default: "Vkontakte" },
     windowWidth: { type: Number },
@@ -55,7 +55,7 @@ export default {
       )}&title=${encodeURIComponent(
         this.$props.shareTitle
       )}&comment=${encodeURIComponent(
-        this.$props.shareText
+        this.$props.shareDescription
       )}&image=${encodeURIComponent(this.$props.sharePic)}&noparse=true`;
 
       return this.$props.isBlank

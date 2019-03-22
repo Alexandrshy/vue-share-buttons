@@ -1,43 +1,42 @@
-/* blogger */
+/* Blogger */
 .share-button--blogger {
-  background-color: hsla(195, 100%, 46%, 1);
+  background-color: hsla(14, 100%, 57%, 1);
 }
 
 .share-button--blogger:focus {
-  box-shadow: 0 0 0 3px hsla(195, 94%, 71%, 0.4);
+  box-shadow: 0 0 0 3px hsla(14, 94%, 82%, 0.4);
 }
 
 .share-button--blogger:hover {
-  background-color: hsla(195, 100%, 46%, 0.9);
+  background-color: hsla(14, 100%, 57%, 0.9);
 }
 
 .share-button--blogger .share-button__icon path {
   fill: #fff;
 }
 
-/* Circle */
 .share-button--blogger.share-button--outline {
   background-color: transparent;
-  border-color: hsl(195, 100%, 46%, 1);
+  border-color: hsl(14, 100%, 57%, 1);
 }
 
 .share-button--blogger.share-button--outline:hover {
   background-color: transparent;
-  border-color: hsla(195, 100%, 46%, 0.9);
+  border-color: hsla(14, 100%, 57%, 0.9);
 }
 
 .share-button--blogger.share-button--outline .share-button__text {
-  color: hsla(195, 100%, 46%, 1);
+  color: hsla(14, 100%, 57%, 1);
 }
 
 .share-button--blogger.share-button--outline:hover .share-button__text {
-  color: hsla(195, 100%, 46%, 0.9);
+  color: hsla(14, 100%, 57%, 0.9);
 }
 
 .share-button--blogger.share-button--outline .share-button__icon path {
-  fill: hsla(195, 100%, 46%, 1);
+  fill: hsla(14, 100%, 57%, 1);
 }
 
 .share-button--blogger.share-button--outline:hover .share-button__icon path {
-  fill: hsla(195, 100%, 46%, 0.9);
+  fill: hsla(14, 100%, 57%, 0.9);
 }
