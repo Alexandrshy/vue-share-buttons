@@ -1,0 +1,42 @@
+/* Reddit */
+.share-button--reddit {
+  background-color: hsla(16, 100%, 50%, 1);
+}
+
+.share-button--reddit:focus {
+  box-shadow: 0 0 0 3px hsla(16, 94%, 75%, 0.4);
+}
+
+.share-button--reddit:hover {
+  background-color: hsla(16, 100%, 50%, 0.9);
+}
+
+.share-button--reddit .share-button__icon path {
+  fill: #fff;
+}
+
+.share-button--reddit.share-button--outline {
+  background-color: transparent;
+  border-color: hsla(16, 100%, 50%, 1);
+}
+
+.share-button--reddit.share-button--outline:hover {
+  background-color: transparent;
+  border-color: hsla(16, 100%, 50%, 0.9);
+}
+
+.share-button--reddit.share-button--outline .share-button__text {
+  color: hsla(16, 100%, 50%, 1);
+}
+
+.share-button--reddit.share-button--outline:hover .share-button__text {
+  color: hsla(16, 100%, 50%, 0.9);
+}
+
+.share-button--reddit.share-button--outline .share-button__icon path {
+  fill: hsla(16, 100%, 50%, 1);
+}
+
+.share-button--reddit.share-button--outline:hover .share-button__icon path {
+  fill: hsla(16, 100%, 50%, 0.9);
+}

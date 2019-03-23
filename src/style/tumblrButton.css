@@ -1,0 +1,42 @@
+/* Tumblr */
+.share-button--tumblr {
+  background-color: hsla(215, 27%, 29%, 1);
+}
+
+.share-button--tumblr:focus {
+  box-shadow: 0 0 0 3px hsla(215, 21%, 54%, 0.4);
+}
+
+.share-button--tumblr:hover {
+  background-color: hsla(215, 27%, 29%, 0.9);
+}
+
+.share-button--tumblr .share-button__icon path {
+  fill: #fff;
+}
+
+.share-button--tumblr.share-button--outline {
+  background-color: transparent;
+  border-color: hsla(215, 27%, 29%, 1);
+}
+
+.share-button--tumblr.share-button--outline:hover {
+  background-color: transparent;
+  border-color: hsla(215, 27%, 29%, 0.9);
+}
+
+.share-button--tumblr.share-button--outline .share-button__text {
+  color: hsla(215, 27%, 29%, 1);
+}
+
+.share-button--tumblr.share-button--outline:hover .share-button__text {
+  color: hsla(215, 27%, 29%, 0.9);
+}
+
+.share-button--tumblr.share-button--outline .share-button__icon path {
+  fill: hsla(215, 27%, 29%, 1);
+}
+
+.share-button--tumblr.share-button--outline:hover .share-button__icon path {
+  fill: hsla(215, 27%, 29%, 0.9);
+}

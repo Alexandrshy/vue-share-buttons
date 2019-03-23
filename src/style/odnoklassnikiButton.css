@@ -1,0 +1,44 @@
+/* Odnoklassniki */
+.share-button--odnoklassniki {
+  background-color: hsla(24, 91%, 53%, 1);
+}
+
+.share-button--odnoklassniki:focus {
+  box-shadow: 0 0 0 3px hsla(24, 85%, 78%, 0.4);
+}
+
+.share-button--odnoklassniki:hover {
+  background-color: hsla(24, 91%, 53%, 0.9);
+}
+
+.share-button--odnoklassniki .share-button__icon path {
+  fill: #fff;
+}
+
+.share-button--odnoklassniki.share-button--outline {
+  background-color: transparent;
+  border-color: hsla(24, 91%, 53%, 1);
+}
+
+.share-button--odnoklassniki.share-button--outline:hover {
+  background-color: transparent;
+  border-color: hsla(24, 91%, 53%, 0.9);
+}
+
+.share-button--odnoklassniki.share-button--outline .share-button__text {
+  color: hsla(24, 91%, 53%, 1);
+}
+
+.share-button--odnoklassniki.share-button--outline:hover .share-button__text {
+  color: hsla(24, 91%, 53%, 0.9);
+}
+
+.share-button--odnoklassniki.share-button--outline .share-button__icon path {
+  fill: hsla(24, 91%, 53%, 1);
+}
+
+.share-button--odnoklassniki.share-button--outline:hover
+  .share-button__icon
+  path {
+  fill: hsla(24, 91%, 53%, 0.9);
+}
