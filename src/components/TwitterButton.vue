@@ -48,8 +48,8 @@ export default {
     isBlank: { type: Boolean, default: true }
   },
   methods: {
-    openShareWindow: function() {
-      eventEmit(this, { name: "Twitter" });
+    openShareWindow() {
+      eventEmit(this, "onShare", { name: "Twitter" });
       const configWindow = createWindow();
       const url = `https://twitter.com/share?url=${encodeURIComponent(
         this.$props.shareUrl

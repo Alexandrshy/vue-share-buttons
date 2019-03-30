@@ -48,8 +48,8 @@ export default {
     isBlank: { type: Boolean, default: true }
   },
   methods: {
-    openShareWindow: function() {
-      eventEmit(this, { name: "Reddit" });
+    openShareWindow() {
+      eventEmit(this, "onShare", { name: "Reddit" });
       const configWindow = createWindow();
       const url = `https://reddit.com/submit?url=${encodeURIComponent(
         this.$props.shareUrl

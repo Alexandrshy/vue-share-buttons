@@ -1,6 +1,6 @@
 <template>
   <button
-    class="share-button share-button--renren"
+    class="share-button share-button--telegram"
     type="button"
     :class="className"
     :shareUrl="shareUrl"
@@ -14,18 +14,17 @@
     :isBlank="isBlank"
     @click="openShareWindow"
   >
-    <icon iconName="Renren" class="share-button__icon" v-if="hasIcon === true">
+    <icon iconName="Telegram" class="share-button__icon" v-if="hasIcon === true">
+      <path d="M9.028 20.837c-.714 0-.593-.271-.839-.949l-2.103-6.92L22.263 3.37"/>
+      <path d="M9.028 20.837c.552 0 .795-.252 1.105-.553l2.941-2.857-3.671-2.214"/>
       <path
-        d="M5.661 9.601V5.303a6.793 6.793 0 0 0-4.053 11.084c2.378-1.152 4.041-3.755 4.053-6.786zM6.793 13.715c-.423 1.752-1.687 3.249-3.262 4.244a6.759 6.759 0 0 0 3.261.833 6.771 6.771 0 0 0 3.262-.833c-1.575-.995-2.838-2.493-3.261-4.244zM11.977 7.613a6.789 6.789 0 0 0-4.052-2.31v4.265c0 3.044 1.666 5.662 4.051 6.817a6.766 6.766 0 0 1-1.607-4.386 6.754 6.754 0 0 1 1.608-4.386z"
-      />
-      <path
-        d="M11.977 7.613c1.003 1.183 1.655 2.714 1.655 4.387s-.652 3.202-1.655 4.387l-.001-.001.001.001c2.378-1.151 4.087-3.755 4.099-6.786V5.303a6.9 6.9 0 0 0-4.099 2.31zM18.34 9.568c0 3.045 1.666 5.662 4.052 6.818A6.792 6.792 0 0 0 18.34 5.304v4.264zM17.208 13.715c-.423 1.752-1.687 3.249-3.262 4.244a6.759 6.759 0 0 0 3.261.833 6.771 6.771 0 0 0 3.262-.833c-1.574-.995-2.838-2.493-3.261-4.244z"
+        d="M9.403 15.213l8.89 6.568c1.015.56 1.748.271 2-.942l3.62-17.053c.372-1.487-.564-2.159-1.534-1.72L1.125 10.263c-1.45.582-1.443 1.392-.264 1.753l5.455 1.7L18.94 5.753c.595-.36 1.143-.167.694.232"
       />
     </icon>
     <span class="share-button__text" v-if="btnText">{{btnText}}</span>
   </button>
 </template>
-
+ 
 <script>
 import Icon from "./icon/Icon.vue";
 import {
@@ -36,7 +35,7 @@ import {
 } from "../helpers";
 
 export default {
-  name: "RenrenShareButton",
+  name: "TelegramShareButton",
   components: { Icon },
   props: {
     className: { type: String },
@@ -44,7 +43,7 @@ export default {
     shareTitle: { type: String, default: "" },
     shareDescription: { type: String, default: getDocumentTitle },
     sharePic: { type: String, default: "" },
-    btnText: { type: String, default: "Renren" },
+    btnText: { type: String, default: "Telegram" },
     windowWidth: { type: Number },
     windowHeight: { type: Number },
     hasIcon: { type: Boolean, default: true },
@@ -52,11 +51,11 @@ export default {
   },
   methods: {
     openShareWindow() {
-      eventEmit(this, "onShare", { name: "Renren" });
+      eventEmit(this, "onShare", { name: "Telegram" });
       const configWindow = createWindow();
-      const url = `http://share.renren.com/share/buttonshare.do?link=${encodeURIComponent(
+      const url = `https://telegram.me/share/url?url=${encodeURIComponent(
         this.$props.shareUrl
-      )}&title=${encodeURIComponent(this.$props.shareTitle)}`;
+      )}&text=${encodeURIComponent(this.$props.shareDescription)}`;
 
       return this.$props.isBlank
         ? window.open(url, "__blank")
@@ -68,5 +67,5 @@ export default {
 
 <style>
 @import "../style/index.css";
-@import "../style/renrenButton.css";
+@import "../style/telegramButton.css";
 </style>

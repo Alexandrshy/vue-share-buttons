@@ -11,6 +11,8 @@
     :windowWidth="windowWidth"
     :windowHeight="windowHeight"
     :hasIcon="hasIcon"
+    :hasCounter="hasCounter"
+    :digitsCounter="digitsCounter"
     :isBlank="isBlank"
     @click="openShareWindow"
   >
@@ -20,6 +22,7 @@
       />
     </icon>
     <span class="share-button__text" v-if="btnText">{{btnText}}</span>
+    <span class="share-button__counter" v-if="hasCounter && counter > 0">{{ shortСounter }}</span>
   </button>
 </template>
  
@@ -29,7 +32,8 @@ import {
   getDocumentHref,
   getDocumentTitle,
   eventEmit,
-  createWindow
+  createWindow,
+  getShortNumber
 } from "../helpers";
 
 export default {
@@ -45,11 +49,23 @@ export default {
     windowWidth: { type: Number },
     windowHeight: { type: Number },
     hasIcon: { type: Boolean, default: true },
+    hasCounter: { type: Boolean, default: false },
+    digitsCounter: { type: Number, default: 0 },
     isBlank: { type: Boolean, default: true }
   },
+  mounted() {
+    if (this.$props.hasCounter) this.getShareCounter();
+  },
   methods: {
-    openShareWindow: function() {
-      eventEmit(this, { name: "Odnoklassniki" });
+    openShareWindow() {
+      if (this.$props.hasCounter) {
+        eventEmit(this, "onShareCounter", {
+          name: "Odnoklassniki",
+          counter: this.counter
+        });
+      } else {
+        eventEmit(this, "onShare", { name: "Odnoklassniki" });
+      }
       const configWindow = createWindow();
       const url = `https://www.odnoklassniki.ru/dk?st.cmd=addShare&st.s=1&st._surl=${encodeURIComponent(
         this.$props.shareUrl
@@ -58,7 +74,35 @@ export default {
       return this.$props.isBlank
         ? window.open(url, "__blank")
         : window.open(url, "Share this", configWindow);
+    },
+
+    getShareCounter() {
+      if (window.ODKL && typeof window.ODKL.updateCount === "function") {
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.src = `https://connect.ok.ru/dk?st.cmd=extLike&uid=1&ref=${encodeURIComponent(
+        this.$props.shareUrl
+      )}`;
+      document.body.appendChild(script);
+
+      window.ODKL = Object.assign({}, { Share: {} }, window.ODKL);
+      window.ODKL.updateCount = (index, count) => {
+        if (!count) return;
+        this.counter = count;
+        this.shortСounter = getShortNumber(
+          this.counter,
+          this.$props.digitsCounter
+        );
+      };
     }
+  },
+  data() {
+    return {
+      counter: 0,
+      shortСounter: 0
+    };
   }
 };
 </script>

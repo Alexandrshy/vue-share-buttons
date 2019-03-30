@@ -40,3 +40,12 @@
 .share-button--renren.share-button--outline:hover .share-button__icon path {
   fill: hsla(207, 71%, 45%, 0.9);
 }
+
+.share-button--renren.share-button--painted {
+  background-color: transparent;
+  border-color: hsla(206, 48%, 35%, 1);
+}
+
+.share-button--renren.share-button--painted::before {
+  background-color: hsla(207, 71%, 45%, 1);
+}

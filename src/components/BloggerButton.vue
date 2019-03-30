@@ -48,8 +48,8 @@ export default {
     isBlank: { type: Boolean, default: true }
   },
   methods: {
-    openShareWindow: function() {
-      eventEmit(this, { name: "Blogger" });
+    openShareWindow() {
+      eventEmit(this, "onShare", { name: "Blogger" });
       const configWindow = createWindow();
       const url = `https://www.blogger.com/blog-this.g?u=${
         this.$props.shareUrl

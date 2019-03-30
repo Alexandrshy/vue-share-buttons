@@ -10,6 +10,8 @@
     :windowWidth="windowWidth"
     :windowHeight="windowHeight"
     :hasIcon="hasIcon"
+    :hasCounter="hasCounter"
+    :digitsCounter="digitsCounter"
     :isBlank="isBlank"
     @click="openShareWindow"
   >
@@ -19,6 +21,7 @@
       />
     </icon>
     <span class="share-button__text" v-if="btnText">{{btnText}}</span>
+    <span class="share-button__counter" v-if="hasCounter && counter > 0">{{ shortСounter }}</span>
   </button>
 </template>
  
@@ -28,7 +31,9 @@ import {
   getDocumentHref,
   getDocumentTitle,
   eventEmit,
-  createWindow
+  createWindow,
+  getRandomNumber,
+  getShortNumber
 } from "../helpers";
 
 export default {
@@ -44,11 +49,23 @@ export default {
     windowWidth: { type: Number },
     windowHeight: { type: Number },
     hasIcon: { type: Boolean, default: true },
+    hasCounter: { type: Boolean, default: false },
+    digitsCounter: { type: Number, default: 0 },
     isBlank: { type: Boolean, default: true }
   },
+  mounted() {
+    if (this.$props.hasCounter) this.getShareCounter();
+  },
   methods: {
-    openShareWindow: function() {
-      eventEmit(this, { name: "vk" });
+    openShareWindow() {
+      if (this.$props.hasCounter) {
+        eventEmit(this, "onShareCounter", {
+          name: "vk",
+          counter: this.counter
+        });
+      } else {
+        eventEmit(this, "onShare", { name: "vk" });
+      }
       const configWindow = createWindow();
       const url = `https://vk.com/share.php?url=${encodeURIComponent(
         this.$props.shareUrl
@@ -61,7 +78,39 @@ export default {
       return this.$props.isBlank
         ? window.open(url, "__blank")
         : window.open(url, "Share this", configWindow);
+    },
+
+    getShareCounter() {
+      if (
+        window.VK &&
+        window.VK.Share &&
+        typeof window.VK.Share.count === "function"
+      ) {
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.src = `https://vk.com/share.php?act=count&index=${getRandomNumber()}&url=${encodeURIComponent(
+        this.$props.shareUrl
+      )}`;
+      document.body.appendChild(script);
+
+      window.VK = Object.assign({}, { Share: {} }, window.VK);
+      window.VK.Share.count = (index, count) => {
+        if (!count) return;
+        this.counter = count;
+        this.shortСounter = getShortNumber(
+          this.counter,
+          this.$props.digitsCounter
+        );
+      };
     }
+  },
+  data() {
+    return {
+      counter: 0,
+      shortСounter: 0
+    };
   }
 };
 </script>

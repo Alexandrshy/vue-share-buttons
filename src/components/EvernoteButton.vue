@@ -47,8 +47,8 @@ export default {
     isBlank: { type: Boolean, default: true }
   },
   methods: {
-    openShareWindow: function() {
-      eventEmit(this, { name: "Evernote" });
+    openShareWindow() {
+      eventEmit(this, "onShare", { name: "Evernote" });
       const configWindow = createWindow();
       const url = `https://www.evernote.com/clip.action?url=${encodeURIComponent(
         this.$props.shareUrl

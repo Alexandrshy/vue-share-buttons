@@ -448,6 +448,221 @@
         v-bind:hasIcon="false"
       ></odnoklassniki-button>
     </div>
+    <div class="share-buttons-group">
+      <instapaper-button shareTitle="Comment"></instapaper-button>
+      <instapaper-button
+        v-bind:isBlank="false"
+        shareText="Twiiter share good work"
+        shareTitle="Comment"
+        btnText
+      ></instapaper-button>
+      <instapaper-button v-bind:hasIcon="false" shareTitle="Comment"></instapaper-button>
+      <instapaper-button class="share-button--circle" shareTitle="Comment"></instapaper-button>
+      <instapaper-button class="share-button--circle" shareTitle="Comment" btnText></instapaper-button>
+      <instapaper-button class="share-button--circle" shareTitle="Comment" v-bind:hasIcon="false"></instapaper-button>
+      <instapaper-button class="share-button--outline" shareTitle="Comment"></instapaper-button>
+      <instapaper-button
+        class="share-button--outline"
+        v-bind:isBlank="false"
+        shareText="Twiiter share good work"
+        shareTitle="Comment"
+        btnText
+      ></instapaper-button>
+      <instapaper-button class="share-button--outline" shareTitle="Comment" v-bind:hasIcon="false"></instapaper-button>
+      <instapaper-button class="share-button--circle share-button--outline" shareTitle="Comment"></instapaper-button>
+      <instapaper-button
+        class="share-button--circle share-button--outline"
+        shareTitle="Comment"
+        btnText
+      ></instapaper-button>
+      <instapaper-button
+        class="share-button--circle share-button--outline"
+        shareTitle="Comment"
+        v-bind:hasIcon="false"
+      ></instapaper-button>
+    </div>
+    <div class="share-buttons-group">
+      <hatena-button shareTitle="Comment"></hatena-button>
+      <hatena-button
+        v-bind:isBlank="false"
+        shareText="Twiiter share good work"
+        shareTitle="Comment"
+        btnText
+      ></hatena-button>
+      <hatena-button v-bind:hasIcon="false" shareTitle="Comment"></hatena-button>
+      <hatena-button class="share-button--circle" shareTitle="Comment"></hatena-button>
+      <hatena-button class="share-button--circle" shareTitle="Comment" btnText></hatena-button>
+      <hatena-button class="share-button--circle" shareTitle="Comment" v-bind:hasIcon="false"></hatena-button>
+      <hatena-button class="share-button--outline" shareTitle="Comment"></hatena-button>
+      <hatena-button
+        class="share-button--outline"
+        v-bind:isBlank="false"
+        shareText="Twiiter share good work"
+        shareTitle="Comment"
+        btnText
+      ></hatena-button>
+      <hatena-button class="share-button--outline" shareTitle="Comment" v-bind:hasIcon="false"></hatena-button>
+      <hatena-button class="share-button--circle share-button--outline" shareTitle="Comment"></hatena-button>
+      <hatena-button
+        class="share-button--circle share-button--outline"
+        shareTitle="Comment"
+        btnText
+      ></hatena-button>
+      <hatena-button
+        class="share-button--circle share-button--outline"
+        shareTitle="Comment"
+        v-bind:hasIcon="false"
+      ></hatena-button>
+    </div>
+    <div class="share-buttons-group">
+      <email-button shareTitle="Comment"></email-button>
+      <email-button
+        v-bind:isBlank="false"
+        shareText="Twiiter share good work"
+        shareTitle="Comment"
+        btnText
+      ></email-button>
+      <email-button v-bind:hasIcon="false" shareTitle="Comment"></email-button>
+      <email-button class="share-button--circle" shareTitle="Comment"></email-button>
+      <email-button class="share-button--circle" shareTitle="Comment" btnText></email-button>
+      <email-button class="share-button--circle" shareTitle="Comment" v-bind:hasIcon="false"></email-button>
+      <email-button class="share-button--outline" shareTitle="Comment"></email-button>
+      <email-button
+        class="share-button--outline"
+        v-bind:isBlank="false"
+        shareText="Twiiter share good work"
+        shareTitle="Comment"
+        btnText
+      ></email-button>
+      <email-button class="share-button--outline" shareTitle="Comment" v-bind:hasIcon="false"></email-button>
+      <email-button class="share-button--circle share-button--outline" shareTitle="Comment"></email-button>
+      <email-button class="share-button--circle share-button--outline" shareTitle="Comment" btnText></email-button>
+      <email-button
+        class="share-button--circle share-button--outline"
+        shareTitle="Comment"
+        v-bind:hasIcon="false"
+      ></email-button>
+    </div>
+    <div class="share-buttons-group">
+      <viber-button shareTitle="Comment"></viber-button>
+      <viber-button
+        v-bind:isBlank="false"
+        shareText="Twiiter share good work"
+        shareTitle="Comment"
+        btnText
+      ></viber-button>
+      <viber-button v-bind:hasIcon="false" shareTitle="Comment"></viber-button>
+      <viber-button class="share-button--circle" shareTitle="Comment"></viber-button>
+      <viber-button class="share-button--circle" shareTitle="Comment" btnText></viber-button>
+      <viber-button class="share-button--circle" shareTitle="Comment" v-bind:hasIcon="false"></viber-button>
+      <viber-button class="share-button--outline" shareTitle="Comment"></viber-button>
+      <viber-button
+        class="share-button--outline"
+        v-bind:isBlank="false"
+        shareText="Twiiter share good work"
+        shareTitle="Comment"
+        btnText
+      ></viber-button>
+      <viber-button class="share-button--outline" shareTitle="Comment" v-bind:hasIcon="false"></viber-button>
+      <viber-button class="share-button--circle share-button--outline" shareTitle="Comment"></viber-button>
+      <viber-button class="share-button--circle share-button--outline" shareTitle="Comment" btnText></viber-button>
+      <viber-button
+        class="share-button--circle share-button--outline"
+        shareTitle="Comment"
+        v-bind:hasIcon="false"
+      ></viber-button>
+    </div>
+    <div class="share-buttons-group">
+      <telegram-button shareTitle="Comment"></telegram-button>
+      <telegram-button
+        v-bind:isBlank="false"
+        shareText="Twiiter share good work"
+        shareTitle="Comment"
+        btnText
+      ></telegram-button>
+      <telegram-button v-bind:hasIcon="false" shareTitle="Comment"></telegram-button>
+      <telegram-button class="share-button--circle" shareTitle="Comment"></telegram-button>
+      <telegram-button class="share-button--circle" shareTitle="Comment" btnText></telegram-button>
+      <telegram-button class="share-button--circle" shareTitle="Comment" v-bind:hasIcon="false"></telegram-button>
+      <telegram-button class="share-button--outline" shareTitle="Comment"></telegram-button>
+      <telegram-button
+        class="share-button--outline"
+        v-bind:isBlank="false"
+        shareText="Twiiter share good work"
+        shareTitle="Comment"
+        btnText
+      ></telegram-button>
+      <telegram-button class="share-button--outline" shareTitle="Comment" v-bind:hasIcon="false"></telegram-button>
+      <telegram-button class="share-button--circle share-button--outline" shareTitle="Comment"></telegram-button>
+      <telegram-button
+        class="share-button--circle share-button--outline"
+        shareTitle="Comment"
+        btnText
+      ></telegram-button>
+      <telegram-button
+        class="share-button--circle share-button--outline"
+        shareTitle="Comment"
+        v-bind:hasIcon="false"
+      ></telegram-button>
+    </div>
+    <div class="share-buttons-group">
+      <whatsApp-button shareTitle="Comment"></whatsApp-button>
+      <whatsApp-button
+        v-bind:isBlank="false"
+        shareText="Twiiter share good work"
+        shareTitle="Comment"
+        btnText
+      ></whatsApp-button>
+      <whatsApp-button v-bind:hasIcon="false" shareTitle="Comment"></whatsApp-button>
+      <whatsApp-button class="share-button--circle" shareTitle="Comment"></whatsApp-button>
+      <whatsApp-button class="share-button--circle" shareTitle="Comment" btnText></whatsApp-button>
+      <whatsApp-button class="share-button--circle" shareTitle="Comment" v-bind:hasIcon="false"></whatsApp-button>
+      <whatsApp-button class="share-button--outline" shareTitle="Comment"></whatsApp-button>
+      <whatsApp-button
+        class="share-button--outline"
+        v-bind:isBlank="false"
+        shareText="Twiiter share good work"
+        shareTitle="Comment"
+        btnText
+      ></whatsApp-button>
+      <whatsApp-button class="share-button--outline" shareTitle="Comment" v-bind:hasIcon="false"></whatsApp-button>
+      <whatsApp-button class="share-button--circle share-button--outline" shareTitle="Comment"></whatsApp-button>
+      <whatsApp-button
+        class="share-button--circle share-button--outline"
+        shareTitle="Comment"
+        btnText
+      ></whatsApp-button>
+      <whatsApp-button
+        class="share-button--circle share-button--outline"
+        shareTitle="Comment"
+        v-bind:hasIcon="false"
+      ></whatsApp-button>
+    </div>
+
+    <div class="share-buttons-group">
+      <twitter-button class="share-button--painted" hasCounter></twitter-button>
+      <liveJournal-button class="share-button--painted"></liveJournal-button>
+      <digg-button class="share-button--painted"></digg-button>
+      <renren-button class="share-button--painted"></renren-button>
+      <blogger-button class="share-button--painted"></blogger-button>
+      <weibo-button class="share-button--painted"></weibo-button>
+      <evernote-button class="share-button--painted"></evernote-button>
+      <vkontakte-button class="share-button--painted" hasCounter></vkontakte-button>
+      <facebook-button class="share-button--painted" hasCounter></facebook-button>
+      <linkedIn-button class="share-button--painted" hasCounter></linkedIn-button>
+      <tumblr-button class="share-button--painted" hasCounter></tumblr-button>
+      <pinterest-button class="share-button--painted" hasCounter></pinterest-button>
+      <reddit-button class="share-button--painted"></reddit-button>
+      <pocket-button class="share-button--painted"></pocket-button>
+      <xing-button class="share-button--painted"></xing-button>
+      <odnoklassniki-button class="share-button--painted" hasCounter></odnoklassniki-button>
+      <instapaper-button class="share-button--painted"></instapaper-button>
+      <hatena-button class="share-button--painted"></hatena-button>
+      <email-button class="share-button--painted"></email-button>
+      <viber-button class="share-button--painted"></viber-button>
+      <telegram-button class="share-button--painted"></telegram-button>
+      <whatsApp-button class="share-button--painted"></whatsApp-button>
+    </div>
   </div>
 </template>
 
@@ -468,6 +683,12 @@ import RedditButton from "./components/RedditButton";
 import PocketButton from "./components/PocketButton";
 import XingButton from "./components/XingButton";
 import OdnoklassnikiButton from "./components/OdnoklassnikiButton";
+import InstapaperButton from "./components/InstapaperButton";
+import HatenaButton from "./components/HatenaButton";
+import EmailButton from "./components/EmailButton";
+import ViberButton from "./components/ViberButton";
+import TelegramButton from "./components/TelegramButton";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 export default {
   name: "app-share-buttons",
@@ -487,13 +708,19 @@ export default {
     RedditButton,
     PocketButton,
     XingButton,
-    OdnoklassnikiButton
+    OdnoklassnikiButton,
+    InstapaperButton,
+    HatenaButton,
+    EmailButton,
+    ViberButton,
+    TelegramButton,
+    WhatsAppButton
   }
 };
 </script>
 
 <style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+.share-buttons-group {
+  margin-bottom: 20px;
 }
 </style>

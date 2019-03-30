@@ -48,8 +48,8 @@ export default {
     isBlank: { type: Boolean, default: true }
   },
   methods: {
-    openShareWindow: function() {
-      eventEmit(this, { name: "Pocket" });
+    openShareWindow() {
+      eventEmit(this, "onShare", { name: "Pocket" });
       const configWindow = createWindow();
       const url = `https://getpocket.com/edit?url=${encodeURIComponent(
         this.$props.shareUrl

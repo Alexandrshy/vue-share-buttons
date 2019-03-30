@@ -48,8 +48,8 @@ export default {
     isBlank: { type: Boolean, default: true }
   },
   methods: {
-    openShareWindow: function() {
-      eventEmit(this, { name: "LiveJournal" });
+    openShareWindow() {
+      eventEmit(this, "onShare", { name: "LiveJournal" });
       const configWindow = createWindow();
       const url = `https://livejournal.com/update.bml?event=${encodeURIComponent(
         this.$props.shareDescription

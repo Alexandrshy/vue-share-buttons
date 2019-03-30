@@ -48,8 +48,8 @@ export default {
     isBlank: { type: Boolean, default: true }
   },
   methods: {
-    openShareWindow: function() {
-      eventEmit(this, { name: "Weibo" });
+    openShareWindow() {
+      eventEmit(this, "onShare", { name: "Weibo" });
       const configWindow = createWindow();
       const url = `http://service.weibo.com/share/share.php?url=${encodeURIComponent(
         this.$props.shareUrl

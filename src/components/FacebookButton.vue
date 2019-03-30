@@ -10,6 +10,9 @@
     :windowWidth="windowWidth"
     :windowHeight="windowHeight"
     :hasIcon="hasIcon"
+    :hasCounter="hasCounter"
+    :digitsCounter="digitsCounter"
+    :keyCounter="keyCounter"
     :isBlank="isBlank"
     @click="openShareWindow"
   >
@@ -19,6 +22,7 @@
       />
     </icon>
     <span class="share-button__text" v-if="btnText">{{btnText}}</span>
+    <span class="share-button__counter" v-if="hasCounter && counter > 0">{{ shortСounter }}</span>
   </button>
 </template>
  
@@ -28,7 +32,9 @@ import {
   getDocumentHref,
   getDocumentTitle,
   eventEmit,
-  createWindow
+  createWindow,
+  getRandomNumber,
+  getShortNumber
 } from "../helpers";
 
 export default {
@@ -44,20 +50,58 @@ export default {
     windowWidth: { type: Number },
     windowHeight: { type: Number },
     hasIcon: { type: Boolean, default: true },
+    hasCounter: { type: Boolean, default: false },
+    digitsCounter: { type: Number, default: 0 },
+    keyCounter: { type: String, default: "" },
     isBlank: { type: Boolean, default: true }
   },
+  mounted() {
+    if (this.$props.hasCounter) this.getShareCounter();
+  },
   methods: {
-    openShareWindow: function() {
-      eventEmit(this, { name: "Facebook" });
+    openShareWindow() {
+      if (this.$props.hasCounter) {
+        eventEmit(this, "onShareCounter", {
+          name: "Facebook",
+          counter: this.counter
+        });
+      } else {
+        eventEmit(this, "onShare", { name: "Facebook" });
+      }
       const configWindow = createWindow();
-      const url = `https://www.facebook.com/sharer/sharer.php?u=${
+      const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
         this.$props.shareUrl
-      }`;
+      )}`;
 
       return this.$props.isBlank
         ? window.open(url, "__blank")
         : window.open(url, "Share this", configWindow);
+    },
+
+    getShareCounter() {
+      const callback =
+        this.$props.keyCounter || `Facebook_${getRandomNumber()}`;
+      const script = document.createElement("script");
+      script.src = `https://graph.facebook.com?id=${encodeURIComponent(
+        this.$props.shareUrl
+      )}&callback=${callback}`;
+      document.body.appendChild(script);
+
+      window[callback] = count => {
+        if (!count) return;
+        this.counter = count.share.share_count;
+        this.shortСounter = getShortNumber(
+          this.counter,
+          this.$props.digitsCounter
+        );
+      };
     }
+  },
+  data() {
+    return {
+      counter: 0,
+      shortСounter: 0
+    };
   }
 };
 </script>

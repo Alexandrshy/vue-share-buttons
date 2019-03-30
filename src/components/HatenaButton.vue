@@ -1,6 +1,6 @@
 <template>
   <button
-    class="share-button share-button--renren"
+    class="share-button share-button--hatena"
     type="button"
     :class="className"
     :shareUrl="shareUrl"
@@ -14,18 +14,15 @@
     :isBlank="isBlank"
     @click="openShareWindow"
   >
-    <icon iconName="Renren" class="share-button__icon" v-if="hasIcon === true">
+    <icon iconName="Hatena" class="share-button__icon" v-if="hasIcon === true">
       <path
-        d="M5.661 9.601V5.303a6.793 6.793 0 0 0-4.053 11.084c2.378-1.152 4.041-3.755 4.053-6.786zM6.793 13.715c-.423 1.752-1.687 3.249-3.262 4.244a6.759 6.759 0 0 0 3.261.833 6.771 6.771 0 0 0 3.262-.833c-1.575-.995-2.838-2.493-3.261-4.244zM11.977 7.613a6.789 6.789 0 0 0-4.052-2.31v4.265c0 3.044 1.666 5.662 4.051 6.817a6.766 6.766 0 0 1-1.607-4.386 6.754 6.754 0 0 1 1.608-4.386z"
-      />
-      <path
-        d="M11.977 7.613c1.003 1.183 1.655 2.714 1.655 4.387s-.652 3.202-1.655 4.387l-.001-.001.001.001c2.378-1.151 4.087-3.755 4.099-6.786V5.303a6.9 6.9 0 0 0-4.099 2.31zM18.34 9.568c0 3.045 1.666 5.662 4.052 6.818A6.792 6.792 0 0 0 18.34 5.304v4.264zM17.208 13.715c-.423 1.752-1.687 3.249-3.262 4.244a6.759 6.759 0 0 0 3.261.833 6.771 6.771 0 0 0 3.262-.833c-1.574-.995-2.838-2.493-3.261-4.244z"
+        d="M20.47 0C22.42 0 24 1.58 24 3.53v16.94c0 1.95-1.58 3.53-3.53 3.53H3.53C1.58 24 0 22.42 0 20.47V3.53C0 1.58 1.58 0 3.53 0h16.94zm-3.705 14.47c-.78 0-1.41.63-1.41 1.41s.63 1.414 1.41 1.414 1.41-.645 1.41-1.425-.63-1.41-1.41-1.41zM8.61 17.247c1.2 0 2.056-.042 2.58-.12.526-.084.976-.222 1.32-.412.45-.232.78-.564 1.02-.99s.36-.915.36-1.48c0-.78-.21-1.403-.63-1.87-.42-.48-.99-.734-1.74-.794.66-.18 1.156-.45 1.456-.81.315-.344.465-.824.465-1.424 0-.48-.103-.885-.3-1.26-.21-.36-.493-.645-.883-.87-.345-.195-.735-.315-1.215-.405-.464-.074-1.29-.12-2.474-.12H5.654v10.486H8.61zm.736-4.185c.705 0 1.185.088 1.44.262.27.18.39.495.39.93 0 .405-.135.69-.42.855-.27.18-.765.254-1.44.254H8.31v-2.297h1.05zm8.656.706v-7.06h-2.46v7.06H18zM8.925 9.08c.71 0 1.185.08 1.432.24.245.16.367.435.367.83 0 .38-.13.646-.39.804-.265.154-.747.232-1.452.232h-.57V9.08h.615z"
       />
     </icon>
     <span class="share-button__text" v-if="btnText">{{btnText}}</span>
   </button>
 </template>
-
+ 
 <script>
 import Icon from "./icon/Icon.vue";
 import {
@@ -36,7 +33,7 @@ import {
 } from "../helpers";
 
 export default {
-  name: "RenrenShareButton",
+  name: "HatenaShareButton",
   components: { Icon },
   props: {
     className: { type: String },
@@ -44,7 +41,7 @@ export default {
     shareTitle: { type: String, default: "" },
     shareDescription: { type: String, default: getDocumentTitle },
     sharePic: { type: String, default: "" },
-    btnText: { type: String, default: "Renren" },
+    btnText: { type: String, default: "Hatena" },
     windowWidth: { type: Number },
     windowHeight: { type: Number },
     hasIcon: { type: Boolean, default: true },
@@ -52,11 +49,11 @@ export default {
   },
   methods: {
     openShareWindow() {
-      eventEmit(this, "onShare", { name: "Renren" });
+      eventEmit(this, "onShare", { name: "Hatena" });
       const configWindow = createWindow();
-      const url = `http://share.renren.com/share/buttonshare.do?link=${encodeURIComponent(
+      const url = `http://b.hatena.ne.jp/bookmarklet?url=${encodeURIComponent(
         this.$props.shareUrl
-      )}&title=${encodeURIComponent(this.$props.shareTitle)}`;
+      )}&btitle=${encodeURIComponent(this.$props.shareDescription)}`;
 
       return this.$props.isBlank
         ? window.open(url, "__blank")
@@ -68,5 +65,5 @@ export default {
 
 <style>
 @import "../style/index.css";
-@import "../style/renrenButton.css";
+@import "../style/hatenaButton.css";
 </style>

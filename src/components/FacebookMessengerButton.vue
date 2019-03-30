@@ -1,12 +1,11 @@
 <template>
   <button
-    class="share-button share-button--renren"
+    class="share-button share-button--facebookMessenger"
     type="button"
     :class="className"
     :shareUrl="shareUrl"
-    :shareTitle="shareTitle"
     :shareDescription="shareDescription"
-    :sharePic="sharePic"
+    :shareTitle="shareTitle"
     :btnText="btnText"
     :windowWidth="windowWidth"
     :windowHeight="windowHeight"
@@ -14,18 +13,15 @@
     :isBlank="isBlank"
     @click="openShareWindow"
   >
-    <icon iconName="Renren" class="share-button__icon" v-if="hasIcon === true">
+    <icon iconName="FacebookMessenger" class="share-button__icon" v-if="hasIcon === true">
       <path
-        d="M5.661 9.601V5.303a6.793 6.793 0 0 0-4.053 11.084c2.378-1.152 4.041-3.755 4.053-6.786zM6.793 13.715c-.423 1.752-1.687 3.249-3.262 4.244a6.759 6.759 0 0 0 3.261.833 6.771 6.771 0 0 0 3.262-.833c-1.575-.995-2.838-2.493-3.261-4.244zM11.977 7.613a6.789 6.789 0 0 0-4.052-2.31v4.265c0 3.044 1.666 5.662 4.051 6.817a6.766 6.766 0 0 1-1.607-4.386 6.754 6.754 0 0 1 1.608-4.386z"
-      />
-      <path
-        d="M11.977 7.613c1.003 1.183 1.655 2.714 1.655 4.387s-.652 3.202-1.655 4.387l-.001-.001.001.001c2.378-1.151 4.087-3.755 4.099-6.786V5.303a6.9 6.9 0 0 0-4.099 2.31zM18.34 9.568c0 3.045 1.666 5.662 4.052 6.818A6.792 6.792 0 0 0 18.34 5.304v4.264zM17.208 13.715c-.423 1.752-1.687 3.249-3.262 4.244a6.759 6.759 0 0 0 3.261.833 6.771 6.771 0 0 0 3.262-.833c-1.574-.995-2.838-2.493-3.261-4.244z"
+        d="M22.676 0H1.324C.593 0 0 .593 0 1.324v21.352C0 23.408.593 24 1.324 24h11.494v-9.294H9.689v-3.621h3.129V8.41c0-3.099 1.894-4.785 4.659-4.785 1.325 0 2.464.097 2.796.141v3.24h-1.921c-1.5 0-1.792.721-1.792 1.771v2.311h3.584l-.465 3.63H16.56V24h6.115c.733 0 1.325-.592 1.325-1.324V1.324C24 .593 23.408 0 22.676 0"
       />
     </icon>
     <span class="share-button__text" v-if="btnText">{{btnText}}</span>
   </button>
 </template>
-
+ 
 <script>
 import Icon from "./icon/Icon.vue";
 import {
@@ -36,15 +32,16 @@ import {
 } from "../helpers";
 
 export default {
-  name: "RenrenShareButton",
+  name: "FacebookMessengerShareButton",
   components: { Icon },
   props: {
+    appID: { type: String },
     className: { type: String },
     shareUrl: { type: String, default: getDocumentHref },
     shareTitle: { type: String, default: "" },
     shareDescription: { type: String, default: getDocumentTitle },
     sharePic: { type: String, default: "" },
-    btnText: { type: String, default: "Renren" },
+    btnText: { type: String, default: "FacebookMessenger" },
     windowWidth: { type: Number },
     windowHeight: { type: Number },
     hasIcon: { type: Boolean, default: true },
@@ -52,11 +49,11 @@ export default {
   },
   methods: {
     openShareWindow() {
-      eventEmit(this, "onShare", { name: "Renren" });
+      eventEmit(this, "onShare", { name: "FacebookMessenger" });
       const configWindow = createWindow();
-      const url = `http://share.renren.com/share/buttonshare.do?link=${encodeURIComponent(
+      const url = `fb-messenger://share/?link=${encodeURIComponent(
         this.$props.shareUrl
-      )}&title=${encodeURIComponent(this.$props.shareTitle)}`;
+      )}&app_id=${this.$props.appID}`;
 
       return this.$props.isBlank
         ? window.open(url, "__blank")
@@ -68,5 +65,5 @@ export default {
 
 <style>
 @import "../style/index.css";
-@import "../style/renrenButton.css";
+@import "../style/facebookMessengerButton.css";
 </style>

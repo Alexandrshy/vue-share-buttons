@@ -48,8 +48,8 @@ export default {
     isBlank: { type: Boolean, default: true }
   },
   methods: {
-    openShareWindow: function() {
-      eventEmit(this, { name: "Digg" });
+    openShareWindow() {
+      eventEmit(this, "onShare", { name: "Digg" });
       const configWindow = createWindow();
       const url = `http://digg.com/submit?url=${encodeURIComponent(
         this.$props.shareUrl

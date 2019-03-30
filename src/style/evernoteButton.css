@@ -40,3 +40,12 @@
 .share-button--evernote.share-button--outline:hover .share-button__icon path {
   fill: hsla(136, 100%, 33%, 0.9);
 }
+
+.share-button--evernote.share-button--painted {
+  background-color: transparent;
+  border-color: hsla(135, 77%, 23%, 1);
+}
+
+.share-button--evernote.share-button--painted::before {
+  background-color: hsla(136, 100%, 33%, 1);
+}

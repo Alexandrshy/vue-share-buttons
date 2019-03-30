@@ -40,3 +40,12 @@
 .share-button--weibo.share-button--outline:hover .share-button__icon path {
   fill: hsla(353, 83%, 49%, 0.9);
 }
+
+.share-button--weibo.share-button--painted {
+  background-color: transparent;
+  border-color: hsla(352, 60%, 39%, 1);
+}
+
+.share-button--weibo.share-button--painted::before {
+  background-color: hsla(353, 83%, 49%, 1);
+}

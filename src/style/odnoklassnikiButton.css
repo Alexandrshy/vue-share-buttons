@@ -42,3 +42,27 @@
   path {
   fill: hsla(24, 91%, 53%, 0.9);
 }
+
+.share-button--odnoklassniki.share-button--outline .share-button__counter {
+  color: hsla(24, 91%, 53%, 0.9);
+  border-color: hsla(24, 91%, 53%, 0.9);
+}
+
+.share-button--odnoklassniki.share-button--painted {
+  background-color: transparent;
+  border-color: hsla(23, 68%, 43%, 1);
+}
+
+.share-button--odnoklassniki.share-button--painted::before {
+  background-color: hsla(24, 91%, 53%, 1);
+}
+
+.share-button--odnoklassniki.share-button--painted .share-button__counter {
+  color: #fff;
+  border-color: hsla(23, 68%, 43%, 1);
+}
+
+.share-button--odnoklassniki.share-button--painted
+  .share-button__counter::before {
+  background-color: hsla(24, 91%, 53%, 1);
+}

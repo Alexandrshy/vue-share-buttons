@@ -40,3 +40,12 @@
 .share-button--reddit.share-button--outline:hover .share-button__icon path {
   fill: hsla(16, 100%, 50%, 0.9);
 }
+
+.share-button--reddit.share-button--painted {
+  background-color: transparent;
+  border-color: hsla(15, 77%, 40%, 1);
+}
+
+.share-button--reddit.share-button--painted::before {
+  background-color: hsla(16, 100%, 50%, 1);
+}

@@ -40,3 +40,26 @@
 .share-button--twitter.share-button--outline:hover .share-button__icon path {
   fill: hsla(203, 89%, 53%, 0.9);
 }
+
+.share-button--twitter.share-button--outline .share-button__counter {
+  color: hsla(203, 89%, 53%, 0.9);
+  border-color: hsla(203, 89%, 53%, 0.9);
+}
+
+.share-button--twitter.share-button--painted {
+  background-color: transparent;
+  border-color: hsla(202, 66%, 43%, 1);
+}
+
+.share-button--twitter.share-button--painted::before {
+  background-color: hsla(203, 89%, 53%, 1);
+}
+
+.share-button--twitter.share-button--painted .share-button__counter {
+  color: #fff;
+  border-color: hsla(202, 66%, 43%, 1);
+}
+
+.share-button--twitter.share-button--painted .share-button__counter::before {
+  background-color: hsla(203, 89%, 53%, 1);
+}

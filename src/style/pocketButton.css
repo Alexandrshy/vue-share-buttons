@@ -40,3 +40,12 @@
 .share-button--pocket.share-button--outline:hover .share-button__icon path {
   fill: hsla(352, 85%, 59%, 0.9);
 }
+
+.share-button--pocket.share-button--painted {
+  background-color: transparent;
+  border-color: hsla(351, 62%, 49%, 1);
+}
+
+.share-button--pocket.share-button--painted::before {
+  background-color: hsla(352, 85%, 59%, 1);
+}

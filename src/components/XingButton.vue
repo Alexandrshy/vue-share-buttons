@@ -48,8 +48,8 @@ export default {
     isBlank: { type: Boolean, default: true }
   },
   methods: {
-    openShareWindow: function() {
-      eventEmit(this, { name: "Xing" });
+    openShareWindow() {
+      eventEmit(this, "onShare", { name: "Xing" });
       const configWindow = createWindow();
       const url = `https://www.xing.com/social_plugins/share?url=${encodeURIComponent(
         this.$props.shareUrl

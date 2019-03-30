@@ -40,3 +40,12 @@
 .share-button--blogger.share-button--outline:hover .share-button__icon path {
   fill: hsla(14, 100%, 57%, 0.9);
 }
+
+.share-button--blogger.share-button--painted {
+  background-color: transparent;
+  border-color: hsla(14, 77%, 47%, 1);
+}
+
+.share-button--blogger.share-button--painted::before {
+  background-color: hsla(14, 100%, 57%, 1);
+}

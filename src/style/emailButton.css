@@ -1,0 +1,51 @@
+/* Email */
+.share-button--email {
+  background-color: hsla(194, 77%, 56%, 1);
+}
+
+.share-button--email:focus {
+  box-shadow: 0 0 0 3px hsla(194, 77%, 81%, 0.4);
+}
+
+.share-button--email:hover {
+  background-color: hsla(194, 77%, 56%, 0.9);
+}
+
+.share-button--email .share-button__icon path {
+  fill: #fff;
+}
+
+.share-button--email.share-button--outline {
+  background-color: transparent;
+  border-color: hsla(194, 77%, 56%, 1);
+}
+
+.share-button--email.share-button--outline:hover {
+  background-color: transparent;
+  border-color: hsla(194, 77%, 56%, 0.9);
+}
+
+.share-button--email.share-button--outline .share-button__text {
+  color: hsla(194, 77%, 56%, 1);
+}
+
+.share-button--email.share-button--outline:hover .share-button__text {
+  color: hsla(194, 77%, 56%, 0.9);
+}
+
+.share-button--email.share-button--outline .share-button__icon path {
+  fill: hsla(194, 77%, 56%, 1);
+}
+
+.share-button--email.share-button--outline:hover .share-button__icon path {
+  fill: hsla(194, 77%, 56%, 0.9);
+}
+
+.share-button--email.share-button--painted {
+  background-color: transparent;
+  border-color: hsla(193, 54%, 46%, 1);
+}
+
+.share-button--email.share-button--painted::before {
+  background-color: hsla(194, 77%, 56%, 1);
+}

@@ -40,3 +40,26 @@
 .share-button--linkedIn.share-button--outline:hover .share-button__icon path {
   fill: hsla(201, 100%, 35%, 0.9);
 }
+
+.share-button--linkedIn.share-button--outline .share-button__counter {
+  color: hsla(201, 100%, 35%, 0.9);
+  border-color: hsla(201, 100%, 35%, 0.9);
+}
+
+.share-button--linkedIn.share-button--painted {
+  background-color: transparent;
+  border-color: hsla(200, 77%, 25%, 1);
+}
+
+.share-button--linkedIn.share-button--painted::before {
+  background-color: hsla(201, 100%, 35%, 1);
+}
+
+.share-button--linkedIn.share-button--painted .share-button__counter {
+  color: #fff;
+  border-color: hsla(200, 77%, 25%, 1);
+}
+
+.share-button--linkedIn.share-button--painted .share-button__counter::before {
+  background-color: hsla(201, 100%, 35%, 1);
+}

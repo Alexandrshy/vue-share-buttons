@@ -41,25 +41,11 @@
   fill: hsla(221, 44%, 41%, 0.9);
 }
 
-.share-button--facebook.share-button--outline .share-button__counter {
-  color: hsla(221, 44%, 41%, 0.9);
-  border-color: hsla(221, 44%, 41%, 0.9);
-}
-
 .share-button--facebook.share-button--painted {
   background-color: transparent;
   border-color: hsla(220, 21%, 31%, 1);
 }
 
 .share-button--facebook.share-button--painted::before {
-  background-color: hsla(221, 44%, 41%, 1);
-}
-
-.share-button--facebook.share-button--painted .share-button__counter {
-  color: #fff;
-  border-color: hsla(220, 21%, 31%, 1);
-}
-
-.share-button--facebook.share-button--painted .share-button__counter::before {
   background-color: hsla(221, 44%, 41%, 1);
 }

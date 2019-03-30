@@ -11,6 +11,9 @@
     :windowWidth="windowWidth"
     :windowHeight="windowHeight"
     :hasIcon="hasIcon"
+    :hasCounter="hasCounter"
+    :digitsCounter="digitsCounter"
+    :keyCounter="keyCounter"
     :isBlank="isBlank"
     @click="openShareWindow"
   >
@@ -20,6 +23,7 @@
       />
     </icon>
     <span class="share-button__text" v-if="btnText">{{btnText}}</span>
+    <span class="share-button__counter" v-if="hasCounter && counter > 0">{{ shortСounter }}</span>
   </button>
 </template>
  
@@ -29,7 +33,9 @@ import {
   getDocumentHref,
   getDocumentTitle,
   eventEmit,
-  createWindow
+  createWindow,
+  getRandomNumber,
+  getShortNumber
 } from "../helpers";
 
 export default {
@@ -45,11 +51,24 @@ export default {
     windowWidth: { type: Number },
     windowHeight: { type: Number },
     hasIcon: { type: Boolean, default: true },
+    hasCounter: { type: Boolean, default: false },
+    digitsCounter: { type: Number, default: 0 },
+    keyCounter: { type: String, default: "" },
     isBlank: { type: Boolean, default: true }
   },
+  mounted() {
+    if (this.$props.hasCounter) this.getShareCounter();
+  },
   methods: {
-    openShareWindow: function() {
-      eventEmit(this, { name: "Tumblr" });
+    openShareWindow() {
+      if (this.$props.hasCounter) {
+        eventEmit(this, "onShareCounter", {
+          name: "Tumblr",
+          counter: this.counter
+        });
+      } else {
+        eventEmit(this, "onShare", { name: "Tumblr" });
+      }
       const configWindow = createWindow();
       const url = `https://www.tumblr.com/widgets/share/tool?canonicalUrl=${encodeURIComponent(
         this.$props.shareUrl
@@ -62,7 +81,31 @@ export default {
       return this.$props.isBlank
         ? window.open(url, "__blank")
         : window.open(url, "Share this", configWindow);
+    },
+
+    getShareCounter() {
+      const callback = this.$props.keyCounter || `Tumblr_${getRandomNumber()}`;
+      const script = document.createElement("script");
+      script.src = `https://api.tumblr.com/v2/share/stats?url=${encodeURIComponent(
+        this.$props.shareUrl
+      )}&callback=${callback}`;
+      document.body.appendChild(script);
+
+      window[callback] = count => {
+        if (!count) return;
+        this.counter = count.response.note_count;
+        this.shortСounter = getShortNumber(
+          this.counter,
+          this.$props.digitsCounter
+        );
+      };
     }
+  },
+  data() {
+    return {
+      counter: 0,
+      shortСounter: 0
+    };
   }
 };
 </script>

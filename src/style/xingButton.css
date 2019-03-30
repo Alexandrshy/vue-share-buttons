@@ -40,3 +40,12 @@
 .share-button--xing.share-button--outline:hover .share-button__icon path {
   fill: hsla(181, 100%, 20%, 0.9);
 }
+
+.share-button--xing.share-button--painted {
+  background-color: transparent;
+  border-color: hsla(180, 77%, 10%, 1);
+}
+
+.share-button--xing.share-button--painted::before {
+  background-color: hsla(181, 100%, 20%, 1);
+}
