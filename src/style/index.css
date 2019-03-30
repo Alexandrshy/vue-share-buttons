@@ -158,6 +158,11 @@
   transition: transform 0.2s ease-in-out;
 }
 
+.share-button--painted:hover .share-button__counter::before,
+.share-button--painted:focus .share-button__counter::before {
+  transform: translate3d(0px, 0px, 0);
+}
+
 @media (max-width: 768px) {
   .share-button {
     min-width: 38px;
@@ -183,8 +188,28 @@
   }
 
   /* Painted */
+  .share-button--painted {
+    min-width: 48px;
+    min-height: 48px;
+    margin: 4px 4px 20px 4px;
+  }
+
+  .share-button--painted::before {
+    transform: translate3d(2.5px, 1.5px, 0);
+  }
+
   .share-button--painted .share-button__icon {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .share-button--painted .share-button__counter {
+    bottom: -24px;
+    right: -8px;
+    padding: 2px 7px;
+  }
+
+  .share-button--painted .share-button__counter::before {
+    transform: translate3d(-2px, 1.75px, 0);
   }
 }
