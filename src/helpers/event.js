@@ -7,4 +7,4 @@
  * @return {object} - Event.
  */
 export const eventEmit = (vm, eventName = "", option = {}) =>
-  vm.$emit(eventName, { ...option });
+  vm.$emit(eventName, option);
