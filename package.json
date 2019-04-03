@@ -1,9 +1,14 @@
 {
   "name": "vue-share-buttons",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "private": false,
   "license": "MIT",
+  "homepage": "https://github.com/Alexandrshy/vue-share-buttons",
   "author": "Alexandr Shulaev <alexandrshy@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Alexandrshy/vue-share-buttons"
+  },
   "bugs": {
     "url": "https://github.com/Alexandrshy/vue-share-buttons/issues"
   },
