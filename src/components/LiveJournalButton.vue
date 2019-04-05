@@ -2,14 +2,11 @@
   <button
     class="share-button share-button--livejournal"
     type="button"
-    :class="className"
-    :shareUrl="shareUrl"
-    :shareTitle="shareTitle"
-    :shareDescription="shareDescription"
-    :sharePic="sharePic"
+    :url="url"
+    :description="description"
     :btnText="btnText"
-    :windowWidth="windowWidth"
-    :windowHeight="windowHeight"
+    :modalWidth="modalWidth"
+    :modalHeight="modalHeight"
     :hasIcon="hasIcon"
     :isBlank="isBlank"
     @click="openShareWindow"
@@ -36,24 +33,24 @@ export default {
   name: "LiveJournalShareButton",
   components: { Icon },
   props: {
-    className: { type: String },
-    shareUrl: { type: String, default: getDocumentHref },
-    shareTitle: { type: String, default: "" },
-    shareDescription: { type: String, default: getDocumentTitle },
-    sharePic: { type: String, default: "" },
+    url: { type: String, default: getDocumentHref },
+    description: { type: String, default: getDocumentTitle },
     btnText: { type: String, default: "LiveJournal" },
-    windowWidth: { type: Number },
-    windowHeight: { type: Number },
+    modalWidth: { type: Number, default: 500 },
+    modalHeight: { type: Number, default: 500 },
     hasIcon: { type: Boolean, default: true },
     isBlank: { type: Boolean, default: true }
   },
   methods: {
     openShareWindow() {
       eventEmit(this, "onShare", { name: "LiveJournal" });
-      const configWindow = createWindow();
+      const configWindow = createWindow(
+        this.$props.modalWidth,
+        this.$props.modalHeight
+      );
       const url = `https://livejournal.com/update.bml?event=${encodeURIComponent(
-        this.$props.shareDescription
-      )}&subject=${encodeURIComponent(this.$props.shareUrl)}`;
+        this.$props.description
+      )}&subject=${encodeURIComponent(this.$props.url)}`;
 
       return this.$props.isBlank
         ? window.open(url, "__blank")

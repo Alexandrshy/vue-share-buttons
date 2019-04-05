@@ -2,16 +2,9 @@
   <button
     class="share-button share-button--email"
     type="button"
-    :class="className"
-    :shareUrl="shareUrl"
-    :shareTitle="shareTitle"
-    :shareDescription="shareDescription"
-    :sharePic="sharePic"
+    :url="url"
     :btnText="btnText"
-    :windowWidth="windowWidth"
-    :windowHeight="windowHeight"
     :hasIcon="hasIcon"
-    :isBlank="isBlank"
     @click="openShareWindow"
   >
     <icon
@@ -31,39 +24,24 @@
  
 <script>
 import Icon from "./icon/Icon.vue";
-import {
-  getDocumentHref,
-  getDocumentTitle,
-  eventEmit,
-  createWindow
-} from "../helpers";
+import { getDocumentHref, eventEmit } from "../helpers";
 
 export default {
   name: "EmailShareButton",
   components: { Icon },
   props: {
-    className: { type: String },
-    shareUrl: { type: String, default: getDocumentHref },
-    shareTitle: { type: String, default: "" },
-    shareDescription: { type: String, default: getDocumentTitle },
-    sharePic: { type: String, default: "" },
+    url: { type: String, default: getDocumentHref },
     btnText: { type: String, default: "Email" },
-    windowWidth: { type: Number },
-    windowHeight: { type: Number },
-    hasIcon: { type: Boolean, default: true },
-    isBlank: { type: Boolean, default: true }
+    hasIcon: { type: Boolean, default: true }
   },
   methods: {
     openShareWindow() {
       eventEmit(this, "onShare", { name: "Email" });
-      const configWindow = createWindow();
       const url = `mailto:?subject=Share%20Link&body=${encodeURIComponent(
-        this.$props.shareUrl
+        this.$props.url
       )}`;
 
-      return this.$props.isBlank
-        ? window.open(url, "__blank")
-        : window.open(url, "Share this", configWindow);
+      return window.open(url);
     }
   }
 };

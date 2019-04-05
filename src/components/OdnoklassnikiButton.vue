@@ -2,14 +2,11 @@
   <button
     class="share-button share-button--odnoklassniki"
     type="button"
-    :class="className"
-    :shareUrl="shareUrl"
-    :shareTitle="shareTitle"
-    :shareDescription="shareDescription"
-    :sharePic="sharePic"
+    :url="url"
+    :description="description"
     :btnText="btnText"
-    :windowWidth="windowWidth"
-    :windowHeight="windowHeight"
+    :modalWidth="modalWidth"
+    :modalHeight="modalHeight"
     :hasIcon="hasIcon"
     :hasCounter="hasCounter"
     :digitsCounter="digitsCounter"
@@ -40,14 +37,11 @@ export default {
   name: "OdnoklassnikiShareButton",
   components: { Icon },
   props: {
-    className: { type: String },
-    shareUrl: { type: String, default: getDocumentHref },
-    shareTitle: { type: String, default: "" },
-    shareDescription: { type: String, default: getDocumentTitle },
-    sharePic: { type: String, default: "" },
+    url: { type: String, default: getDocumentHref },
+    description: { type: String, default: getDocumentTitle },
     btnText: { type: String, default: "Odnoklassniki" },
-    windowWidth: { type: Number },
-    windowHeight: { type: Number },
+    modalWidth: { type: Number, default: 500 },
+    modalHeight: { type: Number, default: 500 },
     hasIcon: { type: Boolean, default: true },
     hasCounter: { type: Boolean, default: false },
     digitsCounter: { type: Number, default: 0 },
@@ -66,10 +60,13 @@ export default {
       } else {
         eventEmit(this, "onShare", { name: "Odnoklassniki" });
       }
-      const configWindow = createWindow();
+      const configWindow = createWindow(
+        this.$props.modalWidth,
+        this.$props.modalHeight
+      );
       const url = `https://www.odnoklassniki.ru/dk?st.cmd=addShare&st.s=1&st._surl=${encodeURIComponent(
-        this.$props.shareUrl
-      )}&st.comments=${encodeURIComponent(this.$props.shareTitle)}`;
+        this.$props.url
+      )}&st.comments=${encodeURIComponent(this.$props.description)}`;
 
       return this.$props.isBlank
         ? window.open(url, "__blank")
@@ -83,7 +80,7 @@ export default {
 
       const script = document.createElement("script");
       script.src = `https://connect.ok.ru/dk?st.cmd=extLike&uid=1&ref=${encodeURIComponent(
-        this.$props.shareUrl
+        this.$props.url
       )}`;
       document.body.appendChild(script);
 

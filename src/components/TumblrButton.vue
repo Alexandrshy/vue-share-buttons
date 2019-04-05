@@ -2,14 +2,12 @@
   <button
     class="share-button share-button--tumblr"
     type="button"
-    :class="className"
-    :shareUrl="shareUrl"
-    :shareTitle="shareTitle"
-    :shareDescription="shareDescription"
-    :sharePic="sharePic"
+    :url="url"
+    :title="title"
+    :description="description"
     :btnText="btnText"
-    :windowWidth="windowWidth"
-    :windowHeight="windowHeight"
+    :modalWidth="modalWidth"
+    :modalHeight="modalHeight"
     :hasIcon="hasIcon"
     :hasCounter="hasCounter"
     :digitsCounter="digitsCounter"
@@ -42,14 +40,12 @@ export default {
   name: "TumblrShareButton",
   components: { Icon },
   props: {
-    className: { type: String },
-    shareUrl: { type: String, default: getDocumentHref },
-    shareTitle: { type: String, default: "" },
-    shareDescription: { type: String, default: getDocumentTitle },
-    sharePic: { type: String, default: "" },
+    url: { type: String, default: getDocumentHref },
+    title: { type: String, default: "" },
+    description: { type: String, default: getDocumentTitle },
     btnText: { type: String, default: "Tumblr" },
-    windowWidth: { type: Number },
-    windowHeight: { type: Number },
+    modalWidth: { type: Number, default: 500 },
+    modalHeight: { type: Number, default: 500 },
     hasIcon: { type: Boolean, default: true },
     hasCounter: { type: Boolean, default: false },
     digitsCounter: { type: Number, default: 0 },
@@ -69,14 +65,15 @@ export default {
       } else {
         eventEmit(this, "onShare", { name: "Tumblr" });
       }
-      const configWindow = createWindow();
+      const configWindow = createWindow(
+        this.$props.modalWidth,
+        this.$props.modalHeight
+      );
       const url = `https://www.tumblr.com/widgets/share/tool?canonicalUrl=${encodeURIComponent(
-        this.$props.shareUrl
+        this.$props.url
       )}&title=${encodeURIComponent(
-        this.$props.shareTitle
-      )}&caption=${encodeURIComponent(
-        this.$props.shareDescription
-      )}&posttype=link`;
+        this.$props.title
+      )}&caption=${encodeURIComponent(this.$props.description)}&posttype=link`;
 
       return this.$props.isBlank
         ? window.open(url, "__blank")
@@ -87,7 +84,7 @@ export default {
       const callback = this.$props.keyCounter || `Tumblr_${getRandomNumber()}`;
       const script = document.createElement("script");
       script.src = `https://api.tumblr.com/v2/share/stats?url=${encodeURIComponent(
-        this.$props.shareUrl
+        this.$props.url
       )}&callback=${callback}`;
       document.body.appendChild(script);
 

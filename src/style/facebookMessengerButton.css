@@ -1,51 +1,56 @@
-/* Facebook */
-.share-button--facebook {
+/* facebookMessenger */
+.share-button--facebookMessenger {
   background-color: hsla(221, 44%, 41%, 1);
 }
 
-.share-button--facebook:focus {
+.share-button--facebookMessenger:focus {
   box-shadow: 0 0 0 3px hsla(221, 38%, 66%, 0.4);
 }
 
-.share-button--facebook:hover {
+.share-button--facebookMessenger:hover {
   background-color: hsla(221, 44%, 41%, 0.9);
 }
 
-.share-button--facebook .share-button__icon path {
+.share-button--facebookMessenger .share-button__icon path {
   fill: #fff;
 }
 
-.share-button--facebook.share-button--outline {
+.share-button--facebookMessenger.share-button--outline {
   background-color: transparent;
   border-color: hsl(221, 44%, 41%, 1);
 }
 
-.share-button--facebook.share-button--outline:hover {
+.share-button--facebookMessenger.share-button--outline:hover {
   background-color: transparent;
   border-color: hsla(221, 44%, 41%, 0.9);
 }
 
-.share-button--facebook.share-button--outline .share-button__text {
+.share-button--facebookMessenger.share-button--outline .share-button__text {
   color: hsla(221, 44%, 41%, 1);
 }
 
-.share-button--facebook.share-button--outline:hover .share-button__text {
+.share-button--facebookMessenger.share-button--outline:hover
+  .share-button__text {
   color: hsla(221, 44%, 41%, 0.9);
 }
 
-.share-button--facebook.share-button--outline .share-button__icon path {
+.share-button--facebookMessenger.share-button--outline
+  .share-button__icon
+  path {
   fill: hsla(221, 44%, 41%, 1);
 }
 
-.share-button--facebook.share-button--outline:hover .share-button__icon path {
+.share-button--facebookMessenger.share-button--outline:hover
+  .share-button__icon
+  path {
   fill: hsla(221, 44%, 41%, 0.9);
 }
 
-.share-button--facebook.share-button--painted {
+.share-button--facebookMessenger.share-button--painted {
   background-color: transparent;
   border-color: hsla(220, 21%, 31%, 1);
 }
 
-.share-button--facebook.share-button--painted::before {
+.share-button--facebookMessenger.share-button--painted::before {
   background-color: hsla(221, 44%, 41%, 1);
 }

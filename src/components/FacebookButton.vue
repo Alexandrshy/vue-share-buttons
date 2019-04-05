@@ -2,13 +2,10 @@
   <button
     class="share-button share-button--facebook"
     type="button"
-    :class="className"
-    :shareUrl="shareUrl"
-    :shareDescription="shareDescription"
-    :shareTitle="shareTitle"
+    :url="url"
     :btnText="btnText"
-    :windowWidth="windowWidth"
-    :windowHeight="windowHeight"
+    :modalWidth="modalWidth"
+    :modalHeight="modalHeight"
     :hasIcon="hasIcon"
     :hasCounter="hasCounter"
     :digitsCounter="digitsCounter"
@@ -30,7 +27,6 @@
 import Icon from "./icon/Icon.vue";
 import {
   getDocumentHref,
-  getDocumentTitle,
   eventEmit,
   createWindow,
   getRandomNumber,
@@ -41,14 +37,10 @@ export default {
   name: "FacebookShareButton",
   components: { Icon },
   props: {
-    className: { type: String },
-    shareUrl: { type: String, default: getDocumentHref },
-    shareTitle: { type: String, default: "" },
-    shareDescription: { type: String, default: getDocumentTitle },
-    sharePic: { type: String, default: "" },
+    url: { type: String, default: getDocumentHref },
     btnText: { type: String, default: "Facebook" },
-    windowWidth: { type: Number },
-    windowHeight: { type: Number },
+    modalWidth: { type: Number, default: 500 },
+    modalHeight: { type: Number, default: 500 },
     hasIcon: { type: Boolean, default: true },
     hasCounter: { type: Boolean, default: false },
     digitsCounter: { type: Number, default: 0 },
@@ -68,9 +60,12 @@ export default {
       } else {
         eventEmit(this, "onShare", { name: "Facebook" });
       }
-      const configWindow = createWindow();
+      const configWindow = createWindow(
+        this.$props.modalWidth,
+        this.$props.modalHeight
+      );
       const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-        this.$props.shareUrl
+        this.$props.url
       )}`;
 
       return this.$props.isBlank
@@ -83,7 +78,7 @@ export default {
         this.$props.keyCounter || `Facebook_${getRandomNumber()}`;
       const script = document.createElement("script");
       script.src = `https://graph.facebook.com?id=${encodeURIComponent(
-        this.$props.shareUrl
+        this.$props.url
       )}&callback=${callback}`;
       document.body.appendChild(script);
 

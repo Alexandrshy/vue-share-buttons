@@ -2,16 +2,10 @@
   <button
     class="share-button share-button--telegram"
     type="button"
-    :class="className"
-    :shareUrl="shareUrl"
-    :shareTitle="shareTitle"
-    :shareDescription="shareDescription"
-    :sharePic="sharePic"
+    :url="url"
+    :description="description"
     :btnText="btnText"
-    :windowWidth="windowWidth"
-    :windowHeight="windowHeight"
     :hasIcon="hasIcon"
-    :isBlank="isBlank"
     @click="openShareWindow"
   >
     <icon iconName="Telegram" class="share-button__icon" v-if="hasIcon === true">
@@ -27,39 +21,25 @@
  
 <script>
 import Icon from "./icon/Icon.vue";
-import {
-  getDocumentHref,
-  getDocumentTitle,
-  eventEmit,
-  createWindow
-} from "../helpers";
+import { getDocumentHref, getDocumentTitle, eventEmit } from "../helpers";
 
 export default {
   name: "TelegramShareButton",
   components: { Icon },
   props: {
-    className: { type: String },
-    shareUrl: { type: String, default: getDocumentHref },
-    shareTitle: { type: String, default: "" },
-    shareDescription: { type: String, default: getDocumentTitle },
-    sharePic: { type: String, default: "" },
+    url: { type: String, default: getDocumentHref },
+    description: { type: String, default: getDocumentTitle },
     btnText: { type: String, default: "Telegram" },
-    windowWidth: { type: Number },
-    windowHeight: { type: Number },
-    hasIcon: { type: Boolean, default: true },
-    isBlank: { type: Boolean, default: true }
+    hasIcon: { type: Boolean, default: true }
   },
   methods: {
     openShareWindow() {
       eventEmit(this, "onShare", { name: "Telegram" });
-      const configWindow = createWindow();
       const url = `https://telegram.me/share/url?url=${encodeURIComponent(
-        this.$props.shareUrl
-      )}&text=${encodeURIComponent(this.$props.shareDescription)}`;
+        this.$props.url
+      )}&text=${encodeURIComponent(this.$props.description)}`;
 
-      return this.$props.isBlank
-        ? window.open(url, "__blank")
-        : window.open(url, "Share this", configWindow);
+      return window.open(url);
     }
   }
 };

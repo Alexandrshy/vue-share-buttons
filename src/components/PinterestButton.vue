@@ -2,14 +2,12 @@
   <button
     class="share-button share-button--pinterest"
     type="button"
-    :class="className"
-    :shareUrl="shareUrl"
-    :shareTitle="shareTitle"
-    :shareDescription="shareDescription"
-    :sharePic="sharePic"
+    :url="url"
+    :description="description"
+    :picture="picture"
     :btnText="btnText"
-    :windowWidth="windowWidth"
-    :windowHeight="windowHeight"
+    :modalWidth="modalWidth"
+    :modalHeight="modalHeight"
     :hasIcon="hasIcon"
     :hasCounter="hasCounter"
     :digitsCounter="digitsCounter"
@@ -42,14 +40,12 @@ export default {
   name: "PinterestShareButton",
   components: { Icon },
   props: {
-    className: { type: String },
-    shareUrl: { type: String, default: getDocumentHref },
-    shareTitle: { type: String, default: "" },
-    shareDescription: { type: String, default: getDocumentTitle },
-    sharePic: { type: String, default: "" },
+    url: { type: String, default: getDocumentHref },
+    description: { type: String, default: getDocumentTitle },
+    picture: { type: String, default: "" },
     btnText: { type: String, default: "Pinterest" },
-    windowWidth: { type: Number },
-    windowHeight: { type: Number },
+    modalWidth: { type: Number },
+    modalHeight: { type: Number },
     hasIcon: { type: Boolean, default: true },
     hasCounter: { type: Boolean, default: false },
     digitsCounter: { type: Number, default: 0 },
@@ -69,12 +65,15 @@ export default {
       } else {
         eventEmit(this, "onShare", { name: "Pinterest" });
       }
-      const configWindow = createWindow();
+      const configWindow = createWindow(
+        this.$props.modalWidth,
+        this.$props.modalHeight
+      );
       const url = `https://www.pinterest.com/pin/create/button/?canonicalUrl=${encodeURIComponent(
-        this.$props.shareUrl
+        this.$props.url
       )}&description=${encodeURIComponent(
-        this.$props.shareDescription
-      )}&media=${encodeURIComponent(this.$props.sharePic)}`;
+        this.$props.description
+      )}&media=${encodeURIComponent(this.$props.picture)}`;
 
       return this.$props.isBlank
         ? window.open(url, "__blank")
@@ -86,7 +85,7 @@ export default {
         this.$props.keyCounter || `Pinterest_${getRandomNumber()}`;
       const script = document.createElement("script");
       script.src = `https://api.pinterest.com/v1/urls/count.json?url=${encodeURIComponent(
-        this.$props.shareUrl
+        this.$props.url
       )}&callback=${callback}`;
       document.body.appendChild(script);
 

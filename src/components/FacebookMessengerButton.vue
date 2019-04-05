@@ -2,15 +2,10 @@
   <button
     class="share-button share-button--facebookMessenger"
     type="button"
-    :class="className"
-    :shareUrl="shareUrl"
-    :shareDescription="shareDescription"
-    :shareTitle="shareTitle"
+    :appID="appID"
+    :url="url"
     :btnText="btnText"
-    :windowWidth="windowWidth"
-    :windowHeight="windowHeight"
     :hasIcon="hasIcon"
-    :isBlank="isBlank"
     @click="openShareWindow"
   >
     <icon iconName="FacebookMessenger" class="share-button__icon" v-if="hasIcon === true">
@@ -24,40 +19,25 @@
  
 <script>
 import Icon from "./icon/Icon.vue";
-import {
-  getDocumentHref,
-  getDocumentTitle,
-  eventEmit,
-  createWindow
-} from "../helpers";
+import { getDocumentHref, eventEmit } from "../helpers";
 
 export default {
   name: "FacebookMessengerShareButton",
   components: { Icon },
   props: {
     appID: { type: String },
-    className: { type: String },
-    shareUrl: { type: String, default: getDocumentHref },
-    shareTitle: { type: String, default: "" },
-    shareDescription: { type: String, default: getDocumentTitle },
-    sharePic: { type: String, default: "" },
-    btnText: { type: String, default: "FacebookMessenger" },
-    windowWidth: { type: Number },
-    windowHeight: { type: Number },
-    hasIcon: { type: Boolean, default: true },
-    isBlank: { type: Boolean, default: true }
+    url: { type: String, default: getDocumentHref },
+    btnText: { type: String, default: "Messenger" },
+    hasIcon: { type: Boolean, default: true }
   },
   methods: {
     openShareWindow() {
       eventEmit(this, "onShare", { name: "FacebookMessenger" });
-      const configWindow = createWindow();
       const url = `fb-messenger://share/?link=${encodeURIComponent(
-        this.$props.shareUrl
+        this.$props.url
       )}&app_id=${this.$props.appID}`;
 
-      return this.$props.isBlank
-        ? window.open(url, "__blank")
-        : window.open(url, "Share this", configWindow);
+      return window.open(url);
     }
   }
 };

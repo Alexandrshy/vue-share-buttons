@@ -2,16 +2,9 @@
   <button
     class="share-button share-button--viber"
     type="button"
-    :class="className"
-    :shareUrl="shareUrl"
-    :shareTitle="shareTitle"
-    :shareDescription="shareDescription"
-    :sharePic="sharePic"
+    :url="url"
     :btnText="btnText"
-    :windowWidth="windowWidth"
-    :windowHeight="windowHeight"
     :hasIcon="hasIcon"
-    :isBlank="isBlank"
     @click="openShareWindow"
   >
     <icon iconName="Viber" class="share-button__icon" v-if="hasIcon === true">
@@ -37,39 +30,22 @@
  
 <script>
 import Icon from "./icon/Icon.vue";
-import {
-  getDocumentHref,
-  getDocumentTitle,
-  eventEmit,
-  createWindow
-} from "../helpers";
+import { getDocumentHref, eventEmit } from "../helpers";
 
 export default {
   name: "ViberShareButton",
   components: { Icon },
   props: {
-    className: { type: String },
-    shareUrl: { type: String, default: getDocumentHref },
-    shareTitle: { type: String, default: "" },
-    shareDescription: { type: String, default: getDocumentTitle },
-    sharePic: { type: String, default: "" },
+    url: { type: String, default: getDocumentHref },
     btnText: { type: String, default: "Viber" },
-    windowWidth: { type: Number },
-    windowHeight: { type: Number },
-    hasIcon: { type: Boolean, default: true },
-    isBlank: { type: Boolean, default: true }
+    hasIcon: { type: Boolean, default: true }
   },
   methods: {
     openShareWindow() {
       eventEmit(this, "onShare", { name: "Viber" });
-      const configWindow = createWindow();
-      const url = `viber://forward?text=${encodeURIComponent(
-        this.$props.shareUrl
-      )}`;
+      const url = `viber://forward?text=${encodeURIComponent(this.$props.url)}`;
 
-      return this.$props.isBlank
-        ? window.open(url, "__blank")
-        : window.open(url, "Share this", configWindow);
+      return window.open(url);
     }
   }
 };

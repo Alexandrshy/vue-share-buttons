@@ -2,14 +2,13 @@
   <button
     class="share-button share-button--weibo"
     type="button"
-    :class="className"
-    :shareUrl="shareUrl"
-    :shareTitle="shareTitle"
-    :shareDescription="shareDescription"
-    :sharePic="sharePic"
+    :url="url"
+    :title="title"
+    :description="description"
+    :picture="picture"
     :btnText="btnText"
-    :windowWidth="windowWidth"
-    :windowHeight="windowHeight"
+    :modalWidth="modalWidth"
+    :modalHeight="modalHeight"
     :hasIcon="hasIcon"
     :isBlank="isBlank"
     @click="openShareWindow"
@@ -36,26 +35,28 @@ export default {
   name: "WeiboShareButton",
   components: { Icon },
   props: {
-    className: { type: String },
-    shareUrl: { type: String, default: getDocumentHref },
-    shareTitle: { type: String, default: "" },
-    shareDescription: { type: String, default: getDocumentTitle },
-    sharePic: { type: String, default: "" },
+    url: { type: String, default: getDocumentHref },
+    title: { type: String, default: "" },
+    description: { type: String, default: getDocumentTitle },
+    picture: { type: String, default: "" },
     btnText: { type: String, default: "Weibo" },
-    windowWidth: { type: Number },
-    windowHeight: { type: Number },
+    modalWidth: { type: Number, default: 500 },
+    modalHeight: { type: Number, default: 500 },
     hasIcon: { type: Boolean, default: true },
     isBlank: { type: Boolean, default: true }
   },
   methods: {
     openShareWindow() {
       eventEmit(this, "onShare", { name: "Weibo" });
-      const configWindow = createWindow();
+      const configWindow = createWindow(
+        this.$props.modalWidth,
+        this.$props.modalHeight
+      );
       const url = `http://service.weibo.com/share/share.php?url=${encodeURIComponent(
-        this.$props.shareUrl
+        this.$props.url
       )}&title=${encodeURIComponent(
-        this.$props.shareTitle
-      )}&pic=${encodeURIComponent(this.$props.sharePic)}`;
+        this.$props.title
+      )}&pic=${encodeURIComponent(this.$props.picture)}`;
 
       return this.$props.isBlank
         ? window.open(url, "__blank")

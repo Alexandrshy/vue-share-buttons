@@ -2,14 +2,11 @@
   <button
     class="share-button share-button--renren"
     type="button"
-    :class="className"
-    :shareUrl="shareUrl"
-    :shareTitle="shareTitle"
-    :shareDescription="shareDescription"
-    :sharePic="sharePic"
+    :url="url"
+    :title="title"
     :btnText="btnText"
-    :windowWidth="windowWidth"
-    :windowHeight="windowHeight"
+    :modalWidth="modalWidth"
+    :modalHeight="modalHeight"
     :hasIcon="hasIcon"
     :isBlank="isBlank"
     @click="openShareWindow"
@@ -28,35 +25,30 @@
 
 <script>
 import Icon from "./icon/Icon.vue";
-import {
-  getDocumentHref,
-  getDocumentTitle,
-  eventEmit,
-  createWindow
-} from "../helpers";
+import { getDocumentHref, eventEmit, createWindow } from "../helpers";
 
 export default {
   name: "RenrenShareButton",
   components: { Icon },
   props: {
-    className: { type: String },
-    shareUrl: { type: String, default: getDocumentHref },
-    shareTitle: { type: String, default: "" },
-    shareDescription: { type: String, default: getDocumentTitle },
-    sharePic: { type: String, default: "" },
+    url: { type: String, default: getDocumentHref },
+    title: { type: String, default: "" },
     btnText: { type: String, default: "Renren" },
-    windowWidth: { type: Number },
-    windowHeight: { type: Number },
+    modalWidth: { type: Number, default: 500 },
+    modalHeight: { type: Number, default: 500 },
     hasIcon: { type: Boolean, default: true },
     isBlank: { type: Boolean, default: true }
   },
   methods: {
     openShareWindow() {
       eventEmit(this, "onShare", { name: "Renren" });
-      const configWindow = createWindow();
+      const configWindow = createWindow(
+        this.$props.modalWidth,
+        this.$props.modalHeight
+      );
       const url = `http://share.renren.com/share/buttonshare.do?link=${encodeURIComponent(
-        this.$props.shareUrl
-      )}&title=${encodeURIComponent(this.$props.shareTitle)}`;
+        this.$props.url
+      )}&title=${encodeURIComponent(this.$props.title)}`;
 
       return this.$props.isBlank
         ? window.open(url, "__blank")

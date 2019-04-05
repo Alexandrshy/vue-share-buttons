@@ -2,14 +2,12 @@
   <button
     class="share-button share-button--blogger"
     type="button"
-    :class="className"
-    :shareUrl="shareUrl"
-    :shareTitle="shareTitle"
-    :shareDescription="shareDescription"
-    :sharePic="sharePic"
+    :url="url"
+    :title="title"
+    :description="description"
     :btnText="btnText"
-    :windowWidth="windowWidth"
-    :windowHeight="windowHeight"
+    :modalWidth="modalWidth"
+    :modalHeight="modalHeight"
     :hasIcon="hasIcon"
     :isBlank="isBlank"
     @click="openShareWindow"
@@ -36,25 +34,26 @@ export default {
   name: "BloggerShareButton",
   components: { Icon },
   props: {
-    className: { type: String },
-    shareUrl: { type: String, default: getDocumentHref },
-    shareTitle: { type: String, default: "" },
-    shareDescription: { type: String, default: getDocumentTitle },
-    sharePic: { type: String, default: "" },
+    url: { type: String, default: getDocumentHref },
+    title: { type: String, default: "" },
+    description: { type: String, default: getDocumentTitle },
     btnText: { type: String, default: "Blogger" },
-    windowWidth: { type: Number },
-    windowHeight: { type: Number },
+    modalWidth: { type: Number, default: 500 },
+    modalHeight: { type: Number, default: 500 },
     hasIcon: { type: Boolean, default: true },
     isBlank: { type: Boolean, default: true }
   },
   methods: {
     openShareWindow() {
       eventEmit(this, "onShare", { name: "Blogger" });
-      const configWindow = createWindow();
+      const configWindow = createWindow(
+        this.$props.modalWidth,
+        this.$props.modalHeight
+      );
       const url = `https://www.blogger.com/blog-this.g?u=${
-        this.$props.shareUrl
-      }&n=${encodeURIComponent(this.$props.shareTitle)}&t=${encodeURIComponent(
-        this.$props.shareDescription
+        this.$props.url
+      }&n=${encodeURIComponent(this.$props.title)}&t=${encodeURIComponent(
+        this.$props.description
       )}`;
 
       return this.$props.isBlank

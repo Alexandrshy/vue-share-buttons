@@ -188,30 +188,92 @@
         shareTitle="Comment"
         btnText
       ></facebook-button>
-      <facebook-button v-bind:hasIcon="false" shareTitle="Comment"></facebook-button>
-      <facebook-button class="share-button--circle" shareTitle="Comment"></facebook-button>
-      <facebook-button class="share-button--circle" shareTitle="Comment" btnText></facebook-button>
-      <facebook-button class="share-button--circle" shareTitle="Comment" v-bind:hasIcon="false"></facebook-button>
-      <facebook-button class="share-button--outline" shareTitle="Comment"></facebook-button>
+      <facebook-button v-bind:hasIcon="false" shareTitle="Comment" hasCounter></facebook-button>
+      <facebook-button class="share-button--circle" shareTitle="Comment" hasCounter></facebook-button>
+      <facebook-button class="share-button--circle" shareTitle="Comment" btnText hasCounter></facebook-button>
+      <facebook-button
+        class="share-button--circle"
+        shareTitle="Comment"
+        v-bind:hasIcon="false"
+        hasCounter
+      ></facebook-button>
+      <facebook-button class="share-button--outline" shareTitle="Comment" hasCounter></facebook-button>
       <facebook-button
         class="share-button--outline"
         v-bind:isBlank="false"
         shareText="Twiiter share good work"
         shareTitle="Comment"
         btnText
+        hasCounter
       ></facebook-button>
-      <facebook-button class="share-button--outline" shareTitle="Comment" v-bind:hasIcon="false"></facebook-button>
-      <facebook-button class="share-button--circle share-button--outline" shareTitle="Comment"></facebook-button>
+      <facebook-button
+        class="share-button--outline"
+        shareTitle="Comment"
+        v-bind:hasIcon="false"
+        hasCounter
+      ></facebook-button>
+      <facebook-button class="share-button--outline" hasCounter></facebook-button>
+      <facebook-button
+        class="share-button--circle share-button--outline"
+        shareTitle="Comment"
+        hasCounter
+      ></facebook-button>
       <facebook-button
         class="share-button--circle share-button--outline"
         shareTitle="Comment"
         btnText
+        hasCounter
       ></facebook-button>
       <facebook-button
         class="share-button--circle share-button--outline"
         shareTitle="Comment"
         v-bind:hasIcon="false"
+        hasCounter
       ></facebook-button>
+    </div>
+    <div class="share-buttons-group">
+      <facebook-messenger-button shareTitle="Comment"></facebook-messenger-button>
+      <facebook-messenger-button
+        v-bind:isBlank="false"
+        shareText="Twiiter share good work"
+        shareTitle="Comment"
+        btnText
+      ></facebook-messenger-button>
+      <facebook-messenger-button v-bind:hasIcon="false" shareTitle="Comment"></facebook-messenger-button>
+      <facebook-messenger-button class="share-button--circle" shareTitle="Comment"></facebook-messenger-button>
+      <facebook-messenger-button class="share-button--circle" shareTitle="Comment" btnText></facebook-messenger-button>
+      <facebook-messenger-button
+        class="share-button--circle"
+        shareTitle="Comment"
+        v-bind:hasIcon="false"
+      ></facebook-messenger-button>
+      <facebook-messenger-button class="share-button--outline" shareTitle="Comment"></facebook-messenger-button>
+      <facebook-messenger-button
+        class="share-button--outline"
+        v-bind:isBlank="false"
+        shareText="Twiiter share good work"
+        shareTitle="Comment"
+        btnText
+      ></facebook-messenger-button>
+      <facebook-messenger-button
+        class="share-button--outline"
+        shareTitle="Comment"
+        v-bind:hasIcon="false"
+      ></facebook-messenger-button>
+      <facebook-messenger-button
+        class="share-button--circle share-button--outline"
+        shareTitle="Comment"
+      ></facebook-messenger-button>
+      <facebook-messenger-button
+        class="share-button--circle share-button--outline"
+        shareTitle="Comment"
+        btnText
+      ></facebook-messenger-button>
+      <facebook-messenger-button
+        class="share-button--circle share-button--outline"
+        shareTitle="Comment"
+        v-bind:hasIcon="false"
+      ></facebook-messenger-button>
     </div>
     <div class="share-buttons-group">
       <linkedIn-button shareTitle="Comment"></linkedIn-button>
@@ -676,6 +738,7 @@ import WeiboButton from "./components/WeiboButton";
 import EvernoteButton from "./components/EvernoteButton";
 import VkontakteButton from "./components/VkontakteButton";
 import FacebookButton from "./components/FacebookButton";
+import FacebookMessengerButton from "./components/FacebookMessengerButton";
 import LinkedInButton from "./components/LinkedInButton";
 import TumblrButton from "./components/TumblrButton";
 import PinterestButton from "./components/PinterestButton";
@@ -702,6 +765,7 @@ export default {
     EvernoteButton,
     VkontakteButton,
     FacebookButton,
+    FacebookMessengerButton,
     LinkedInButton,
     TumblrButton,
     PinterestButton,

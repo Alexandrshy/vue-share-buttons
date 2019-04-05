@@ -2,13 +2,12 @@
   <button
     class="share-button share-button--vk"
     type="button"
-    :class="className"
-    :shareUrl="shareUrl"
-    :shareDescription="shareDescription"
-    :shareTitle="shareTitle"
+    :url="url"
+    :description="description"
+    :title="title"
     :btnText="btnText"
-    :windowWidth="windowWidth"
-    :windowHeight="windowHeight"
+    :modalWidth="modalWidth"
+    :modalHeight="modalHeight"
     :hasIcon="hasIcon"
     :hasCounter="hasCounter"
     :digitsCounter="digitsCounter"
@@ -40,14 +39,13 @@ export default {
   name: "VkontakteShareButton",
   components: { Icon },
   props: {
-    className: { type: String },
-    shareUrl: { type: String, default: getDocumentHref },
-    shareTitle: { type: String, default: "" },
-    shareDescription: { type: String, default: getDocumentTitle },
+    url: { type: String, default: getDocumentHref },
+    title: { type: String, default: "" },
+    description: { type: String, default: getDocumentTitle },
     sharePic: { type: String, default: "" },
     btnText: { type: String, default: "Vkontakte" },
-    windowWidth: { type: Number },
-    windowHeight: { type: Number },
+    modalWidth: { type: Number, default: 500 },
+    modalHeight: { type: Number, default: 500 },
     hasIcon: { type: Boolean, default: true },
     hasCounter: { type: Boolean, default: false },
     digitsCounter: { type: Number, default: 0 },
@@ -66,13 +64,16 @@ export default {
       } else {
         eventEmit(this, "onShare", { name: "vk" });
       }
-      const configWindow = createWindow();
+      const configWindow = createWindow(
+        this.$props.modalWidth,
+        this.$props.modalHeight
+      );
       const url = `https://vk.com/share.php?url=${encodeURIComponent(
-        this.$props.shareUrl
+        this.$props.url
       )}&title=${encodeURIComponent(
-        this.$props.shareTitle
+        this.$props.title
       )}&comment=${encodeURIComponent(
-        this.$props.shareDescription
+        this.$props.description
       )}&image=${encodeURIComponent(this.$props.sharePic)}&noparse=true`;
 
       return this.$props.isBlank
@@ -91,7 +92,7 @@ export default {
 
       const script = document.createElement("script");
       script.src = `https://vk.com/share.php?act=count&index=${getRandomNumber()}&url=${encodeURIComponent(
-        this.$props.shareUrl
+        this.$props.url
       )}`;
       document.body.appendChild(script);
 
