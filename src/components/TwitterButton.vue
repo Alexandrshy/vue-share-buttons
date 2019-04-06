@@ -61,6 +61,6 @@ export default {
 </script>
 
 <style>
-@import "../style/index.css";
-@import "../style/twitterButton.css";
+@import "./../style/index.css";
+@import "./../style/twitterButton.css";
 </style>
