@@ -60,13 +60,13 @@ export default {
 };
 </script>
 
-<style scoped>
-/* Base */
-.share-button * {
-  box-sizing: border-box;
-}
+<style lang="scss" scoped>
+$main-color: hsla(203, 89%, 53%, 1);
+$focus-color: hsla(203, 82%, 78%, 0.4);
+$hover-color: hsla(203, 89%, 53%, 0.9);
+$painted-color: hsla(202, 66%, 43%, 1);
 
-.button-social * {
+.share-button * {
   box-sizing: border-box;
 }
 
@@ -77,7 +77,7 @@ export default {
   padding: 10px 8px;
   margin: 4px;
   color: #fff;
-  background-color: #fff;
+  background-color: $main-color;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol";
@@ -95,139 +95,184 @@ export default {
   text-shadow: none;
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out,
     border-color 0.3s ease-in-out;
-}
 
-.share-button:disabled {
-  opacity: 0.9;
-}
+  &:disabled {
+    opacity: 0.9;
+  }
 
-.share-button:focus {
-  outline: none;
-}
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px $focus-color;
+  }
 
-.share-button:not(:disabled):not(.disabled) {
-  cursor: pointer;
-}
+  &:hover {
+    background-color: $hover-color;
+  }
 
-.share-button:last-child {
-  margin-right: 0;
-}
+  &:not(:disabled):not(.disabled) {
+    cursor: pointer;
+  }
 
-.share-button__icon {
-  display: inline-block;
-  padding: 0;
-  margin: 0 7px;
-  font-size: 0;
-  vertical-align: middle;
-}
+  &:last-child {
+    margin-right: 0;
+  }
 
-.share-button__icon:last-child {
-  margin: 0;
-}
+  &__icon {
+    display: inline-block;
+    padding: 0;
+    margin: 0 7px;
+    font-size: 0;
+    vertical-align: middle;
 
-.share-button__text {
-  display: inline-block;
-  margin: 0 7px;
-  font-size: 16px;
-  vertical-align: middle;
-}
+    path {
+      fill: #fff;
+    }
 
-.share-button__counter {
-  display: inline-block;
-  padding: 3px 10px;
-  margin-left: 4px;
-  font-size: 12px;
-  border-left: 1px solid #fff;
-  vertical-align: middle;
-}
+    &:last-child {
+      margin: 0;
+    }
+  }
 
-/* Circle */
-.share-button--circle {
-  min-width: 42px;
-  min-height: 42px;
-  padding: 10px;
-  border-radius: 42px;
-}
+  &__text {
+    display: inline-block;
+    margin: 0 7px;
+    font-size: 16px;
+    vertical-align: middle;
+  }
 
-/* Outline */
-.share-button--outline {
-  background-color: transparent;
-  border: 1px solid;
-}
+  &__counter {
+    display: inline-block;
+    padding: 3px 10px;
+    margin-left: 4px;
+    font-size: 12px;
+    border-left: 1px solid #fff;
+    vertical-align: middle;
+  }
 
-/* Painted */
-.share-button--painted {
-  position: relative;
-  min-width: 42px;
-  min-height: 42px;
-  padding: 15px;
-  margin-bottom: 30px;
-  border-radius: 42px;
-  background-color: transparent;
-  border: 3px solid;
-}
+  &--circle {
+    min-width: 42px;
+    min-height: 42px;
+    padding: 10px;
+    border-radius: 42px;
+  }
 
-.share-button--painted::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  top: -1.5px;
-  left: -1.5px;
-  display: block;
-  width: calc(100% + 3px);
-  height: calc(100% + 3px);
-  background-color: #000;
-  border-radius: 50%;
-  transform: translate3d(3px, 2px, 0);
-  transition: transform 0.2s ease-in-out;
-}
+  &--outline {
+    background-color: transparent;
+    border: 1px solid;
+    background-color: transparent;
+    border-color: $main-color;
 
-.share-button--painted:hover::before {
-  transform: translate3d(0, 0, 0);
-}
+    .share-button__text {
+      color: $main-color;
+    }
 
-.share-button--painted:focus::before {
-  transform: translate3d(0, 0, 0);
-}
+    .share-button__icon path {
+      fill: $main-color;
+    }
 
-.share-button--painted .share-button__icon {
-  width: 30px;
-  height: 30px;
-  margin: 0;
-}
+    .share-button__counter {
+      color: $hover-color;
+      border-color: $hover-color;
+    }
 
-.share-button--painted .share-button__text {
-  display: none;
-}
+    &:hover {
+      background-color: transparent;
+      border-color: $hover-color;
 
-.share-button--painted .share-button__counter {
-  position: absolute;
-  bottom: -30px;
-  right: -7px;
-  margin: 0;
-  padding: 4px 10px;
-  border: 3px solid;
-  font-size: 8px;
-  border-radius: 15px;
-}
+      .share-button__text {
+        color: $main-color;
+      }
 
-.share-button--painted .share-button__counter::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  top: -1.65px;
-  left: -1.5px;
-  display: block;
-  width: calc(100% + 3px);
-  height: calc(100% + 3px);
-  border-radius: 15px;
-  transform: translate3d(-3px, 1.5px, 0);
-  transition: transform 0.2s ease-in-out;
-}
+      .share-button__icon path {
+        fill: $hover-color;
+      }
+    }
+  }
 
-.share-button--painted:hover .share-button__counter::before,
-.share-button--painted:focus .share-button__counter::before {
-  transform: translate3d(0px, 0px, 0);
+  &--painted {
+    position: relative;
+    min-width: 42px;
+    min-height: 42px;
+    padding: 15px;
+    margin-bottom: 30px;
+    border-radius: 42px;
+    background-color: transparent;
+    border: 3px solid;
+    border-color: $painted-color;
+
+    &::before {
+      content: "";
+      z-index: -1;
+      position: absolute;
+      top: -1.5px;
+      left: -1.5px;
+      display: block;
+      width: calc(100% + 3px);
+      height: calc(100% + 3px);
+      background-color: $main-color;
+      border-radius: 50%;
+      transform: translate3d(3px, 2px, 0);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .share-button__icon {
+      width: 30px;
+      height: 30px;
+      margin: 0;
+    }
+
+    .share-button__text {
+      display: none;
+    }
+
+    .share-button__counter {
+      position: absolute;
+      bottom: -30px;
+      right: -7px;
+      margin: 0;
+      padding: 4px 10px;
+      border: 3px solid;
+      font-size: 8px;
+      border-radius: 15px;
+      color: #fff;
+      border-color: $painted-color;
+
+      &::before {
+        content: "";
+        z-index: -1;
+        position: absolute;
+        top: -1.65px;
+        left: -1.5px;
+        display: block;
+        width: calc(100% + 3px);
+        height: calc(100% + 3px);
+        border-radius: 15px;
+        transform: translate3d(-3px, 1.5px, 0);
+        transition: transform 0.2s ease-in-out;
+        background-color: $main-color;
+      }
+    }
+
+    &:hover {
+      &::before {
+        transform: translate3d(0, 0, 0);
+      }
+
+      .share-button__counter::before {
+        transform: translate3d(0px, 0px, 0);
+      }
+    }
+
+    &:focus {
+      &::before {
+        transform: translate3d(0, 0, 0);
+      }
+
+      .share-button__counter::before {
+        transform: translate3d(0px, 0px, 0);
+      }
+    }
+  }
 }
 
 @media (max-width: 768px) {
@@ -236,114 +281,46 @@ export default {
     min-height: 38px;
     padding: 8px 8px;
     margin: 2px;
+
+    &__icon {
+      width: 18px;
+      height: 18px;
+      margin: 0 4px;
+    }
+
+    &__text {
+      margin: 0 4px;
+      font-size: 14px;
+    }
+
+    &--circle {
+      border-radius: 38px;
+    }
+
+    &--painted {
+      min-width: 48px;
+      min-height: 48px;
+      margin: 4px 4px 20px 4px;
+
+      &::before {
+        transform: translate3d(2.5px, 1.5px, 0);
+      }
+
+      .share-button__icon {
+        width: 20px;
+        height: 20px;
+      }
+
+      .share-button__counter {
+        bottom: -24px;
+        right: -8px;
+        padding: 2px 7px;
+
+        &::before {
+          transform: translate3d(-2px, 1.75px, 0);
+        }
+      }
+    }
   }
-
-  .share-button__icon {
-    width: 18px;
-    height: 18px;
-    margin: 0 4px;
-  }
-
-  .share-button__text {
-    margin: 0 4px;
-    font-size: 14px;
-  }
-
-  /* Circle */
-  .share-button--circle {
-    border-radius: 38px;
-  }
-
-  /* Painted */
-  .share-button--painted {
-    min-width: 48px;
-    min-height: 48px;
-    margin: 4px 4px 20px 4px;
-  }
-
-  .share-button--painted::before {
-    transform: translate3d(2.5px, 1.5px, 0);
-  }
-
-  .share-button--painted .share-button__icon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .share-button--painted .share-button__counter {
-    bottom: -24px;
-    right: -8px;
-    padding: 2px 7px;
-  }
-
-  .share-button--painted .share-button__counter::before {
-    transform: translate3d(-2px, 1.75px, 0);
-  }
-}
-
-/* Twitter */
-.share-button--twitter {
-  background-color: hsla(203, 89%, 53%, 1);
-}
-
-.share-button--twitter:focus {
-  box-shadow: 0 0 0 3px hsla(203, 82%, 78%, 0.4);
-}
-
-.share-button--twitter:hover {
-  background-color: hsla(203, 89%, 53%, 0.9);
-}
-
-.share-button--twitter .share-button__icon path {
-  fill: #fff;
-}
-
-.share-button--twitter.share-button--outline {
-  background-color: transparent;
-  border-color: hsla(203, 89%, 53%, 1);
-}
-
-.share-button--twitter.share-button--outline:hover {
-  background-color: transparent;
-  border-color: hsla(203, 89%, 53%, 0.9);
-}
-
-.share-button--twitter.share-button--outline .share-button__text {
-  color: hsla(203, 89%, 53%, 1);
-}
-
-.share-button--twitter.share-button--outline:hover .share-button__text {
-  color: hsla(203, 89%, 53%, 0.9);
-}
-
-.share-button--twitter.share-button--outline .share-button__icon path {
-  fill: hsla(203, 89%, 53%, 1);
-}
-
-.share-button--twitter.share-button--outline:hover .share-button__icon path {
-  fill: hsla(203, 89%, 53%, 0.9);
-}
-
-.share-button--twitter.share-button--outline .share-button__counter {
-  color: hsla(203, 89%, 53%, 0.9);
-  border-color: hsla(203, 89%, 53%, 0.9);
-}
-
-.share-button--twitter.share-button--painted {
-  background-color: transparent;
-  border-color: hsla(202, 66%, 43%, 1);
-}
-
-.share-button--twitter.share-button--painted::before {
-  background-color: hsla(203, 89%, 53%, 1);
-}
-
-.share-button--twitter.share-button--painted .share-button__counter {
-  color: #fff;
-  border-color: hsla(202, 66%, 43%, 1);
-}
-
-.share-button--twitter.share-button--painted .share-button__counter::before {
-  background-color: hsla(203, 89%, 53%, 1);
 }
 </style>
