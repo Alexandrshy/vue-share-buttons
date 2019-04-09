@@ -17,6 +17,7 @@
   - [Buttons for instant messengers](#buttons-for-instant-messengers)
   - [Send a message via email](#send-a-message-via-email)
   - [Full list of social networks](#full-list-of-social-networks)
+- [Example](#example)
 - [Author](#author)
 - [Link](#link)
 - [License](#license)
