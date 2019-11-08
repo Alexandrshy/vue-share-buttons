@@ -3,8 +3,12 @@
     class="share-button share-button--whatsApp"
     type="button"
     :shareUrl="shareUrl"
+    :description="description"
     :btnText="btnText"
     :hasIcon="hasIcon"
+    :isBlank="isBlank"
+    :modalWidth="modalWidth"
+    :modalHeight="modalHeight"
     @click="openShareWindow"
   >
     <icon iconName="WhatsApp" class="share-button__icon" v-if="hasIcon === true">
@@ -15,27 +19,41 @@
     <span class="share-button__text" v-if="btnText">{{btnText}}</span>
   </button>
 </template>
- 
+
 <script>
 import Icon from "./icon/Icon.vue";
-import { getDocumentHref, eventEmit } from "../helpers";
+import { getDocumentHref, eventEmit,createWindow,getDocumentTitle } from "../helpers";
 
 export default {
   name: "WhatsAppShareButton",
   components: { Icon },
   props: {
     shareUrl: { type: String, default: getDocumentHref },
+    description: { type: String, default: getDocumentTitle },
     btnText: { type: String, default: "WhatsApp" },
-    hasIcon: { type: Boolean, default: true }
+    hasIcon: { type: Boolean, default: true },
+    isBlank: { type: Boolean, default: true },
+    modalWidth: { type: Number, default: 500 },
+    modalHeight: { type: Number, default: 500 }
   },
   methods: {
     openShareWindow() {
       eventEmit(this, "onShare", { name: "WhatsApp" });
-      const url = `whatsapp://send?text=${encodeURIComponent(
+
+      const configWindow = createWindow(
+        this.$props.modalWidth,
+        this.$props.modalHeight
+      );
+
+      const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(
+        this.$props.description
+      )} - ${encodeURIComponent(
         this.$props.shareUrl
       )}`;
 
-      return window.open(url);
+      return this.$props.isBlank
+        ? window.open(url, "__blank")
+        : window.open(url, "Share this", configWindow);
     }
   }
 };
