@@ -45,7 +45,7 @@ You need to import each social button separately. For example, you want to use t
 #### Import component
 
 ```js
-import TwitteButton from "vue-share-buttons/src/components/TwitterButton";
+import TwitterButton from "vue-share-buttons/src/components/TwitterButton";
 
 const app = new Vue({
   el: "#app",
