@@ -19,7 +19,7 @@
     <span class="share-button__text" v-if="btnText">{{btnText}}</span>
   </button>
 </template>
- 
+
 <script>
 import Icon from "./icon/Icon.vue";
 import { getDocumentHref, eventEmit, createWindow } from "../helpers";
@@ -48,7 +48,7 @@ export default {
       )}&title=${encodeURIComponent(this.$props.title)}`;
 
       return this.$props.isBlank
-        ? window.open(url, "__blank")
+        ? window.open(url, "_blank")
         : window.open(url, "Share this", configWindow);
     }
   }
