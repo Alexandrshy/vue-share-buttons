@@ -24,7 +24,7 @@
     <span class="share-button__counter" v-if="hasCounter && counter > 0">{{ shortСounter }}</span>
   </button>
 </template>
- 
+
 <script>
 import Icon from "./icon/Icon.vue";
 import {
@@ -76,7 +76,7 @@ export default {
       )}&caption=${encodeURIComponent(this.$props.description)}&posttype=link`;
 
       return this.$props.isBlank
-        ? window.open(url, "__blank")
+        ? window.open(url, "_blank")
         : window.open(url, "Share this", configWindow);
     },
 

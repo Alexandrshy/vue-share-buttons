@@ -57,7 +57,7 @@ export default {
       )}`;
 
       return this.$props.isBlank
-        ? window.open(url, "__blank")
+        ? window.open(url, "_blank")
         : window.open(url, "Share this", configWindow);
     }
   }
