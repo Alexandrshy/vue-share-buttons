@@ -8,15 +8,14 @@
     :hasIcon="hasIcon"
     @click="openShareWindow"
   >
-    <icon iconName="FacebookMessenger" class="share-button__icon" v-if="hasIcon === true">
-      <path
-        d="M22.676 0H1.324C.593 0 0 .593 0 1.324v21.352C0 23.408.593 24 1.324 24h11.494v-9.294H9.689v-3.621h3.129V8.41c0-3.099 1.894-4.785 4.659-4.785 1.325 0 2.464.097 2.796.141v3.24h-1.921c-1.5 0-1.792.721-1.792 1.771v2.311h3.584l-.465 3.63H16.56V24h6.115c.733 0 1.325-.592 1.325-1.324V1.324C24 .593 23.408 0 22.676 0"
-      />
+    <icon iconName="FacebookMessenger" class="share-button__icon" v-if="hasIcon === true" view-box-width="512" view-box-height="512">
+      <path style="fill:#1E88E5;" d="M256,0C114.624,0,0,106.112,0,237.024c0,74.592,37.216,141.12,95.392,184.576V512l87.168-47.84 c23.264,6.432,47.904,9.92,73.44,9.92c141.376,0,256-106.112,256-237.024C512,106.112,397.376,0,256,0z"/>
+      <polygon style="fill:#FAFAFA;" points="281.44,319.2 216.256,249.664 89.056,319.2 228.96,170.656 295.744,240.192 421.376,170.656"/>
     </icon>
     <span class="share-button__text" v-if="btnText">{{btnText}}</span>
   </button>
 </template>
- 
+
 <script>
 import Icon from "./icon/Icon.vue";
 import { getDocumentHref, eventEmit } from "../helpers";
@@ -44,10 +43,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$main-color: hsla(221, 44%, 41%, 1);
-$focus-color: hsla(221, 38%, 66%, 0.4);
-$hover-color: hsla(221, 44%, 41%, 0.9);
-$painted-color: hsla(220, 21%, 31%, 1);
+$main-color: hsl(208, 82%, 48%);
+$focus-color: hsla(208, 82%, 48%, 0.4);
+$hover-color: hsla(208, 82%, 48%, 0.7);
+$painted-color: hsla(208, 82%, 48%, 1);
 
 .share-button * {
   box-sizing: border-box;
