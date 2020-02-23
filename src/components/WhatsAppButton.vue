@@ -15,7 +15,7 @@
     <span class="share-button__text" v-if="btnText">{{btnText}}</span>
   </button>
 </template>
- 
+
 <script>
 import Icon from "./icon/Icon.vue";
 import { getDocumentHref, eventEmit } from "../helpers";
@@ -31,7 +31,7 @@ export default {
   methods: {
     openShareWindow() {
       eventEmit(this, "onShare", { name: "WhatsApp" });
-      const url = `whatsapp://send?text=${encodeURIComponent(
+      const url = `https://wa.me/?text=${encodeURIComponent(
         this.$props.shareUrl
       )}`;
 
