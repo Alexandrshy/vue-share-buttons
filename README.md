@@ -7,6 +7,7 @@
 - [Installation](#installation)
   - [Install using npm](#install-using-npm)
   - [Install using Yarn](#install-using-yarn)
+- [Icons](#icons)
 - [Usage](#usage)
   - [Import component](#import-component)
   - [Add the button to your template](#add-the-button-to-your-template)
@@ -37,6 +38,10 @@ npm i vue-share-buttons
 yarn add vue-share-buttons
 ```
 [Link to Yarn](https://yarn.pm/vue-share-buttons)
+
+## Icons
+
+For icons, I use [simpleicons](https://simpleicons.org/)
 
 ## Usage
 
