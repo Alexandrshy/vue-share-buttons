@@ -32,12 +32,13 @@ export default {
   props: {
     url: { type: String, default: getDocumentHref },
     btnText: { type: String, default: "Email" },
-    hasIcon: { type: Boolean, default: true }
+    hasIcon: { type: Boolean, default: true },
+    subject: { type: String, default: 'Share Link' },
   },
   methods: {
     openShareWindow() {
       eventEmit(this, "onShare", { name: "Email" });
-      const url = `mailto:?subject=Share%20Link&body=${encodeURIComponent(
+      const url = `mailto:?subject=${encodeURIComponent(this.$props.subject)}&body=${encodeURIComponent(
         this.$props.url
       )}`;
 
