@@ -1,6 +1,6 @@
 {
   "name": "vue-share-buttons",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "private": false,
   "license": "MIT",
   "homepage": "https://github.com/Alexandrshy/vue-share-buttons",
@@ -26,7 +26,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "build-bundle": "vue-cli-service build --target lib --name vue-share-buttons ./src/App.vue"
+    "build-bundle": "vue-cli-service build --target lib --name vue-share-buttons ./src/VueShareButtons.vue"
   },
   "dependencies": {
     "node-sass": "^4.11.0",
