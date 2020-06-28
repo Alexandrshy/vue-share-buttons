@@ -31,7 +31,7 @@ export default {
   methods: {
     openShareWindow() {
       eventEmit(this, "onShare", { name: "WhatsApp" });
-      const url = `https://wa.me/?text=${encodeURIComponent(
+      const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(
         this.$props.shareUrl
       )}`;
 
