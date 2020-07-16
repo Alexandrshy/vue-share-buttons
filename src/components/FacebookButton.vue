@@ -45,7 +45,8 @@ export default {
     hasCounter: { type: Boolean, default: false },
     digitsCounter: { type: Number, default: 0 },
     keyCounter: { type: String, default: "" },
-    isBlank: { type: Boolean, default: true }
+    isBlank: { type: Boolean, default: true },
+    description: { type: String, default: "" }
   },
   mounted() {
     if (this.$props.hasCounter) this.getShareCounter();
@@ -66,7 +67,7 @@ export default {
       );
       const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
         this.$props.url
-      )}`;
+      )}&quote=${encodeURIComponent(this.$props.description)}`;
 
       return this.$props.isBlank
         ? window.open(url, "_blank")
