@@ -62,5 +62,4 @@ $hover-color: hsla(200, 74%, 53%, 0.9);
 $painted-color: hsla(199, 51%, 43%, 1);
 
 @import "../css/styles";
-
 </style>
