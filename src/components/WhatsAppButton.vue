@@ -2,7 +2,7 @@
   <button
     :btnText="btnText"
     :hasIcon="hasIcon"
-    :shareUrl="shareUrl"
+    :url="url"
     class="share-button share-button--whatsApp"
     type="button"
     @click="openShareWindow"
@@ -29,7 +29,7 @@ export default {
   name: "WhatsAppShareButton",
   components: { Icon },
   props: {
-    shareUrl: { type: String, default: getDocumentHref },
+    url: { type: String, default: getDocumentHref },
     btnText: { type: String, default: "WhatsApp" },
     hasIcon: { type: Boolean, default: true },
     customIcon: { type: String, default: "" },
@@ -38,7 +38,7 @@ export default {
     openShareWindow() {
       eventEmit(this, "onShare", { name: "WhatsApp" });
       const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(
-        this.$props.shareUrl
+        this.$props.url
       )}`;
 
       return window.open(url);

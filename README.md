@@ -68,8 +68,8 @@ const app = new Vue({
 ```html
 <div id="app">
   <twitter-button
-    shareUrl="https://github.com/"
-    shareDescription="GitHub is where people build software."
+    url="https://github.com/"
+    description="GitHub is where people build software."
   />
 </div>
 ```
@@ -276,14 +276,12 @@ Below are the options you can pass to create your own button.
 [Live Demo](https://codesandbox.io/s/9149y00324?fontsize=14)
 
 ```html
-<twitter-button v-bind:hasIcon="false" class="share-button--outline">
-  /></twitter-button
->
+<twitter-button v-bind:hasIcon="false" class="share-button--outline" />
 ```
 
 <img width="85" alt="Twitter outline button without icon" src="https://user-images.githubusercontent.com/14329906/55610923-09f05600-5795-11e9-89c3-13a50ab397eb.png">
 
-[Live Demo]()
+[Live Demo](https://codesandbox.io/s/9149y00-cu6tf?fontsize=14)
 
 ```html
 <twitter-button class="share-button--circle share-button--outline" btnText />
