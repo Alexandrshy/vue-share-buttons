@@ -1,39 +1,42 @@
 <template>
   <button
+    :btnText="btnText"
+    :description="description"
+    :digitsCounter="digitsCounter"
+    :hasCounter="hasCounter"
+    :hasIcon="hasIcon"
+    :isBlank="isBlank"
+    :keyCounter="keyCounter"
+    :modalHeight="modalHeight"
+    :modalWidth="modalWidth"
+    :title="title"
+    :url="url"
     class="share-button share-button--tumblr"
     type="button"
-    :url="url"
-    :title="title"
-    :description="description"
-    :btnText="btnText"
-    :modalWidth="modalWidth"
-    :modalHeight="modalHeight"
-    :hasIcon="hasIcon"
-    :hasCounter="hasCounter"
-    :digitsCounter="digitsCounter"
-    :keyCounter="keyCounter"
-    :isBlank="isBlank"
     @click="openShareWindow"
   >
+    <img v-if="customIcon" v-bind:src="customIcon" alt="" />
     <icon iconName="Tumblr" class="share-button__icon" v-if="hasIcon === true">
       <path
         d="M14.563 24c-5.093 0-7.031-3.756-7.031-6.411V9.747H5.116V6.648c3.63-1.313 4.512-4.596 4.71-6.469C9.84.051 9.941 0 9.999 0h3.517v6.114h4.801v3.633h-4.82v7.47c.016 1.001.375 2.371 2.207 2.371h.09c.631-.02 1.486-.205 1.936-.419l1.156 3.425c-.436.636-2.4 1.374-4.156 1.404h-.178l.011.002z"
       />
     </icon>
-    <span class="share-button__text" v-if="btnText">{{btnText}}</span>
-    <span class="share-button__counter" v-if="hasCounter && counter > 0">{{ shortСounter }}</span>
+    <span v-if="btnText" class="share-button__text">{{ btnText }}</span>
+    <span v-if="hasCounter && counter > 0" class="share-button__counter">{{
+      shortCounter
+    }}</span>
   </button>
 </template>
 
 <script>
 import Icon from "./icon/Icon.vue";
 import {
+  createWindow,
+  eventEmit,
   getDocumentHref,
   getDocumentTitle,
-  eventEmit,
-  createWindow,
   getRandomNumber,
-  getShortNumber
+  getShortNumber,
 } from "../helpers";
 
 export default {
@@ -50,7 +53,8 @@ export default {
     hasCounter: { type: Boolean, default: false },
     digitsCounter: { type: Number, default: 0 },
     keyCounter: { type: String, default: "" },
-    isBlank: { type: Boolean, default: true }
+    isBlank: { type: Boolean, default: true },
+    customIcon: { type: String, default: "" },
   },
   mounted() {
     if (this.$props.hasCounter) this.getShareCounter();
@@ -60,7 +64,7 @@ export default {
       if (this.$props.hasCounter) {
         eventEmit(this, "onShareCounter", {
           name: "Tumblr",
-          counter: this.counter
+          counter: this.counter,
         });
       } else {
         eventEmit(this, "onShare", { name: "Tumblr" });
@@ -88,22 +92,22 @@ export default {
       )}&callback=${callback}`;
       document.body.appendChild(script);
 
-      window[callback] = count => {
+      window[callback] = (count) => {
         if (!count) return;
         this.counter = count.response.note_count;
-        this.shortСounter = getShortNumber(
+        this.shortCounter = getShortNumber(
           this.counter,
           this.$props.digitsCounter
         );
       };
-    }
+    },
   },
   data() {
     return {
       counter: 0,
-      shortСounter: 0
+      shortCounter: 0,
     };
-  }
+  },
 };
 </script>
 
@@ -135,7 +139,7 @@ $painted-color: hsla(214, 4%, 19%, 1);
   border-radius: 4px;
   box-shadow: none;
   text-rendering: auto;
-  text-indent: 0px;
+  text-indent: 0;
   text-align: center;
   letter-spacing: normal;
   word-spacing: normal;
@@ -205,9 +209,7 @@ $painted-color: hsla(214, 4%, 19%, 1);
 
   &--outline {
     background-color: transparent;
-    border: 1px solid;
-    background-color: transparent;
-    border-color: $main-color;
+    border: 1px solid $main-color;
 
     .share-button__text {
       color: $main-color;
@@ -244,8 +246,7 @@ $painted-color: hsla(214, 4%, 19%, 1);
     margin-bottom: 30px;
     border-radius: 42px;
     background-color: transparent;
-    border: 3px solid;
-    border-color: $painted-color;
+    border: 3px solid $painted-color;
 
     &::before {
       content: "";
@@ -278,11 +279,10 @@ $painted-color: hsla(214, 4%, 19%, 1);
       right: -7px;
       margin: 0;
       padding: 4px 10px;
-      border: 3px solid;
       font-size: 8px;
       border-radius: 15px;
       color: #fff;
-      border-color: $painted-color;
+      border: 3px solid $painted-color;
 
       &::before {
         content: "";

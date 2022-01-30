@@ -11,6 +11,7 @@
     :isBlank="isBlank"
     @click="openShareWindow"
   >
+    <img v-if="customIcon" v-bind:src="customIcon" alt="" />
     <icon iconName="Renren" class="share-button__icon" v-if="hasIcon === true">
       <path
         d="M5.661 9.601V5.303a6.793 6.793 0 0 0-4.053 11.084c2.378-1.152 4.041-3.755 4.053-6.786zM6.793 13.715c-.423 1.752-1.687 3.249-3.262 4.244a6.759 6.759 0 0 0 3.261.833 6.771 6.771 0 0 0 3.262-.833c-1.575-.995-2.838-2.493-3.261-4.244zM11.977 7.613a6.789 6.789 0 0 0-4.052-2.31v4.265c0 3.044 1.666 5.662 4.051 6.817a6.766 6.766 0 0 1-1.607-4.386 6.754 6.754 0 0 1 1.608-4.386z"
@@ -19,13 +20,13 @@
         d="M11.977 7.613c1.003 1.183 1.655 2.714 1.655 4.387s-.652 3.202-1.655 4.387l-.001-.001.001.001c2.378-1.151 4.087-3.755 4.099-6.786V5.303a6.9 6.9 0 0 0-4.099 2.31zM18.34 9.568c0 3.045 1.666 5.662 4.052 6.818A6.792 6.792 0 0 0 18.34 5.304v4.264zM17.208 13.715c-.423 1.752-1.687 3.249-3.262 4.244a6.759 6.759 0 0 0 3.261.833 6.771 6.771 0 0 0 3.262-.833c-1.574-.995-2.838-2.493-3.261-4.244z"
       />
     </icon>
-    <span class="share-button__text" v-if="btnText">{{btnText}}</span>
+    <span v-if="btnText" class="share-button__text">{{ btnText }}</span>
   </button>
 </template>
 
 <script>
 import Icon from "./icon/Icon.vue";
-import { getDocumentHref, eventEmit, createWindow } from "../helpers";
+import { createWindow, eventEmit, getDocumentHref } from "../helpers";
 
 export default {
   name: "RenrenShareButton",
@@ -37,7 +38,8 @@ export default {
     modalWidth: { type: Number, default: 500 },
     modalHeight: { type: Number, default: 500 },
     hasIcon: { type: Boolean, default: true },
-    isBlank: { type: Boolean, default: true }
+    isBlank: { type: Boolean, default: true },
+    customIcon: { type: String, default: "" },
   },
   methods: {
     openShareWindow() {
@@ -53,8 +55,8 @@ export default {
       return this.$props.isBlank
         ? window.open(url, "_blank")
         : window.open(url, "Share this", configWindow);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -86,7 +88,7 @@ $painted-color: hsla(206, 48%, 35%, 1);
   border-radius: 4px;
   box-shadow: none;
   text-rendering: auto;
-  text-indent: 0px;
+  text-indent: 0;
   text-align: center;
   letter-spacing: normal;
   word-spacing: normal;
@@ -156,9 +158,7 @@ $painted-color: hsla(206, 48%, 35%, 1);
 
   &--outline {
     background-color: transparent;
-    border: 1px solid;
-    background-color: transparent;
-    border-color: $main-color;
+    border: 1px solid $main-color;
 
     .share-button__text {
       color: $main-color;
@@ -195,8 +195,7 @@ $painted-color: hsla(206, 48%, 35%, 1);
     margin-bottom: 30px;
     border-radius: 42px;
     background-color: transparent;
-    border: 3px solid;
-    border-color: $painted-color;
+    border: 3px solid $painted-color;
 
     &::before {
       content: "";
@@ -229,11 +228,10 @@ $painted-color: hsla(206, 48%, 35%, 1);
       right: -7px;
       margin: 0;
       padding: 4px 10px;
-      border: 3px solid;
       font-size: 8px;
       border-radius: 15px;
       color: #fff;
-      border-color: $painted-color;
+      border: 3px solid $painted-color;
 
       &::before {
         content: "";

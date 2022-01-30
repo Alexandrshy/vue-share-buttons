@@ -1,11 +1,11 @@
 <template>
   <svg
-    xmlns="http://www.w3.org/2000/svg"
-    :width="width"
+    :aria-labelledby="iconName"
     :height="height"
     :viewBox="`0 0 ${viewBoxWidth} ${viewBoxHeight}`"
-    :aria-labelledby="iconName"
-    role="presentation"
+    :width="width"
+    role="img"
+    xmlns="http://www.w3.org/2000/svg"
   >
     <title lang="en">{{ iconName }} icon</title>
     <slot></slot>
@@ -19,7 +19,7 @@ export default {
     viewBoxWidth: { type: [Number, String], default: 24 },
     viewBoxHeight: { type: [Number, String], default: 24 },
     width: { type: [Number, String], default: 20 },
-    height: { type: [Number, String], default: 20 }
-  }
+    height: { type: [Number, String], default: 20 },
+  },
 };
 </script>

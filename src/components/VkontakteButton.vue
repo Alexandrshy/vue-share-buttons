@@ -1,38 +1,41 @@
 <template>
   <button
+    :btnText="btnText"
+    :description="description"
+    :digitsCounter="digitsCounter"
+    :hasCounter="hasCounter"
+    :hasIcon="hasIcon"
+    :isBlank="isBlank"
+    :modalHeight="modalHeight"
+    :modalWidth="modalWidth"
+    :title="title"
+    :url="url"
     class="share-button share-button--vk"
     type="button"
-    :url="url"
-    :description="description"
-    :title="title"
-    :btnText="btnText"
-    :modalWidth="modalWidth"
-    :modalHeight="modalHeight"
-    :hasIcon="hasIcon"
-    :hasCounter="hasCounter"
-    :digitsCounter="digitsCounter"
-    :isBlank="isBlank"
     @click="openShareWindow"
   >
+    <img v-if="customIcon" v-bind:src="customIcon" alt="" />
     <icon iconName="vk" class="share-button__icon" v-if="hasIcon === true">
       <path
         d="M11.701 18.771h1.437s.433-.047.654-.284c.21-.221.21-.63.21-.63s-.031-1.927.869-2.21c.887-.281 2.012 1.86 3.211 2.683.916.629 1.605.494 1.605.494l3.211-.044s1.682-.105.887-1.426c-.061-.105-.451-.975-2.371-2.76-2.012-1.861-1.742-1.561.676-4.787 1.469-1.965 2.07-3.166 1.875-3.676-.166-.48-1.26-.361-1.26-.361l-3.602.031s-.27-.031-.465.09c-.195.119-.314.391-.314.391s-.572 1.529-1.336 2.82c-1.623 2.729-2.268 2.879-2.523 2.699-.604-.391-.449-1.58-.449-2.432 0-2.641.404-3.75-.781-4.035-.39-.091-.681-.15-1.685-.166-1.29-.014-2.378.01-2.995.311-.405.203-.72.652-.539.675.24.03.779.146 1.064.537.375.506.359 1.636.359 1.636s.211 3.116-.494 3.503c-.495.262-1.155-.28-2.595-2.756-.735-1.26-1.291-2.67-1.291-2.67s-.105-.256-.299-.406c-.227-.165-.557-.225-.557-.225l-3.435.03s-.51.016-.689.24c-.166.195-.016.615-.016.615s2.686 6.287 5.732 9.453c2.79 2.902 5.956 2.715 5.956 2.715l-.05-.055z"
       />
     </icon>
-    <span class="share-button__text" v-if="btnText">{{btnText}}</span>
-    <span class="share-button__counter" v-if="hasCounter && counter > 0">{{ shortСounter }}</span>
+    <span v-if="btnText" class="share-button__text">{{ btnText }}</span>
+    <span v-if="hasCounter && counter > 0" class="share-button__counter">{{
+      shortCounter
+    }}</span>
   </button>
 </template>
 
 <script>
 import Icon from "./icon/Icon.vue";
 import {
+  createWindow,
+  eventEmit,
   getDocumentHref,
   getDocumentTitle,
-  eventEmit,
-  createWindow,
   getRandomNumber,
-  getShortNumber
+  getShortNumber,
 } from "../helpers";
 
 export default {
@@ -49,7 +52,8 @@ export default {
     hasIcon: { type: Boolean, default: true },
     hasCounter: { type: Boolean, default: false },
     digitsCounter: { type: Number, default: 0 },
-    isBlank: { type: Boolean, default: true }
+    isBlank: { type: Boolean, default: true },
+    customIcon: { type: String, default: "" },
   },
   mounted() {
     if (this.$props.hasCounter) this.getShareCounter();
@@ -59,7 +63,7 @@ export default {
       if (this.$props.hasCounter) {
         eventEmit(this, "onShareCounter", {
           name: "vk",
-          counter: this.counter
+          counter: this.counter,
         });
       } else {
         eventEmit(this, "onShare", { name: "vk" });
@@ -100,19 +104,19 @@ export default {
       window.VK.Share.count = (index, count) => {
         if (!count) return;
         this.counter = count;
-        this.shortСounter = getShortNumber(
+        this.shortCounter = getShortNumber(
           this.counter,
           this.$props.digitsCounter
         );
       };
-    }
+    },
   },
   data() {
     return {
       counter: 0,
-      shortСounter: 0
+      shortCounter: 0,
     };
-  }
+  },
 };
 </script>
 
@@ -144,7 +148,7 @@ $painted-color: hsla(211, 5%, 42%, 1);
   border-radius: 4px;
   box-shadow: none;
   text-rendering: auto;
-  text-indent: 0px;
+  text-indent: 0;
   text-align: center;
   letter-spacing: normal;
   word-spacing: normal;
@@ -214,9 +218,7 @@ $painted-color: hsla(211, 5%, 42%, 1);
 
   &--outline {
     background-color: transparent;
-    border: 1px solid;
-    background-color: transparent;
-    border-color: $main-color;
+    border: 1px solid $main-color;
 
     .share-button__text {
       color: $main-color;
@@ -253,8 +255,7 @@ $painted-color: hsla(211, 5%, 42%, 1);
     margin-bottom: 30px;
     border-radius: 42px;
     background-color: transparent;
-    border: 3px solid;
-    border-color: $painted-color;
+    border: 3px solid $painted-color;
 
     &::before {
       content: "";
@@ -287,11 +288,10 @@ $painted-color: hsla(211, 5%, 42%, 1);
       right: -7px;
       margin: 0;
       padding: 4px 10px;
-      border: 3px solid;
       font-size: 8px;
       border-radius: 15px;
       color: #fff;
-      border-color: $painted-color;
+      border: 3px solid $painted-color;
 
       &::before {
         content: "";

@@ -1,39 +1,46 @@
 <template>
   <button
+    :btnText="btnText"
+    :description="description"
+    :digitsCounter="digitsCounter"
+    :hasCounter="hasCounter"
+    :hasIcon="hasIcon"
+    :isBlank="isBlank"
+    :keyCounter="keyCounter"
+    :modalHeight="modalHeight"
+    :modalWidth="modalWidth"
+    :picture="picture"
+    :url="url"
     class="share-button share-button--pinterest"
     type="button"
-    :url="url"
-    :description="description"
-    :picture="picture"
-    :btnText="btnText"
-    :modalWidth="modalWidth"
-    :modalHeight="modalHeight"
-    :hasIcon="hasIcon"
-    :hasCounter="hasCounter"
-    :digitsCounter="digitsCounter"
-    :keyCounter="keyCounter"
-    :isBlank="isBlank"
     @click="openShareWindow"
   >
-    <icon iconName="Pinterest" class="share-button__icon" v-if="hasIcon === true">
+    <img v-if="customIcon" v-bind:src="customIcon" alt="" />
+    <icon
+      v-if="hasIcon === true"
+      class="share-button__icon"
+      iconName="Pinterest"
+    >
       <path
         d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"
       />
     </icon>
-    <span class="share-button__text" v-if="btnText">{{btnText}}</span>
-    <span class="share-button__counter" v-if="hasCounter && counter > 0">{{ shortСounter }}</span>
+    <span v-if="btnText" class="share-button__text">{{ btnText }}</span>
+    <span v-if="hasCounter && counter > 0" class="share-button__counter">{{
+      shortCounter
+    }}</span>
   </button>
 </template>
 
 <script>
 import Icon from "./icon/Icon.vue";
 import {
+  createWindow,
+  eventEmit,
   getDocumentHref,
   getDocumentTitle,
-  eventEmit,
-  createWindow,
   getRandomNumber,
-  getShortNumber
+  getShortNumber,
 } from "../helpers";
 
 export default {
@@ -50,7 +57,8 @@ export default {
     hasCounter: { type: Boolean, default: false },
     digitsCounter: { type: Number, default: 0 },
     keyCounter: { type: String, default: "" },
-    isBlank: { type: Boolean, default: true }
+    isBlank: { type: Boolean, default: true },
+    customIcon: { type: String, default: "" },
   },
   mounted() {
     if (this.$props.hasCounter) this.getShareCounter();
@@ -60,7 +68,7 @@ export default {
       if (this.$props.hasCounter) {
         eventEmit(this, "onShareCounter", {
           name: "Pinterest",
-          counter: this.counter
+          counter: this.counter,
         });
       } else {
         eventEmit(this, "onShare", { name: "Pinterest" });
@@ -89,22 +97,22 @@ export default {
       )}&callback=${callback}`;
       document.body.appendChild(script);
 
-      window[callback] = count => {
+      window[callback] = (count) => {
         if (!count) return;
         this.counter = count.count;
-        this.shortСounter = getShortNumber(
+        this.shortCounter = getShortNumber(
           this.counter,
           this.$props.digitsCounter
         );
       };
-    }
+    },
   },
   data() {
     return {
       counter: 0,
-      shortСounter: 0
+      shortCounter: 0,
     };
-  }
+  },
 };
 </script>
 
@@ -136,7 +144,7 @@ $painted-color: hsla(352, 69%, 29%, 1);
   border-radius: 4px;
   box-shadow: none;
   text-rendering: auto;
-  text-indent: 0px;
+  text-indent: 0;
   text-align: center;
   letter-spacing: normal;
   word-spacing: normal;
@@ -206,9 +214,7 @@ $painted-color: hsla(352, 69%, 29%, 1);
 
   &--outline {
     background-color: transparent;
-    border: 1px solid;
-    background-color: transparent;
-    border-color: $main-color;
+    border: 1px solid $main-color;
 
     .share-button__text {
       color: $main-color;
@@ -245,8 +251,7 @@ $painted-color: hsla(352, 69%, 29%, 1);
     margin-bottom: 30px;
     border-radius: 42px;
     background-color: transparent;
-    border: 3px solid;
-    border-color: $painted-color;
+    border: 3px solid $painted-color;
 
     &::before {
       content: "";
@@ -279,11 +284,10 @@ $painted-color: hsla(352, 69%, 29%, 1);
       right: -7px;
       margin: 0;
       padding: 4px 10px;
-      border: 3px solid;
       font-size: 8px;
       border-radius: 15px;
       color: #fff;
-      border-color: $painted-color;
+      border: 3px solid $painted-color;
 
       &::before {
         content: "";

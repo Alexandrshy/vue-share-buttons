@@ -1,27 +1,28 @@
 <template>
   <button
-    class="share-button share-button--digg"
-    type="button"
-    :url="url"
     :btnText="btnText"
-    :modalWidth="modalWidth"
-    :modalHeight="modalHeight"
     :hasIcon="hasIcon"
     :isBlank="isBlank"
+    :modalHeight="modalHeight"
+    :modalWidth="modalWidth"
+    :url="url"
+    class="share-button share-button--digg"
+    type="button"
     @click="openShareWindow"
   >
+    <img v-if="customIcon" v-bind:src="customIcon" alt="" />
     <icon iconName="Digg" class="share-button__icon" v-if="hasIcon === true">
       <path
         d="M17.76 8.16v8.16h3.84v.96h-3.84v1.92H24V8.16h-6.24zm-7.2 0v8.16h3.84v.96h-3.84v1.92h6.24V8.16h-6.24zM3.84 4.8v3.36H0v8.16h6.24V4.8h-2.4zM9.6 8.16H7.2v8.16h2.4V8.16zm12 6.24h-1.44v-4.32h1.44v4.32zm-17.76 0H2.4v-4.32h1.44v4.32zm10.56 0h-1.44v-4.32h1.44v4.32zM9.6 4.8H7.2v2.4h2.4V4.8z"
       />
     </icon>
-    <span class="share-button__text" v-if="btnText">{{btnText}}</span>
+    <span v-if="btnText" class="share-button__text">{{ btnText }}</span>
   </button>
 </template>
 
 <script>
 import Icon from "./icon/Icon.vue";
-import { getDocumentHref, eventEmit, createWindow } from "../helpers";
+import { createWindow, eventEmit, getDocumentHref } from "../helpers";
 
 export default {
   name: "DiggShareButton",
@@ -32,7 +33,8 @@ export default {
     modalWidth: { type: Number, default: 500 },
     modalHeight: { type: Number, default: 500 },
     hasIcon: { type: Boolean, default: true },
-    isBlank: { type: Boolean, default: true }
+    isBlank: { type: Boolean, default: true },
+    customIcon: { type: String, default: "" },
   },
   methods: {
     openShareWindow() {
@@ -45,8 +47,8 @@ export default {
       return this.$props.isBlank
         ? window.open(url, "_blank")
         : window.open(url, "Share this", configWindow);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -78,7 +80,7 @@ $painted-color: hsla(0, 0%, 0%, 1);
   border-radius: 4px;
   box-shadow: none;
   text-rendering: auto;
-  text-indent: 0px;
+  text-indent: 0;
   text-align: center;
   letter-spacing: normal;
   word-spacing: normal;
@@ -148,9 +150,7 @@ $painted-color: hsla(0, 0%, 0%, 1);
 
   &--outline {
     background-color: transparent;
-    border: 1px solid;
-    background-color: transparent;
-    border-color: $main-color;
+    border: 1px solid $main-color;
 
     .share-button__text {
       color: $main-color;
@@ -187,8 +187,7 @@ $painted-color: hsla(0, 0%, 0%, 1);
     margin-bottom: 30px;
     border-radius: 42px;
     background-color: transparent;
-    border: 3px solid;
-    border-color: $painted-color;
+    border: 3px solid $painted-color;
 
     &::before {
       content: "";
@@ -221,11 +220,10 @@ $painted-color: hsla(0, 0%, 0%, 1);
       right: -7px;
       margin: 0;
       padding: 4px 10px;
-      border: 3px solid;
       font-size: 8px;
       border-radius: 15px;
       color: #fff;
-      border-color: $painted-color;
+      border: 3px solid $painted-color;
 
       &::before {
         content: "";

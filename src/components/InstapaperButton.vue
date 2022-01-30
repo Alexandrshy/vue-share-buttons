@@ -1,32 +1,37 @@
 <template>
   <button
-    class="share-button share-button--instapaper"
-    type="button"
-    :url="url"
-    :description="description"
     :btnText="btnText"
-    :modalWidth="modalWidth"
-    :modalHeight="modalHeight"
+    :description="description"
     :hasIcon="hasIcon"
     :isBlank="isBlank"
+    :modalHeight="modalHeight"
+    :modalWidth="modalWidth"
+    :url="url"
+    class="share-button share-button--instapaper"
+    type="button"
     @click="openShareWindow"
   >
-    <icon iconName="Instapaper" class="share-button__icon" v-if="hasIcon === true">
+    <img v-if="customIcon" v-bind:src="customIcon" alt="" />
+    <icon
+      v-if="hasIcon === true"
+      class="share-button__icon"
+      iconName="Instapaper"
+    >
       <path
         d="M14.766 20.259c0 1.819.271 2.089 2.934 2.292V24H6.301v-1.449c2.666-.203 2.934-.473 2.934-2.292V3.708c0-1.784-.27-2.089-2.934-2.292V0h11.398v1.416c-2.662.203-2.934.506-2.934 2.292v16.551z"
       />
     </icon>
-    <span class="share-button__text" v-if="btnText">{{btnText}}</span>
+    <span v-if="btnText" class="share-button__text">{{ btnText }}</span>
   </button>
 </template>
 
 <script>
 import Icon from "./icon/Icon.vue";
 import {
+  createWindow,
+  eventEmit,
   getDocumentHref,
   getDocumentTitle,
-  eventEmit,
-  createWindow
 } from "../helpers";
 
 export default {
@@ -39,7 +44,8 @@ export default {
     modalWidth: { type: Number, default: 500 },
     modalHeight: { type: Number, default: 500 },
     hasIcon: { type: Boolean, default: true },
-    isBlank: { type: Boolean, default: true }
+    isBlank: { type: Boolean, default: true },
+    customIcon: { type: String, default: "" },
   },
   methods: {
     openShareWindow() {
@@ -55,8 +61,8 @@ export default {
       return this.$props.isBlank
         ? window.open(url, "_blank")
         : window.open(url, "Share this", configWindow);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -88,7 +94,7 @@ $painted-color: hsla(0, 0%, 0%, 1);
   border-radius: 4px;
   box-shadow: none;
   text-rendering: auto;
-  text-indent: 0px;
+  text-indent: 0;
   text-align: center;
   letter-spacing: normal;
   word-spacing: normal;
@@ -158,9 +164,7 @@ $painted-color: hsla(0, 0%, 0%, 1);
 
   &--outline {
     background-color: transparent;
-    border: 1px solid;
-    background-color: transparent;
-    border-color: $main-color;
+    border: 1px solid $main-color;
 
     .share-button__text {
       color: $main-color;
@@ -197,8 +201,7 @@ $painted-color: hsla(0, 0%, 0%, 1);
     margin-bottom: 30px;
     border-radius: 42px;
     background-color: transparent;
-    border: 3px solid;
-    border-color: $painted-color;
+    border: 3px solid $painted-color;
 
     &::before {
       content: "";
@@ -231,11 +234,10 @@ $painted-color: hsla(0, 0%, 0%, 1);
       right: -7px;
       margin: 0;
       padding: 4px 10px;
-      border: 3px solid;
       font-size: 8px;
       border-radius: 15px;
       color: #fff;
-      border-color: $painted-color;
+      border: 3px solid $painted-color;
 
       &::before {
         content: "";

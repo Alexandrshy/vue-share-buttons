@@ -7,6 +7,7 @@
     :hasIcon="hasIcon"
     @click="openShareWindow"
   >
+    <img v-if="customIcon" v-bind:src="customIcon" alt="" />
     <icon iconName="Viber" class="share-button__icon" v-if="hasIcon === true">
       <path
         d="M252.47-252.87c-16.57-15.24-83.48-63.82-232.54-64.48 0 0-175.79-10.6-261.47 68.01-47.7 47.7-64.49 117.49-66.25 204.05-1.77 86.57-4.07 248.75 152.29 292.74l.15.04-.1 67.1s-.98 27.18 16.89 32.72c21.64 6.72 34.34-13.94 55-36.19 11.35-12.22 27-30.17 38.8-43.89 106.94 8.96 189.18-11.57 198.51-14.6 21.6-7.03 143.77-22.67 163.64-184.85 20.5-167.21-9.94-272.95-64.92-320.65M270.58 55.7c-16.8 135.42-115.85 143.97-134.12 149.83-7.77 2.5-80.02 20.47-170.84 14.54 0 0-67.68 81.64-88.8 102.88-3.31 3.32-7.19 4.66-9.78 4.03-3.64-.9-4.65-5.2-4.6-11.5.06-9 .57-111.52.57-111.52-.1-.03-.07-.02-.02 0-132.23-36.75-124.52-174.8-123.03-247.09 1.5-72.28 15.08-131.51 55.43-171.34 72.48-65.65 221.79-55.84 221.79-55.84 126.08.55 186.51 38.52 200.52 51.24 46.51 39.83 70.22 135.14 52.88 274.76"
@@ -24,13 +25,13 @@
         d="M17.8 11.13a.3.3 0 0 1-.3-.3c-.02-1.86-.55-3.28-1.64-4.34a5.63 5.63 0 0 0-4.03-1.59.3.3 0 0 1-.3-.3c0-.17.14-.3.3-.3 1.77 0 3.27.6 4.46 1.76a6.45 6.45 0 0 1 1.81 4.76.3.3 0 0 1-.3.3zM12.9 13.74s.42.04.65-.24l.45-.57c.21-.28.73-.45 1.24-.17a13.63 13.63 0 0 1 2.15 1.54c.33.28.41.69.18 1.12v.01c-.23.41-.54.8-.93 1.15a1.84 1.84 0 0 1-1.1.47c-.13 0-.26-.02-.4-.06v-.01c-.48-.14-1.28-.48-2.6-1.2a15.6 15.6 0 0 1-3.18-2.33l-.03-.03-.03-.03-.04-.03-.03-.04a15.38 15.38 0 0 1-2.32-3.17 13.72 13.72 0 0 1-1.2-2.6l-.02-.01A1.24 1.24 0 0 1 5.64 7c.04-.31.19-.63.46-.95.36-.4.74-.7 1.15-.94h.01c.43-.23.84-.15 1.12.18a13.52 13.52 0 0 1 1.54 2.15c.29.51.1 1.03-.17 1.25l-.56.45c-.29.22-.25.65-.25.65s.83 3.16 3.95 3.96"
       />
     </icon>
-    <span class="share-button__text" v-if="btnText">{{btnText}}</span>
+    <span v-if="btnText" class="share-button__text">{{ btnText }}</span>
   </button>
 </template>
- 
+
 <script>
 import Icon from "./icon/Icon.vue";
-import { getDocumentHref, eventEmit } from "../helpers";
+import { eventEmit, getDocumentHref } from "../helpers";
 
 export default {
   name: "ViberShareButton",
@@ -38,7 +39,8 @@ export default {
   props: {
     url: { type: String, default: getDocumentHref },
     btnText: { type: String, default: "Viber" },
-    hasIcon: { type: Boolean, default: true }
+    hasIcon: { type: Boolean, default: true },
+    customIcon: { type: String, default: "" },
   },
   methods: {
     openShareWindow() {
@@ -46,8 +48,8 @@ export default {
       const url = `viber://forward?text=${encodeURIComponent(this.$props.url)}`;
 
       return window.open(url);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -79,7 +81,7 @@ $painted-color: hsla(247, 10%, 42%, 1);
   border-radius: 4px;
   box-shadow: none;
   text-rendering: auto;
-  text-indent: 0px;
+  text-indent: 0;
   text-align: center;
   letter-spacing: normal;
   word-spacing: normal;
@@ -149,9 +151,7 @@ $painted-color: hsla(247, 10%, 42%, 1);
 
   &--outline {
     background-color: transparent;
-    border: 1px solid;
-    background-color: transparent;
-    border-color: $main-color;
+    border: 1px solid $main-color;
 
     .share-button__text {
       color: $main-color;
@@ -188,8 +188,7 @@ $painted-color: hsla(247, 10%, 42%, 1);
     margin-bottom: 30px;
     border-radius: 42px;
     background-color: transparent;
-    border: 3px solid;
-    border-color: $painted-color;
+    border: 3px solid $painted-color;
 
     &::before {
       content: "";
@@ -222,11 +221,10 @@ $painted-color: hsla(247, 10%, 42%, 1);
       right: -7px;
       margin: 0;
       padding: 4px 10px;
-      border: 3px solid;
       font-size: 8px;
       border-radius: 15px;
       color: #fff;
-      border-color: $painted-color;
+      border: 3px solid $painted-color;
 
       &::before {
         content: "";

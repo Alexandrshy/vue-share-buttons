@@ -1,27 +1,36 @@
 <template>
   <button
+    :btnText="btnText"
+    :description="description"
+    :hasIcon="hasIcon"
+    :url="url"
     class="share-button share-button--telegram"
     type="button"
-    :url="url"
-    :description="description"
-    :btnText="btnText"
-    :hasIcon="hasIcon"
     @click="openShareWindow"
   >
-    <icon iconName="Telegram" class="share-button__icon" v-if="hasIcon === true">
-      <path d="M9.028 20.837c-.714 0-.593-.271-.839-.949l-2.103-6.92L22.263 3.37"/>
-      <path d="M9.028 20.837c.552 0 .795-.252 1.105-.553l2.941-2.857-3.671-2.214"/>
+    <img v-if="customIcon" v-bind:src="customIcon" alt="" />
+    <icon
+      v-if="hasIcon === true"
+      class="share-button__icon"
+      iconName="Telegram"
+    >
+      <path
+        d="M9.028 20.837c-.714 0-.593-.271-.839-.949l-2.103-6.92L22.263 3.37"
+      />
+      <path
+        d="M9.028 20.837c.552 0 .795-.252 1.105-.553l2.941-2.857-3.671-2.214"
+      />
       <path
         d="M9.403 15.213l8.89 6.568c1.015.56 1.748.271 2-.942l3.62-17.053c.372-1.487-.564-2.159-1.534-1.72L1.125 10.263c-1.45.582-1.443 1.392-.264 1.753l5.455 1.7L18.94 5.753c.595-.36 1.143-.167.694.232"
       />
     </icon>
-    <span class="share-button__text" v-if="btnText">{{btnText}}</span>
+    <span v-if="btnText" class="share-button__text">{{ btnText }}</span>
   </button>
 </template>
- 
+
 <script>
 import Icon from "./icon/Icon.vue";
-import { getDocumentHref, getDocumentTitle, eventEmit } from "../helpers";
+import { eventEmit, getDocumentHref, getDocumentTitle } from "../helpers";
 
 export default {
   name: "TelegramShareButton",
@@ -30,7 +39,8 @@ export default {
     url: { type: String, default: getDocumentHref },
     description: { type: String, default: getDocumentTitle },
     btnText: { type: String, default: "Telegram" },
-    hasIcon: { type: Boolean, default: true }
+    hasIcon: { type: Boolean, default: true },
+    customIcon: { type: String, default: "" },
   },
   methods: {
     openShareWindow() {
@@ -40,8 +50,8 @@ export default {
       )}&text=${encodeURIComponent(this.$props.description)}`;
 
       return window.open(url);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -73,7 +83,7 @@ $painted-color: hsla(199, 51%, 43%, 1);
   border-radius: 4px;
   box-shadow: none;
   text-rendering: auto;
-  text-indent: 0px;
+  text-indent: 0;
   text-align: center;
   letter-spacing: normal;
   word-spacing: normal;
@@ -143,9 +153,7 @@ $painted-color: hsla(199, 51%, 43%, 1);
 
   &--outline {
     background-color: transparent;
-    border: 1px solid;
-    background-color: transparent;
-    border-color: $main-color;
+    border: 1px solid $main-color;
 
     .share-button__text {
       color: $main-color;
@@ -182,8 +190,7 @@ $painted-color: hsla(199, 51%, 43%, 1);
     margin-bottom: 30px;
     border-radius: 42px;
     background-color: transparent;
-    border: 3px solid;
-    border-color: $painted-color;
+    border: 3px solid $painted-color;
 
     &::before {
       content: "";
@@ -216,11 +223,10 @@ $painted-color: hsla(199, 51%, 43%, 1);
       right: -7px;
       margin: 0;
       padding: 4px 10px;
-      border: 3px solid;
       font-size: 8px;
       border-radius: 15px;
       color: #fff;
-      border-color: $painted-color;
+      border: 3px solid $painted-color;
 
       &::before {
         content: "";
