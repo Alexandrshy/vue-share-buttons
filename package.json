@@ -8,10 +8,8 @@
     "email": "alexandrshy@gmail.com"
   },
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "build-bundle": "vue-cli-service build --target lib --name vue-share-buttons ./src/VueShareButtons.vue"
+    "build": "vue-cli-service build --target lib --name VueShareButtons ./src/VueShareButtons.vue",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "node-sass": "^6.0.1",
