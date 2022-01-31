@@ -4,10 +4,10 @@
     :width="width"
     :height="height"
     :viewBox="`0 0 ${viewBoxWidth} ${viewBoxHeight}`"
-    :aria-labelledby="iconName"
-    role="presentation"
+    :aria-labelledby="titleId"
+    role="img"
   >
-    <title lang="en">{{ iconName }} icon</title>
+    <title :id="titleId" lang="en">{{ iconName }} icon</title>
     <slot></slot>
   </svg>
 </template>
@@ -20,6 +20,11 @@ export default {
     viewBoxHeight: { type: [Number, String], default: 24 },
     width: { type: [Number, String], default: 20 },
     height: { type: [Number, String], default: 20 }
+  },
+  computed: {
+    titleId() {
+      return `${this.iconName.toLowerCase()}-svg-title`
+    }
   }
 };
 </script>
