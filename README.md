@@ -18,6 +18,7 @@
   - [Buttons for instant messengers](#buttons-for-instant-messengers)
   - [Send a message via email](#send-a-message-via-email)
   - [Full list of social networks](#full-list-of-social-networks)
+  - [Not worked](#not-worked)
 - [Example](#example)
 - [Author](#author)
 - [Link](#link)
@@ -68,8 +69,8 @@ const app = new Vue({
 ```html
 <div id="app">
   <twitter-button
-    shareUrl="https://github.com/"
-    shareDescription="GitHub is where people build software."
+    url="https://github.com/"
+    description="GitHub is where people build software."
   />
 </div>
 ```
@@ -84,107 +85,146 @@ Below are the options you can pass to create your own button.
 
 ### Buttons with a counter
 
-> Facebook, LinkedIn, Odnoklassniki
+> Facebook, LinkedIn
 
-| **Option**    | **Type's** | **Default**                                   | **Description**                                                                                                             |
-| ------------- | ---------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| url           | String     | `document.location.href`                      | URL-address you want to share                                                                                               |
-| description   | String     | `document.title`                              | Messages you want to share                                                                                                  |
-| btnText       | String     | `Facebook`, `LinkedIn`, `Odnoklassniki`, etc. | Text to be written on your button                                                                                           |
-| hasIcon       | Boolean    | `true`                                        | Presence of social network icon in the button                                                                               |
-| isBlank       | Boolean    | `true`                                        | Open the "share on social networks" frame in a new window                                                                   |
-| modalWidth    | Number     | 500                                           | If the property "isBlank" is set to `false`, you can set the `width` of the modal window the "share on social networks"     |
-| modalHeight   | Number     | 500                                           | If the property "isBlank" is set to `false`, you can set the `height` of the modal window the "share on social networks"    |
-| hasCounter    | Boolean    | `false`                                       | Presence of a counter with the number of share                                                                              |
-| digitsCounter | Number     | `0`                                           | The number of decimal places in the counter                                                                                 |
-| keyCounter    | String     | `''`                                          | Counter ID (note, it must be unique if you use several buttons with a counter for the same social network on the same page) |
+| **Option**    | **Type's** | **Default**                  | **Description**                                                                                                             |
+|---------------|------------|------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| url           | String     | `document.location.href`     | URL-address you want to share                                                                                               |
+| btnText       | String     | `Facebook`, `LinkedIn`, etc. | Text to be written on your button                                                                                           |
+| hasIcon       | Boolean    | `true`                       | Presence of social network icon in the button                                                                               |
+| isBlank       | Boolean    | `true`                       | Open the "share on social networks" frame in a new window                                                                   |
+| modalWidth    | Number     | `500`                        | If the property "isBlank" is set to `false`, you can set the `width` of the modal window the "share on social networks"     |
+| modalHeight   | Number     | `500`                        | If the property "isBlank" is set to `false`, you can set the `height` of the modal window the "share on social networks"    |
+| hasCounter    | Boolean    | `false`                      | Presence of a counter with the number of share                                                                              |
+| digitsCounter | Number     | `0`                          | The number of decimal places in the counter                                                                                 |
+| keyCounter    | String     | `''`                         | Counter ID (note, it must be unique if you use several buttons with a counter for the same social network on the same page) |
+| customIcon    | String     | `''`                         | Custom imag                                                                                                                 |
 
-> Tumblr, Vkontakte
+> Odnoklassniki
+
+| **Option**    | **Type's** | **Default**              | **Description**                                                                                                          |
+|---------------|------------|--------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| url           | String     | `document.location.href` | URL-address you want to share                                                                                            |
+| description   | String     | `document.title`         | Messages you want to share                                                                                               |
+| btnText       | String     | `Odnoklassniki`          | Text to be written on your button                                                                                        |
+| hasIcon       | Boolean    | `true`                   | Presence of social network icon in the button                                                                            |
+| isBlank       | Boolean    | `true`                   | Open the "share on social networks" frame in a new window                                                                |
+| modalWidth    | Number     | `500`                    | If the property "isBlank" is set to `false`, you can set the `width` of the modal window the "share on social networks"  |
+| modalHeight   | Number     | `500`                    | If the property "isBlank" is set to `false`, you can set the `height` of the modal window the "share on social networks" |
+| hasCounter    | Boolean    | `false`                  | Presence of a counter with the number of share                                                                           |
+| digitsCounter | Number     | `0`                      | The number of decimal places in the counter                                                                              |
+| customIcon    | String     | `''`                     | Custom image                                                                                                             |
+| sharePic      | String     | `''`                     | Link to image instead of favicon                                                                                         |
+
+> Tumblr
 
 | **Option**    | **Type's** | **Default**              | **Description**                                                                                                             |
-| ------------- | ---------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
+|---------------|------------|--------------------------|-----------------------------------------------------------------------------------------------------------------------------|
 | url           | String     | `document.location.href` | URL-address you want to share                                                                                               |
 | description   | String     | `document.title`         | Messages you want to share                                                                                                  |
 | title         | String     | `''`                     | Title you want to share                                                                                                     |
 | btnText       | String     | `Tumblr`, `Vkontakte`    | Text to be written on your button                                                                                           |
 | hasIcon       | Boolean    | `true`                   | Presence of social network icon in the button                                                                               |
 | isBlank       | Boolean    | `true`                   | Open the "share on social networks" frame in a new window                                                                   |
-| modalWidth    | Number     | 500                      | If the property "isBlank" is set to `false`, you can set the `width` of the modal window the "share on social networks"     |
-| modalHeight   | Number     | 500                      | If the property "isBlank" is set to `false`, you can set the `height` of the modal window the "share on social networks"    |
+| modalWidth    | Number     | `500`                    | If the property "isBlank" is set to `false`, you can set the `width` of the modal window the "share on social networks"     |
+| modalHeight   | Number     | `500`                    | If the property "isBlank" is set to `false`, you can set the `height` of the modal window the "share on social networks"    |
 | hasCounter    | Boolean    | `false`                  | Presence of a counter with the number of share                                                                              |
 | digitsCounter | Number     | `0`                      | The number of decimal places in the counter                                                                                 |
 | keyCounter    | String     | `''`                     | Counter ID (note, it must be unique if you use several buttons with a counter for the same social network on the same page) |
+| customIcon    | String     | `''`                     | Custom image                                                                                                                |
+
+> Vkontakte
+
+| **Option**    | **Type's** | **Default**              | **Description**                                                                                                          |
+|---------------|------------|--------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| url           | String     | `document.location.href` | URL-address you want to share                                                                                            |
+| description   | String     | `document.title`         | Messages you want to share                                                                                               |
+| title         | String     | `''`                     | Title you want to share                                                                                                  |
+| btnText       | String     | `Tumblr`, `Vkontakte`    | Text to be written on your button                                                                                        |
+| hasIcon       | Boolean    | `true`                   | Presence of social network icon in the button                                                                            |
+| isBlank       | Boolean    | `true`                   | Open the "share on social networks" frame in a new window                                                                |
+| modalWidth    | Number     | `500`                    | If the property "isBlank" is set to `false`, you can set the `width` of the modal window the "share on social networks"  |
+| modalHeight   | Number     | `500`                    | If the property "isBlank" is set to `false`, you can set the `height` of the modal window the "share on social networks" |
+| hasCounter    | Boolean    | `false`                  | Presence of a counter with the number of share                                                                           |
+| digitsCounter | Number     | `0`                      | The number of decimal places in the counter                                                                              |
+| sharePic      | String     | `''`                     | Link to image instead of favicon                                                                                         |
+| customIcon    | String     | `''`                     | Custom image                                                                                                             |
 
 > Pinterest
 
 | **Option**    | **Type's** | **Default**              | **Description**                                                                                                             |
-| ------------- | ---------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
+|---------------|------------|--------------------------|-----------------------------------------------------------------------------------------------------------------------------|
 | url           | String     | `document.location.href` | URL-address you want to share                                                                                               |
 | description   | String     | `document.title`         | Messages you want to share                                                                                                  |
 | picture       | String     | `''`                     | Picture you want to share                                                                                                   |
 | btnText       | String     | `Pinterest`              | Text to be written on your button                                                                                           |
 | hasIcon       | Boolean    | `true`                   | Presence of social network icon in the button                                                                               |
 | isBlank       | Boolean    | `true`                   | Open the "share on social networks" frame in a new window                                                                   |
-| modalWidth    | Number     | 500                      | If the property "isBlank" is set to `false`, you can set the `width` of the modal window the "share on social networks"     |
-| modalHeight   | Number     | 500                      | If the property "isBlank" is set to `false`, you can set the `height` of the modal window the "share on social networks"    |
+| modalWidth    | Number     | `500`                    | If the property "isBlank" is set to `false`, you can set the `width` of the modal window the "share on social networks"     |
+| modalHeight   | Number     | `500`                    | If the property "isBlank" is set to `false`, you can set the `height` of the modal window the "share on social networks"    |
 | hasCounter    | Boolean    | `false`                  | Presence of a counter with the number of share                                                                              |
 | digitsCounter | Number     | `0`                      | The number of decimal places in the counter                                                                                 |
 | keyCounter    | String     | `''`                     | Counter ID (note, it must be unique if you use several buttons with a counter for the same social network on the same page) |
+| customIcon    | String     | `''`                     | Custom image                                                                                                                |
 
 ### Buttons without a counter
 
-> Twitter, Evernote, Hatena, Instapaper, LiveJournal
+> Twitter, Hatena, Instapaper, LiveJournal
 
-| **Option**  | **Type's** | **Default**                                                  | **Description**                                                                                                          |
-| ----------- | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| url         | String     | `document.location.href`                                     | URL-address you want to share                                                                                            |
-| description | String     | `document.title`                                             | Messages you want to share                                                                                               |
-| btnText     | String     | `Twitter`, `Evernote`, `Hatena`, `Instapaper`, `LiveJournal` | Text to be written on your button                                                                                        |
-| hasIcon     | Boolean    | `true`                                                       | Presence of social network icon in the button                                                                            |
-| isBlank     | Boolean    | `true`                                                       | Open the "share on social networks" frame in a new window                                                                |
-| modalWidth  | Number     | 500                                                          | If the property "isBlank" is set to `false`, you can set the `width` of the modal window the "share on social networks"  |
-| modalHeight | Number     | 500                                                          | If the property "isBlank" is set to `false`, you can set the `height` of the modal window the "share on social networks" |
+| **Option**  | **Type's** | **Default**                                      | **Description**                                                                                                          |
+|-------------|------------|--------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| url         | String     | `document.location.href`                         | URL-address you want to share                                                                                            |
+| description | String     | `document.title`                                 | Messages you want to share                                                                                               |
+| btnText     | String     | `Twitter`, `Hatena`, `Instapaper`, `LiveJournal` | Text to be written on your button                                                                                        |
+| hasIcon     | Boolean    | `true`                                           | Presence of social network icon in the button                                                                            |
+| isBlank     | Boolean    | `true`                                           | Open the "share on social networks" frame in a new window                                                                |
+| modalWidth  | Number     | `500`                                            | If the property "isBlank" is set to `false`, you can set the `width` of the modal window the "share on social networks"  |
+| modalHeight | Number     | `500`                                            | If the property "isBlank" is set to `false`, you can set the `height` of the modal window the "share on social networks" |
+| customIcon  | String     | `''`                                             | Custom image                                                                                                             |
 
 > Digg, Xing, Pocket
 
 | **Option**  | **Type's** | **Default**              | **Description**                                                                                                          |
-| ----------- | ---------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+|-------------|------------|--------------------------|--------------------------------------------------------------------------------------------------------------------------|
 | url         | String     | `document.location.href` | URL-address you want to share                                                                                            |
 | btnText     | String     | `Digg`, `Xing`, `Pocket` | Text to be written on your button                                                                                        |
 | hasIcon     | Boolean    | `true`                   | Presence of social network icon in the button                                                                            |
 | isBlank     | Boolean    | `true`                   | Open the "share on social networks" frame in a new window                                                                |
-| modalWidth  | Number     | 500                      | If the property "isBlank" is set to `false`, you can set the `width` of the modal window the "share on social networks"  |
-| modalHeight | Number     | 500                      | If the property "isBlank" is set to `false`, you can set the `height` of the modal window the "share on social networks" |
+| modalWidth  | Number     | `500`                    | If the property "isBlank" is set to `false`, you can set the `width` of the modal window the "share on social networks"  |
+| modalHeight | Number     | `500`                    | If the property "isBlank" is set to `false`, you can set the `height` of the modal window the "share on social networks" |
+| customIcon  | String     | `''`                     | Custom image                                                                                                             |
 
 > Blogger
 
 | **Option**  | **Type's** | **Default**              | **Description**                                                                                                          |
-| ----------- | ---------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+|-------------|------------|--------------------------|--------------------------------------------------------------------------------------------------------------------------|
 | url         | String     | `document.location.href` | URL-address you want to share                                                                                            |
 | description | String     | `document.title`         | Messages you want to share                                                                                               |
 | title       | String     | `''`                     | Title you want to share                                                                                                  |
 | btnText     | String     | `Blogger`                | Text to be written on your button                                                                                        |
 | hasIcon     | Boolean    | `true`                   | Presence of social network icon in the button                                                                            |
 | isBlank     | Boolean    | `true`                   | Open the "share on social networks" frame in a new window                                                                |
-| modalWidth  | Number     | 500                      | If the property "isBlank" is set to `false`, you can set the `width` of the modal window the "share on social networks"  |
-| modalHeight | Number     | 500                      | If the property "isBlank" is set to `false`, you can set the `height` of the modal window the "share on social networks" |
+| modalWidth  | Number     | `500`                    | If the property "isBlank" is set to `false`, you can set the `width` of the modal window the "share on social networks"  |
+| modalHeight | Number     | `500`                    | If the property "isBlank" is set to `false`, you can set the `height` of the modal window the "share on social networks" |
+| customIcon  | String     | `''`                     | Custom image                                                                                                             |
 
 > Reddit, Renren
 
 | **Option**  | **Type's** | **Default**              | **Description**                                                                                                          |
-| ----------- | ---------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+|-------------|------------|--------------------------|--------------------------------------------------------------------------------------------------------------------------|
 | url         | String     | `document.location.href` | URL-address you want to share                                                                                            |
 | title       | String     | `''`                     | Title you want to share                                                                                                  |
 | btnText     | String     | `Reddit`, `Renren`       | Text to be written on your button                                                                                        |
 | hasIcon     | Boolean    | `true`                   | Presence of social network icon in the button                                                                            |
 | isBlank     | Boolean    | `true`                   | Open the "share on social networks" frame in a new window                                                                |
-| modalWidth  | Number     | 500                      | If the property "isBlank" is set to `false`, you can set the `width` of the modal window the "share on social networks"  |
-| modalHeight | Number     | 500                      | If the property "isBlank" is set to `false`, you can set the `height` of the modal window the "share on social networks" |
+| modalWidth  | Number     | `500`                    | If the property "isBlank" is set to `false`, you can set the `width` of the modal window the "share on social networks"  |
+| modalHeight | Number     | `500`                    | If the property "isBlank" is set to `false`, you can set the `height` of the modal window the "share on social networks" |
+| customIcon  | String     | `''`                     | Custom image                                                                                                             |
 
 > Weibo
 
 | **Option**  | **Type's** | **Default**              | **Description**                                                                                                          |
-| ----------- | ---------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+|-------------|------------|--------------------------|--------------------------------------------------------------------------------------------------------------------------|
 | url         | String     | `document.location.href` | URL-address you want to share                                                                                            |
 | description | String     | `document.title`         | Messages you want to share                                                                                               |
 | picture     | String     | `''`                     | Picture you want to share                                                                                                |
@@ -192,53 +232,60 @@ Below are the options you can pass to create your own button.
 | btnText     | String     | `Weibo`                  | Text to be written on your button                                                                                        |
 | hasIcon     | Boolean    | `true`                   | Presence of social network icon in the button                                                                            |
 | isBlank     | Boolean    | `true`                   | Open the "share on social networks" frame in a new window                                                                |
-| modalWidth  | Number     | 500                      | If the property "isBlank" is set to `false`, you can set the `width` of the modal window the "share on social networks"  |
-| modalHeight | Number     | 500                      | If the property "isBlank" is set to `false`, you can set the `height` of the modal window the "share on social networks" |
+| modalWidth  | Number     | `500`                    | If the property "isBlank" is set to `false`, you can set the `width` of the modal window the "share on social networks"  |
+| modalHeight | Number     | `500`                    | If the property "isBlank" is set to `false`, you can set the `height` of the modal window the "share on social networks" |
+| customIcon  | String     | `''`                     | Custom image                                                                                                             |
 
 ### Buttons for instant messengers
 
-> Facebook
+> Facebook Messenger
 
 | **Option** | **Type's** | **Default**              | **Description**                               |
-| ---------- | ---------- | ------------------------ | --------------------------------------------- |
+|------------|------------|--------------------------|-----------------------------------------------|
 | appID      | String     | `''`                     | A unique identifier for the application       |
 | url        | String     | `document.location.href` | URL-address you want to share                 |
 | btnText    | String     | `Facebook`               | Text to be written on your button             |
 | hasIcon    | Boolean    | `true`                   | Presence of social network icon in the button |
+| customIcon | String     | `''`                     | Custom image                                  |
 
 > Viber, WhatsApp
 
 | **Option** | **Type's** | **Default**              | **Description**                               |
-| ---------- | ---------- | ------------------------ | --------------------------------------------- |
+|------------|------------|--------------------------|-----------------------------------------------|
 | url        | String     | `document.location.href` | URL-address you want to share                 |
 | btnText    | String     | `Viber`, `WhatsApp`      | Text to be written on your button             |
 | hasIcon    | Boolean    | `true`                   | Presence of social network icon in the button |
+| customIcon | String     | `''`                     | Custom image                                  |
 
 > Telegram
 
 | **Option**  | **Type's** | **Default**              | **Description**                               |
-| ----------- | ---------- | ------------------------ | --------------------------------------------- |
+|-------------|------------|--------------------------|-----------------------------------------------|
 | url         | String     | `document.location.href` | URL-address you want to share                 |
 | description | String     | `document.title`         | Messages you want to share                    |
 | btnText     | String     | `Telegram`               | Text to be written on your button             |
 | hasIcon     | Boolean    | `true`                   | Presence of social network icon in the button |
+| customIcon  | String     | `''`                     | Custom image                                  |
 
 ### Send a message via email
 
 > This isn't really a share button, this is a button that allows you to open the software to send an email message, but it may be useful for you 🙃
 
 | **Option** | **Type's** | **Default**              | **Description**                               |
-| ---------- | ---------- | ------------------------ | --------------------------------------------- |
+|------------|------------|--------------------------|-----------------------------------------------|
 | url        | String     | `document.location.href` | URL-address you want to share                 |
 | btnText    | String     | `Email`                  | Text to be written on your button             |
 | hasIcon    | Boolean    | `true`                   | Presence of social network icon in the button |
+| subject    | String     | `document.title`         | Email subject                                 |
+| customIcon | String     | `''`                     | Custom image                                  |
 
 ### Full list of social networks
 
 - Blogger
 - Digg
-- Evernote
+- Email
 - Facebook
+- Facebook Messenger
 - Hatena
 - Instapaper
 - LinkedIn
@@ -248,14 +295,19 @@ Below are the options you can pass to create your own button.
 - Pocket
 - Reddit
 - Renren
+- Telegram
 - Tumblr
 - Twitter
+- Viber
 - Vkontakte
 - Weibo
-- Xing
-- Telegram
-- Viber
 - WhatsApp
+- Xing
+
+### Not worked
+
+- Facebook counter
+- LinkedIn counter
 
 ## Example
 
@@ -276,14 +328,12 @@ Below are the options you can pass to create your own button.
 [Live Demo](https://codesandbox.io/s/9149y00324?fontsize=14)
 
 ```html
-<twitter-button v-bind:hasIcon="false" class="share-button--outline">
-  /></twitter-button
->
+<twitter-button v-bind:hasIcon="false" class="share-button--outline" />
 ```
 
 <img width="85" alt="Twitter outline button without icon" src="https://user-images.githubusercontent.com/14329906/55610923-09f05600-5795-11e9-89c3-13a50ab397eb.png">
 
-[Live Demo]()
+[Live Demo](https://codesandbox.io/s/9149y00-cu6tf?fontsize=14)
 
 ```html
 <twitter-button class="share-button--circle share-button--outline" btnText />

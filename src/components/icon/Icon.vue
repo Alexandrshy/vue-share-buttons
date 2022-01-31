@@ -1,11 +1,11 @@
 <template>
   <svg
-    xmlns="http://www.w3.org/2000/svg"
-    :width="width"
+    :aria-labelledby="titleId"
     :height="height"
     :viewBox="`0 0 ${viewBoxWidth} ${viewBoxHeight}`"
-    :aria-labelledby="titleId"
+    :width="width"
     role="img"
+    xmlns="http://www.w3.org/2000/svg"
   >
     <title :id="titleId" lang="en">{{ iconName }} icon</title>
     <slot></slot>

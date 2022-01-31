@@ -1,64 +1,32 @@
 {
   "name": "vue-share-buttons",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": false,
-  "license": "MIT",
-  "homepage": "https://github.com/Alexandrshy/vue-share-buttons",
-  "author": "Alexandr Shulaev <alexandrshy@gmail.com>",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:Alexandrshy/vue-share-buttons"
+  "description": "A set of social buttons for Vue.js",
+  "author": {
+    "name": "Alexandr Shulaev",
+    "email": "alexandrshy@gmail.com"
   },
-  "bugs": {
-    "url": "https://github.com/Alexandrshy/vue-share-buttons/issues"
-  },
-  "keywords": [
-    "vue2",
-    "vuejs2",
-    "vue-components",
-    "share",
-    "share-link",
-    "share-buttons",
-    "social-buttons"
-  ],
-  "description": "🔗A set of social buttons for Vue.js",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "build-bundle": "vue-cli-service build --target lib --name vue-share-buttons ./src/VueShareButtons.vue"
+    "build": "vue-cli-service build --target lib --name VueShareButtons ./src/VueShareButtons.vue",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "node-sass": "^4.11.0",
-    "sass-loader": "^7.1.0",
-    "vue": "^2.6.6"
+    "node-sass": "^6.0.1",
+    "sass-loader": "^10.1.1",
+    "vue": "^2.6.14"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.5.0",
-    "@vue/cli-plugin-eslint": "^3.5.0",
-    "@vue/cli-service": "^3.5.3",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.8.0",
-    "eslint-config-prettier": "^4.1.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-vue": "^5.0.0",
-    "prettier": "^1.16.4",
-    "vue-template-compiler": "^2.5.21"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended",
-      "prettier/vue"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
+    "@vue/cli-plugin-babel": "^4.5.15",
+    "@vue/cli-plugin-eslint": "^4.5.15",
+    "@vue/cli-service": "^4.5.15",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^8.4.0",
+    "prettier": "^2.2.1",
+    "vue-template-compiler": "^2.6.14"
   },
   "postcss": {
     "plugins": {
@@ -70,6 +38,24 @@
     "last 2 versions",
     "not ie <= 8"
   ],
+  "bugs": {
+    "url": "https://github.com/Alexandrshy/vue-share-buttons/issues"
+  },
+  "homepage": "https://github.com/Alexandrshy/vue-share-buttons",
+  "keywords": [
+    "vue2",
+    "vuejs2",
+    "vue-components",
+    "share",
+    "share-link",
+    "share-buttons",
+    "social-buttons"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Alexandrshy/vue-share-buttons.git"
+  },
   "files": [
     "src/*",
     "dist/*",
