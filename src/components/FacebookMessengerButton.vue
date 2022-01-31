@@ -1,8 +1,5 @@
 <template>
   <button
-    :appID="appID"
-    :btnText="btnText"
-    :hasIcon="hasIcon"
     :url="url"
     class="share-button share-button--facebookMessenger"
     type="button"

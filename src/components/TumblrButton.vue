@@ -1,15 +1,7 @@
 <template>
   <button
-    :btnText="btnText"
     :description="description"
-    :digitsCounter="digitsCounter"
-    :hasCounter="hasCounter"
-    :hasIcon="hasIcon"
     :isBlank="isBlank"
-    :keyCounter="keyCounter"
-    :modalHeight="modalHeight"
-    :modalWidth="modalWidth"
-    :title="title"
     :url="url"
     class="share-button share-button--tumblr"
     type="button"

@@ -1,15 +1,9 @@
 <template>
   <button
-    :btnText="btnText"
     :description="description"
-    :digitsCounter="digitsCounter"
-    :hasCounter="hasCounter"
-    :hasIcon="hasIcon"
     :isBlank="isBlank"
-    :modalHeight="modalHeight"
-    :modalWidth="modalWidth"
-    :title="title"
     :url="url"
+    :sharePic="sharePic"
     class="share-button share-button--vkontakte"
     type="button"
     @click="openShareWindow"

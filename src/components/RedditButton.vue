@@ -1,14 +1,9 @@
 <template>
   <button
+    :url="url"
+    :isBlank="isBlank"
     class="share-button share-button--reddit"
     type="button"
-    :url="url"
-    :title="title"
-    :btnText="btnText"
-    :modalWidth="modalWidth"
-    :modalHeight="modalHeight"
-    :hasIcon="hasIcon"
-    :isBlank="isBlank"
     @click="openShareWindow"
   >
     <img v-if="customIcon" v-bind:src="customIcon" alt="" />

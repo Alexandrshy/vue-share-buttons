@@ -1,8 +1,6 @@
 <template>
   <button
-    :btnText="btnText"
     :description="description"
-    :hasIcon="hasIcon"
     :url="url"
     class="share-button share-button--telegram"
     type="button"

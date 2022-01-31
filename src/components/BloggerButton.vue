@@ -1,12 +1,7 @@
 <template>
   <button
-    :btnText="btnText"
     :description="description"
-    :hasIcon="hasIcon"
     :isBlank="isBlank"
-    :modalHeight="modalHeight"
-    :modalWidth="modalWidth"
-    :title="title"
     :url="url"
     class="share-button share-button--blogger"
     type="button"

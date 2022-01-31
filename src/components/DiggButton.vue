@@ -1,10 +1,6 @@
 <template>
   <button
-    :btnText="btnText"
-    :hasIcon="hasIcon"
     :isBlank="isBlank"
-    :modalHeight="modalHeight"
-    :modalWidth="modalWidth"
     :url="url"
     class="share-button share-button--digg"
     type="button"

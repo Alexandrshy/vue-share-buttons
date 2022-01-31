@@ -1,16 +1,11 @@
 <template>
   <button
-    class="share-button share-button--weibo"
-    type="button"
     :url="url"
-    :title="title"
     :description="description"
     :picture="picture"
-    :btnText="btnText"
-    :modalWidth="modalWidth"
-    :modalHeight="modalHeight"
-    :hasIcon="hasIcon"
     :isBlank="isBlank"
+    class="share-button share-button--weibo"
+    type="button"
     @click="openShareWindow"
   >
     <img v-if="customIcon" v-bind:src="customIcon" alt="" />

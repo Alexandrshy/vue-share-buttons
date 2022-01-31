@@ -1,10 +1,8 @@
 <template>
   <button
+    :url="url"
     class="share-button share-button--viber"
     type="button"
-    :url="url"
-    :btnText="btnText"
-    :hasIcon="hasIcon"
     @click="openShareWindow"
   >
     <img v-if="customIcon" v-bind:src="customIcon" alt="" />

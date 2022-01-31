@@ -1,11 +1,7 @@
 <template>
   <button
-    :btnText="btnText"
     :description="description"
-    :hasIcon="hasIcon"
     :isBlank="isBlank"
-    :modalHeight="modalHeight"
-    :modalWidth="modalWidth"
     :url="url"
     class="share-button share-button--livejournal"
     type="button"

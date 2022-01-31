@@ -1,14 +1,9 @@
 <template>
   <button
-    :btnText="btnText"
     :description="description"
-    :digitsCounter="digitsCounter"
-    :hasCounter="hasCounter"
-    :hasIcon="hasIcon"
     :isBlank="isBlank"
-    :modalHeight="modalHeight"
-    :modalWidth="modalWidth"
     :url="url"
+    :sharePic="sharePic"
     class="share-button share-button--odnoklassniki"
     type="button"
     @click="openShareWindow"

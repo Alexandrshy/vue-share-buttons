@@ -1,7 +1,5 @@
 <template>
   <button
-    :btnText="btnText"
-    :hasIcon="hasIcon"
     :url="url"
     class="share-button share-button--whatsApp"
     type="button"

@@ -1,13 +1,6 @@
 <template>
   <button
-    :btnText="btnText"
-    :digitsCounter="digitsCounter"
-    :hasCounter="hasCounter"
-    :hasIcon="hasIcon"
     :isBlank="isBlank"
-    :keyCounter="keyCounter"
-    :modalHeight="modalHeight"
-    :modalWidth="modalWidth"
     :url="url"
     class="share-button share-button--linkedIn"
     type="button"

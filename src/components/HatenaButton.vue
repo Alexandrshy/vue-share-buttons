@@ -1,14 +1,10 @@
 <template>
   <button
-    class="share-button share-button--hatena"
-    type="button"
     :url="url"
     :description="description"
-    :btnText="btnText"
-    :modalWidth="modalWidth"
-    :modalHeight="modalHeight"
-    :hasIcon="hasIcon"
     :isBlank="isBlank"
+    class="share-button share-button--hatena"
+    type="button"
     @click="openShareWindow"
   >
     <img v-if="customIcon" v-bind:src="customIcon" alt="" />

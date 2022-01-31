@@ -1,13 +1,9 @@
 <template>
   <button
+    :url="url"
+    :isBlank="isBlank"
     class="share-button share-button--xing"
     type="button"
-    :url="url"
-    :btnText="btnText"
-    :modalWidth="modalWidth"
-    :modalHeight="modalHeight"
-    :hasIcon="hasIcon"
-    :isBlank="isBlank"
     @click="openShareWindow"
   >
     <img v-if="customIcon" v-bind:src="customIcon" alt="" />

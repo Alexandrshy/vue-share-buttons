@@ -1,14 +1,7 @@
 <template>
   <button
-    :btnText="btnText"
     :description="description"
-    :digitsCounter="digitsCounter"
-    :hasCounter="hasCounter"
-    :hasIcon="hasIcon"
     :isBlank="isBlank"
-    :keyCounter="keyCounter"
-    :modalHeight="modalHeight"
-    :modalWidth="modalWidth"
     :picture="picture"
     :url="url"
     class="share-button share-button--pinterest"
