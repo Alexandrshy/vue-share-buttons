@@ -76,13 +76,15 @@ export default {
         this.$props.modalWidth,
         this.$props.modalHeight
       );
-      const url = `https://vk.com/share.php?url=${encodeURIComponent(
-        this.$props.url
-      )}&title=${encodeURIComponent(
-        this.$props.title
-      )}&comment=${encodeURIComponent(
-        this.$props.description
-      )}&image=${encodeURIComponent(this.$props.sharePic)}&noparse=true`;
+      const url =
+        `https://vk.com/share.php?url=${encodeURIComponent(this.$props.url)}` +
+        (this.$props.title || this.$props.description || this.$props.sharePic
+          ? `&title=${encodeURIComponent(
+              this.$props.title
+            )}&comment=${encodeURIComponent(
+              this.$props.description
+            )}&image=${encodeURIComponent(this.$props.sharePic)}&noparse=true`
+          : `&noparse=false`);
 
       return this.$props.isBlank
         ? window.open(url, "_blank")

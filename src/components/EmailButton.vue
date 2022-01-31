@@ -25,7 +25,7 @@
 
 <script>
 import Icon from "./icon/Icon.vue";
-import { eventEmit, getDocumentHref } from "../helpers";
+import { eventEmit, getDocumentHref, getDocumentTitle } from "../helpers";
 
 export default {
   name: "EmailShareButton",
@@ -34,7 +34,7 @@ export default {
     url: { type: String, default: getDocumentHref },
     btnText: { type: String, default: "Email" },
     hasIcon: { type: Boolean, default: true },
-    subject: { type: String, default: "Share Link" },
+    subject: { type: String, default: getDocumentTitle() },
     customIcon: { type: String, default: "" },
   },
   methods: {

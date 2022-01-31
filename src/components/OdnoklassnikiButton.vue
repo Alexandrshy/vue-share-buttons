@@ -46,6 +46,7 @@ export default {
   props: {
     url: { type: String, default: getDocumentHref },
     description: { type: String, default: getDocumentTitle },
+    sharePic: { type: String, default: "" },
     btnText: { type: String, default: "Odnoklassniki" },
     modalWidth: { type: Number, default: 500 },
     modalHeight: { type: Number, default: 500 },
@@ -72,9 +73,11 @@ export default {
         this.$props.modalWidth,
         this.$props.modalHeight
       );
-      const url = `https://www.odnoklassniki.ru/dk?st.cmd=addShare&st.s=1&st._surl=${encodeURIComponent(
+      const url = `https://connect.ok.ru/offer?url=${encodeURIComponent(
         this.$props.url
-      )}&st.comments=${encodeURIComponent(this.$props.description)}`;
+      )}&title=${encodeURIComponent(
+        this.$props.description
+      )}&imageUrl=${encodeURIComponent(this.$props.sharePic)}`;
 
       return this.$props.isBlank
         ? window.open(url, "_blank")
@@ -87,7 +90,7 @@ export default {
       }
 
       const script = document.createElement("script");
-      script.src = `https://connect.ok.ru/dk?st.cmd=extLike&uid=1&ref=${encodeURIComponent(
+      script.src = `https://connect.ok.ru/dk?st.cmd=extLike&ref=${encodeURIComponent(
         this.$props.url
       )}`;
       document.body.appendChild(script);

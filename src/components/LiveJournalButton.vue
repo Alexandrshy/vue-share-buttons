@@ -55,8 +55,8 @@ export default {
         this.$props.modalHeight
       );
       const url = `https://livejournal.com/update.bml?event=${encodeURIComponent(
-        this.$props.description
-      )}&subject=${encodeURIComponent(this.$props.url)}`;
+        this.$props.url
+      )}&subject=${encodeURIComponent(this.$props.description)}`;
 
       return this.$props.isBlank
         ? window.open(url, "_blank")

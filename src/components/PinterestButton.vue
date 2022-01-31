@@ -77,7 +77,7 @@ export default {
         this.$props.modalWidth,
         this.$props.modalHeight
       );
-      const url = `https://www.pinterest.com/pin/create/button/?canonicalUrl=${encodeURIComponent(
+      const url = `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(
         this.$props.url
       )}&description=${encodeURIComponent(
         this.$props.description
