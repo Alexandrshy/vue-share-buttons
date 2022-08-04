@@ -39,7 +39,7 @@ export default {
         this.$props.modalWidth,
         this.$props.modalHeight
       );
-      const url = `https://www.xing.com/social_plugins/share?url=${encodeURIComponent(
+      const url = `https://www.xing.com/social/share/spi?url=${encodeURIComponent(
         this.$props.url
       )}`;
 
